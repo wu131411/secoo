@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+//引入路由模块
+import router from "./router/router"
 
 Vue.config.productionTip = false
 
@@ -9,5 +11,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   template: '<App/>',
-  components: { App }
+  components: { App },
+  //挂载路由对象
+  router
 })
