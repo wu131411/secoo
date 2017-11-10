@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 //引入路由模块
 import router from "./router/router"
+//引入rem布局
+
 
 Vue.config.productionTip = false
 
