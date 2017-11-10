@@ -4,7 +4,7 @@
           <ul>
               <li><router-link to="/home">
                   <img src="../static/images/home.png" alt="">
-                  <p>主页</p>
+                  <p>首页</p>
               </router-link></li>
               <li><router-link to="/hot">
                   <img src="../static/images/hot.png" alt="">
@@ -15,11 +15,11 @@
                   <p>分类</p>
               </router-link></li>
               <li><router-link to="/bag">
-                  <img src="../static/images/mine.png" alt="">
+                  <img src="../static/images/bag.png" alt="">
                   <p>购物袋</p>
               </router-link></li>
               <li><router-link to="/mine">
-                  <img src="../static/images/home.png" alt="">
+                  <img src="../static/images/mine.png" alt="">
                   <p>我的</p>
               </router-link></li>
           </ul>
@@ -29,7 +29,10 @@
 </template>
 
 <script>
-import rem from "./router/rem"
+//引入rem布局
+import rem from "../static/js/rem"
+import reset from "../static/css/reset.css"
+
 export default {
   name: 'app',
   components: {
@@ -69,7 +72,6 @@ export default {
     padding: 2.4% 0 1.466666%;
     width: 20%;
     text-align: center;
-    /*opacity: 0.45;*/
 }
 .container li img{
     width: 1.07rem;
@@ -78,5 +80,12 @@ export default {
     line-height: 1;
     color: #1A191E;
     font-size: 0.586667rem;
+    opacity: 0.45;
+}
+.container li p{
+    opacity: 0.45;
+}
+.container .router-link-active, .container .router-link-active p{
+    opacity: 1;
 }
 </style>

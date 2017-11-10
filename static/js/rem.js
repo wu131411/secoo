@@ -4,7 +4,7 @@
             recalc = function () {
                 var clientWidth = docEl.clientWidth;
                 if (!clientWidth) return;
-                if(clientWidth==640){
+                if(clientWidth == 640){
                     docEl.style.fontSize = '32px';
                 }else{
                     docEl.style.fontSize = clientWidth * (32 / 640) + 'px';
