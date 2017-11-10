@@ -33,10 +33,13 @@
 import rem from "../static/js/rem"
 import reset from "../static/css/reset.css"
 
+// 导入尖货组件
+import Hot from './pages/hot'
+
 export default {
   name: 'app',
   components: {
-
+      Hot,
   }
 }
 </script>
