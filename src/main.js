@@ -3,18 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 
-// 引入jsonp
-import jsonp from 'vue-jsonp'
-Vue.use(jsonp)
+import router from "./router/router"
 
+//引入vue-jsonp模块
+import VueJsonp from "vue-jsonp"
+Vue.use(VueJsonp)
 
-// // 导入vue-resource
-// import VueResource from 'vue-resource'
-// // 安装vue-resource
-// Vue.use(VueResource)
+//引入轮播图模块
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
 
-// 导入路由对象
-import router from './router/router'
 
 
 Vue.config.productionTip = false

@@ -6,9 +6,9 @@
       <div class="hot_tabbar">
           <div class="">
               <ul>
-                  <li v-for="item in tabbar" class="tab" @click="push(item.id)" >
+                  <li v-for="item in tabbar" class="tab" @click="push(item.id)">
                           <img :src="item.img" alt="" >
-                          <p class="title" @click="changeBorder($event)">{{ item.title }}</p>
+                          <p class="title">{{ item.title }}</p>
                   </li>
               </ul>
           </div>
@@ -26,6 +26,8 @@ import Tabbar from '../components/circleTab'
 // 导入评论列表组件
 import HotShow from '../components/hot_show'
 
+let hot_tabbar_color = false;
+
 export default {
     data(){
         return {
@@ -39,9 +41,18 @@ export default {
             })
         },
         changeBorder(ev){
-            console.log(ev.currentTarget);
-            ev.currentTarget.parentNode.classList.add('hot_tabbar_color');
-            console.log(ev.currentTarget.parentNode);
+            // TODO:圆圈路由点击效果
+            if (hot_tabbar_color) {
+                ev.currentTarget.classList.remove("hot_tabbar_color");
+                console.log(ev.currentTarget);
+                console.log('111');
+                hot_tabbar_color = true;
+            } else {
+                ev.currentTarget.classList.add('hot_tabbar_color');
+                hot_tabbar_color = false;
+                console.log(ev.currentTarget);
+                console.log('111');
+            }
         }
     },
     components : {
@@ -50,9 +61,7 @@ export default {
     },
     created(){
         this.$jsonp('http://las.secoo.com/api/show/hot_show_head').then(data => {
-            // console.log(data);
             this.tabbar = data.tags;
-            // console.log(this.tabbar);
         })
     }
 
@@ -87,18 +96,22 @@ export default {
     }
     .hot_tabbar>div{
         overflow: hidden;
-        padding-right: 1.5rem;
     }
     .hot_tabbar ul{
         width: 100%;
         overflow: auto;
         padding: 1rem 0 0 0;
         display: -webkit-box;
-        -webkit-padding-start: .8rem;
+    }
+    .hot_tabbar ul li:nth-of-type(1){
+        margin-left: .6rem;
+    }
+    .hot_tabbar ul li:last-child{
+        margin-right: .8rem;
     }
     /*.hot_tabbar .tab::after{
         content: '';
-        border: 2px solid transparent;
+        border: 2px solid red;
         position: absolute;
         left: -3px;
         top: -3px;
@@ -108,7 +121,7 @@ export default {
         height: 2.67rem;
         font-size: .693rem;
         color: #fff;
-        border: 2px solid transparent;
+        border: .2rem solid transparent;
         border-radius: 50%;
         position: relative;
         text-align: center;
