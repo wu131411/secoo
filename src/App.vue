@@ -32,11 +32,11 @@
 //引入rem布局
 import rem from "../static/js/rem"
 import reset from "../static/css/reset.css"
-
+import Mine from './pages/mine'
 export default {
   name: 'app',
   components: {
-
+    Mine
   }
 }
 </script>
