@@ -19,6 +19,7 @@ let routes = [
     {path : "/", component : Home},
     {path : "/home", component : Home},
     {path : "/hot", component : Hot,children:[
+        {path:'/hot',component:HotShow},
         {path:'/hot/hot_show/:id', component: HotShow}
     ]},
     {path : "/list", component : List},
