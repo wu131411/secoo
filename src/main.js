@@ -5,6 +5,14 @@ import App from './App'
 //引入路由模块
 import router from "./router/router"
 
+//引入vue-jsonp模块
+import VueJsonp from "vue-jsonp"
+Vue.use(VueJsonp)
+
+//引入轮播图模块
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
+
 
 
 Vue.config.productionTip = false
