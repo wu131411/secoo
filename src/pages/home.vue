@@ -1,6 +1,5 @@
 <!-- 主页 -->
 <template lang="html">
-<<<<<<< HEAD
     <div id="home">
        <div @click="go()" class="home-banner" >
             <swiper :options="swiperOption" ref="mySwiper">
@@ -12,6 +11,7 @@
                 <div class="swiper-pagination"  slot="pagination"></div>
             </swiper>
        </div>
+
        <div class="home-manner">
            <ul class="home-manner">
                <a href="#" v-for="item in home_manner">
@@ -34,19 +34,20 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-
 export default {
     name: 'home',
     components: { swiper, swiperSlide },
-    data(){
-        return{
+    data (){
+        return {
             home_swiper : {},
             home_manner : {},
             main : {},
             swiperOption: {
-                autoplay: 1000,
+                loop : true,
+                autoplay: 3000,
                 direction : 'horizontal',
                 pagination : '.swiper-pagination',
+                autoplayDisableOnInteraction : false,
             }
         }
     },
@@ -86,52 +87,13 @@ export default {
         }
 
     }
-
-=======
-     <div class="home">
-         <swiper :options="swiperOption" ref="mySwiper">
-             <!-- slides -->
-             <swiper-slide v-for="item in home_swiper">
-                 <img :src="item.img" alt="">
-             </swiper-slide>
-             <!-- Optional controls -->
-             <div class="swiper-pagination"  slot="pagination"></div>
-         </swiper>
-     </div>
-</template>
-
-<script>
-//注册轮播图局部组件
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-export default {
-    name: 'home',
-    components: { swiper, swiperSlide },
-    data (){
-        return {
-            home_swiper : {},
-            swiperOption: {
-                loop : true,
-                autoplay: 3000,
-                direction : 'horizontal',
-                pagination : '.swiper-pagination',
-                autoplayDisableOnInteraction : false,
-            }
-        }
-    },
-    created () {
-        this.$jsonp("http://las.secoo.com/api/home/home_page?c_app_ver=1.0.0&c_platform_type=3").then(data=>{
-            console.log(data.floors);
-            //获取轮播图数据，并赋给home_swiper
-            this.home_swiper = data.floors[0].list
-        })
-    }
->>>>>>> 40bff996ab3fc4939eaa91861d2caba5e9c59876
 }
 </script>
 
 <style lang="css">
-<<<<<<< HEAD
-
+    #home{
+        background-color: white;
+    }
     #home .home-manner{
         width: 100%;
         height: 5.424rem;
@@ -161,22 +123,20 @@ export default {
         text-align: center;
         font-size: 0.746667rem;
     }
-    </style>
-=======
     /*轮播图*/
-    .home .swiper-container{
+    .home-banner .swiper-container{
         width: 100%;
         height: 100%;
         overflow: hidden;
     }
-    .home .swiper-wrapper{
+    .home-banner .swiper-wrapper{
         width: 300%;
         height: 100%;
     }
-    .home .swiper-wrapper div{
+    .home-banner .swiper-wrapper div{
         float: left;
     }
-    .home .swiper-wrapper img{
+    .home-banner .swiper-wrapper img{
         width: 100%;
     }
     /*分页器*/
@@ -195,5 +155,4 @@ export default {
         background: #fff;
         border-radius: 50%;
     }
-</style>
->>>>>>> 40bff996ab3fc4939eaa91861d2caba5e9c59876
+    </style>
