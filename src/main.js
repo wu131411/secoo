@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-//引入路由模块
+
 import router from "./router/router"
 
 //引入vue-jsonp模块

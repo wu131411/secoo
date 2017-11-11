@@ -22,14 +22,17 @@ export default {
         return {
             home_swiper : {},
             swiperOption: {
-                autoplay: 1000,
+                loop : true,
+                autoplay: 3000,
                 direction : 'horizontal',
                 pagination : '.swiper-pagination',
+                autoplayDisableOnInteraction : false,
             }
         }
     },
     created () {
         this.$jsonp("http://las.secoo.com/api/home/home_page?c_app_ver=1.0.0&c_platform_type=3").then(data=>{
+            console.log(data.floors);
             //获取轮播图数据，并赋给home_swiper
             this.home_swiper = data.floors[0].list
         })
@@ -38,17 +41,36 @@ export default {
 </script>
 
 <style lang="css">
-    .home{
+    /*轮播图*/
+    .home .swiper-container{
+        width: 100%;
+        height: 100%;
         overflow: hidden;
     }
     .home .swiper-wrapper{
-        width: 200%;
+        width: 300%;
+        height: 100%;
     }
     .home .swiper-wrapper div{
-        float: left
+        float: left;
     }
     .home .swiper-wrapper img{
         width: 100%;
-        float: left;
+    }
+    /*分页器*/
+    .swiper-container .swiper-pagination{
+        font-size: 0;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 13.8rem;
+    }
+    .swiper-container .swiper-pagination .swiper-pagination-bullet{
+        display: inline-block;
+        width: 0.426667rem;
+        height: 0.426667rem;
+        background: #fff;
+        border-radius: 50%;
     }
 </style>

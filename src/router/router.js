@@ -9,21 +9,25 @@ import List from "../pages/list"
 import Bag from "../pages/bag"
 import Mine from "../pages/mine"
 
+import HotShow from '../components/hot_show'
+
 //VUE中使用router
 Vue.use(VueRouter)
 
 //创建一级路由规则
 let routes = [
     {path : "/", component : Home},
-    {path : "/home", component : Home},
-    {path : "/hot", component : Hot},
-    {path : "/list", component : List},
-    {path : "/bag", component : Bag},
-    {path : "/mine", component : Mine}
+    {path : "/home", component : Home, meta :{navShow : true}},
+    {path : "/hot", component : Hot, meta :{navShow : false} ,children:[
+        {path:'/hot/hot_show/:id', component: HotShow}
+    ]},
+    {path : "/list", component : List, meta :{navShow : false}},
+    {path : "/bag", component : Bag, meta :{navShow : false}},
+    {path : "/mine", component : Mine, meta :{navShow : false}}
 ]
 //创建路由对象
 let router = new VueRouter({
-        routes
+    routes
 })
 
 //导出路由对象

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <div class="container">
+      <div class="container" v-show="$route.meta.navShow">
           <ul>
               <li><router-link to="/home">
                   <img src="../static/images/home.png" alt="">
@@ -10,7 +10,7 @@
                   <img src="../static/images/hot.png" alt="">
                   <p>尖货</p>
               </router-link></li>
-              <li><router-link to="/list">
+              <li><router-link to="/list" >
                   <img src="../static/images/list.png" alt="">
                   <p>分类</p>
               </router-link></li>
@@ -33,10 +33,13 @@
 import rem from "../static/js/rem"
 import reset from "../static/css/reset.css"
 
+// 导入尖货组件
+import Hot from './pages/hot'
+
 export default {
   name: 'app',
   components: {
-
+      Hot,
   }
 }
 </script>
