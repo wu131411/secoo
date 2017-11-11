@@ -4,11 +4,12 @@ import VueRouter from "vue-router"
 
 //引入一级路由组件
 import Home from "../pages/home"
-import Hot from "../pages/hot"
-import List from "../pages/list"
+//bag购物袋
 import Bag from "../pages/bag"
-<<<<<<< HEAD
-import Mine from "../pages/mine"//我的
+
+
+//mine我的
+import Mine from "../pages/mine"
 import Minezh from "../pages/mine_zh"//我的账户
 import Minedd from "../pages/mine_dd"//我的订单
 import Minejp from "../pages/mine_jp"//我的竞拍
@@ -16,40 +17,54 @@ import Mineyhq from "../pages/mine_yhq"//我的红包优惠券
 import Mineyhqyhq from "../pages/mine_yhq_yhq"//优惠券二级路由优惠券
 // import Mineyhqhb from "../pages/mine_yhq_hb"//优惠券二级路由红包
 import Mineabout from "../pages/mine_about" //关于寺库
-=======
-import Mine from "../pages/mine"
 
-<<<<<<< HEAD
+//list分类
+import List from "../pages/list"
 import Index from "../pages/index"
 import Index2 from "../pages/index2"
-
 import Three from "../pages/three"
 
-=======
+//hot尖货
+import Hot from "../pages/hot"
 import HotShow from '../components/hot_show'
 import HotShowDetail from '../components/hot_show_detail'
 
-
->>>>>>> 03610c9bc823f7236f05efd4707fe3d3c12d8cc5
->>>>>>> 40bff996ab3fc4939eaa91861d2caba5e9c59876
 //VUE中使用router
 Vue.use(VueRouter)
 
 //创建一级路由规则
 let routes = [
-<<<<<<< HEAD
-    {path : "/", component : Home},
-    {path : "/home", component : Home},
-    {path : "/hot", component : Hot},
-    {path : "/list", component : List,children:[
+    {path : "/", component : Home, meta : {navShow : true}},
+    //home首页
+    {path : "/home", component : Home, meta : {navShow : true}},
+
+    //hot尖货
+    {path : "/hot", component : Hot, meta : {navShow : false},children:[
+        // {path : '/hot' ,component : HotShow},
+        {path : '/hot/hot_show/:id', component : HotShow}
+        // {path:'/hot/hot_show_detail/:id',component: HotShowDetail}
+    ]},
+    {path :'/hot/hot_show_detail/:id',component : HotShowDetail},
+
+
+
+    //list列表
+    {path : "/list", component : List, meta : {navShow : false}, children :[
       { path : '/list',component : Index},
       { path : '/list/index',component: Index},
-      { path : '/list/index2',component: Index2}
-   ]},
+      { path : '/list/index2',component: Index2}]
+    },
+    {path:'/three/:id',component: Three},
+
+
+
+    //bag购物袋
+    {path : "/bag", component : Bag, meta : {navShow : false}},
+
+
    // {name: 'three',path: '/list/three',component:Three},
-   {path:'/three/:id',component: Three},
-    {path : "/bag", component : Bag},
-    {path : "/mine", component : Mine},
+   // mine我的页面路由
+    {path : "/mine", component : Mine, meta : {navShow : false}},
     {path : "/mine_zh", component : Minezh},
     {path : "/mine_dd", component : Minedd},
     {path : "/mine_jp", component : Minejp},
@@ -58,20 +73,6 @@ let routes = [
       {path : "/mine_yhq/:id", component : Mineyhqyhq}
     ]},
     {path : "/mine_about", component : Mineabout}
-
-=======
-    {path : "/", component : Home, meta : {navShow : true}},
-    {path : "/home", component : Home, meta : {navShow : true}},
-    {path : "/hot", component : Hot, meta : {navShow : false},children:[
-        {path : '/hot',component : HotShow},
-        {path : '/hot/hot_show/:id', component : HotShow},
-        // {path:'/hot/hot_show_detail/:id',component: HotShowDetail}
-    ]},
-    {path : "/list", component : List, meta : {navShow : false}},
-    {path : "/bag", component : Bag, meta : {navShow : false}},
-    {path : "/mine", component : Mine, meta : {navShow : false}},
-    {path :'/hot/hot_show_detail/:id',component : HotShowDetail}
->>>>>>> 03610c9bc823f7236f05efd4707fe3d3c12d8cc5
 ]
 //创建路由对象
 let router = new VueRouter({

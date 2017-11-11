@@ -1,8 +1,8 @@
 <template lang="html">
    <div class="list">
       <div class="bor header">
-        <div @click='back1()' class="imgArr">
-           <img src="../../static/images/list-goback.png" alt="">
+        <div  class="imgArr">
+           <img src="../../static/images/list-goback.png" alt="" @click='back1()'>
         </div>
          <div class="input">
             <input type="text" name="" value="" placeholder='搜索商品和品牌'>

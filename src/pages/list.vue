@@ -9,8 +9,8 @@
               <p class="p1"><router-link to="/list/index">分类</router-link></p>
               <p class="p2"><router-link to="/list/index2">品牌</router-link></p>
            </div>
-           <div @click='home()' class="imgArr">
-              <img src="../../static/images/list-home.png" alt="">
+           <div class="imgArr">
+              <img src="../../static/images/list-home.png" alt="" >
            </div>
        </div>
        <router-view></router-view>
