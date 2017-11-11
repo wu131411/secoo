@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <div class="container">
+      <div class="container" v-show="$route.meta.navShow">
           <ul>
               <li><router-link to="/home">
                   <img src="../static/images/home.png" alt="">
@@ -10,7 +10,7 @@
                   <img src="../static/images/hot.png" alt="">
                   <p>尖货</p>
               </router-link></li>
-              <li><router-link to="/list">
+              <li><router-link to="/list" >
                   <img src="../static/images/list.png" alt="">
                   <p>分类</p>
               </router-link></li>
@@ -32,11 +32,22 @@
 //引入rem布局
 import rem from "../static/js/rem"
 import reset from "../static/css/reset.css"
+<<<<<<< HEAD
 import Mine from './pages/mine'
 export default {
   name: 'app',
   components: {
     Mine
+=======
+
+// 导入尖货组件
+import Hot from './pages/hot'
+
+export default {
+  name: 'app',
+  components: {
+      Hot,
+>>>>>>> 03610c9bc823f7236f05efd4707fe3d3c12d8cc5
   }
 }
 </script>
@@ -59,6 +70,7 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 1000;
 }
 .container ul{
     width: 100%;

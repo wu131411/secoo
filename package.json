@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
+    "vue-awesome-swiper": "^2.6.7",
+    "vue-jsonp": "^0.1.7",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
