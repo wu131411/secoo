@@ -2,7 +2,7 @@
 <template lang="html">
      <div class="bag">
          <div class="bag_back">
-             <div class="bag_goback">
+             <div class="bag_goback" @click="lastPage()">
                  <img src="../../static/images/bag_back.png" alt="">
                 <span>返回</span>
              </div>
@@ -12,7 +12,7 @@
              <div class="bag_com">
                  <span>编辑</span>
              </div>
-         </div>
+        </div>
          <div class="bag_main">
          </div>
      </div>
@@ -20,6 +20,11 @@
 
 <script>
 export default {
+    methods : {
+        lastPage () {
+            history.back()
+        }
+    }
 }
 </script>
 
@@ -41,6 +46,10 @@ export default {
         flex-direction:row;
         justify-content: space-between;
         overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
     }
     .bag_back .bag_goback img{
         float: left;
