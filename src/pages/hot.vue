@@ -21,8 +21,7 @@
 </template>
 
 <script>
-// 引入二级路由的组件
-import Tabbar from '../components/circleTab'
+
 // 导入评论列表组件
 import HotShow from '../components/hot_show'
 
@@ -56,7 +55,6 @@ export default {
         }
     },
     components : {
-        Tabbar,
         HotShow
     },
     created(){

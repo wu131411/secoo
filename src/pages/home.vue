@@ -1,6 +1,7 @@
 <!-- 主页 -->
 <template lang="html">
     <div id="home">
+        <!-- 轮播图 -->
        <div @click="go()" class="home-banner" >
             <swiper :options="swiperOption" ref="mySwiper">
                 <!-- slides -->
@@ -11,7 +12,7 @@
                 <div class="swiper-pagination"  slot="pagination"></div>
             </swiper>
        </div>
-
+       <!-- 列表 -->
        <div class="home-manner">
            <ul class="home-manner">
                <a href="#" v-for="item in home_manner">
@@ -21,13 +22,24 @@
                    </li></a>
            </ul>
        </div>
+
        <div v-for="items in main">
-           <div @click="fnOne(items)" class="main" v-if="items.type=='15'">
+           <div @click="fnOne(items)" v-if="items.type=='15'" class="main" >
                 <a href="#"><img :src="items.content.img" alt=""></a>
            </div>
-           <div v-else-if="items.type=='18'">
-               <div class="text">{{ items.content.title }}</div>
+           <div class="main" v-if="items.type=='16'">
+                <a href="#"><img :src="items.content.img" alt=""></a>
+                <p>
+                    <span>{{items.content.title}}</span>
+                    {{items.content.subTitle}}
+                </p>
            </div>
+           <div class="main" v-if="items.type=='17'">
+                <a href="#"><img :src="items.content.img" alt=""></a>
+           </div>
+           <!-- <div v-else-if="items.type=='18'"> -->
+               <div class="text" v-else-if="items.type=='18'">{{ items.content.title }}</div>
+           <!-- </div> -->
        </div>
    </div>
 </template>
@@ -52,6 +64,7 @@ export default {
         }
     },
     created(){
+
         this.$jsonp('http://las.secoo.com/api/home/home_page?c_app_ver=1.0.0&c_platform_type=3').then( data=>{
             console.log(data.floors);
             this.home_swiper = data.floors[0].list;
@@ -114,9 +127,26 @@ export default {
     }
     .main{
         width: 100%;
+        margin-bottom: 2.666666%;
+        position: relative;
+        overflow: hidden;
     }
     .main img{
         width: 100%;
+    }
+    .main p {
+        color: #000;
+        line-height: 0.746667rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 10.4% 0 0 6.266666%;
+        font-size:0.65rem;
+    }
+    .main span {
+        display: block;
+        line-height: 1.333333rem;
+        font-size: 0.96rem;
     }
     .text {
         margin: 8% 0 4%;
@@ -126,12 +156,12 @@ export default {
     /*轮播图*/
     .home-banner .swiper-container{
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
         overflow: hidden;
     }
     .home-banner .swiper-wrapper{
-        width: 300%;
-        height: 100%;
+        width: 700%;
+        /*height: 100%;*/
     }
     .home-banner .swiper-wrapper div{
         float: left;
