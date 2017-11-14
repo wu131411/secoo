@@ -15,6 +15,8 @@ import HomeInter from "../pages/home_inter"
 import Hot from "../pages/hot"
 import HotShow from '../components/hot_show'
 import HotShowDetail from '../components/hot_show_detail'
+// 商品详情页
+import ProductDetail from '../components/product_detail'
 
 //list分类
 import List from "../pages/list"
@@ -39,10 +41,11 @@ import Mineabout from "../pages/mine_about" //关于寺库
 import Mineaboutqy from "../pages/mine_aboutqy"//关于寺库二级页面——寺库起源
 import Mineaboutqx from "../pages/mine_aboutqx"//关于寺库二级页面——旗下品牌
 import Mineaboutry from "../pages/mine_aboutry"//关于寺库二级页面——集团荣誉
+
 //VUE中使用router
 Vue.use(VueRouter)
 
-//创建一级路由规则
+//创建路由规则
 let routes = [
     {path : "/", component : Home, meta : {navShow : true}},
 
@@ -63,11 +66,11 @@ let routes = [
 
     // hot
     {path : "/hot", component : Hot, meta : {navShow : false},children:[
+        {path : '/hot/hot_show/:id', component : HotShow},
         {path : '/hot',component : HotShow},
         {path : '/hot/hot_show/:id', component : HotShow},
-        // {path:'/hot/hot_show_detail/:id',component: HotShowDetail}
     ]},
-    {path :'/hot/hot_show_detail/:id',component : HotShowDetail},
+    {path :'/hot_show_detail/:id',component : HotShowDetail},
 
     //list列表
     {path : "/list", component : List, meta : {navShow : false}, children :[
@@ -90,6 +93,9 @@ let routes = [
       {path:"/mine_yhq",component : Mineyhqyhq},
       {path : "/mine_yhq/:id", component : Mineyhqyhq}
     ]},
+
+
+
     {path : "/mine_pmq", component : Minepmq, children: [
       {path : "/mine_pmq", component : Minepmqpmq},
       {path : "/mine_pmq/:id", component : Minepmqpmq}
@@ -97,7 +103,12 @@ let routes = [
     {path : "/mine_about", component : Mineabout},
     {path : "/mine_aboutqy", component : Mineaboutqy},
     {path : "/mine_aboutqx", component : Mineaboutqx},
-    {path : "/mine_aboutry", component : Mineaboutry}
+    {path : "/mine_aboutry", component : Mineaboutry},
+
+
+
+    // 商品详情页
+    {path : '/product_detail/:productId',component : ProductDetail},
 
 ]
 //创建路由对象

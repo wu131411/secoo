@@ -99,6 +99,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+<<<<<<< HEAD
     .top_panel {
         width: 100%;
     }
@@ -147,6 +148,46 @@ export default {
     .nav_floor li:hover{
         font-size: 0.625rem;
     }
+=======
+.top_panel {
+    width: 100%;
+}
+.mtArea {
+    margin-bottom: 0.53rem;
+}
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.nav_floor ul {
+    display: -webkit-box;
+    height: 40px;
+    -webkit-box-align: center;
+    width: 100%;
+}
+/*.nav_floor ul.fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 300;
+}*/
+.nav_floor li {
+    font-size: 12px;
+    line-height: 12px;
+    color: gray;
+    border-right: 1px solid gray;
+    -webkit-box-flex: 1;
+    height: 13px;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    position: relative;
+}
+.nav_floor li:last-child {
+    border: 0;
+}
+>>>>>>> b126feab846286a3c6bee8bef85135187991ffb0
 
 
     #homeInter .fifth_floor {
