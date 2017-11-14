@@ -42,7 +42,7 @@
         <!-- 分期付款列表部分 -->
         <ul>
             <li class="product_list fenQi">
-                <div class="title">
+                <div class="titl">
                     {{ data.kuChequeInfo.title }}
                 </div>
                 <div class="info">
@@ -51,7 +51,7 @@
                 </div>
             </li>
             <li class="product_list ziTi" v-show="ziTiTag">
-                <div class="title">
+                <div class="titl">
                     {{ data.pickupInfo.title }}
                 </div>
                 <div class="info">
@@ -60,7 +60,7 @@
                 </div>
             </li>
             <li class="product_list weiXin">
-                <div class="title">
+                <div class="titl">
                     {{ data.wecharManage.title }}
                 </div>
                 <div class="info">
@@ -241,7 +241,7 @@ export default {
         border-top: .005rem solid #ededed;
         border-bottom: .005rem solid #ededed;
     }
-    .product_detail .product_list .title{
+    .product_detail .product_list .titl{
         font-size: .8rem;
         font-weight: bold;
     }

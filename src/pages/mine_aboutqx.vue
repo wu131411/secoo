@@ -1,36 +1,43 @@
 <template lang="html">
-  <div class="about">
-    <div class="minegy_top">
+  <div class="qixia">
+		<div class="qixia_top">
       <div class="back" @click='back()'>
-        <span class="minegy_back"></span>
-        <span class="minegy_backtext">返回</span>
+        <span class="qixia_back"></span>
+        <span class="qixia_backtext">返回</span>
       </div>
-      <span class="minegy_gy">关于寺库</span>
+      <span class="qixia_qx">旗下品牌</span>
     </div>
-    <router-link to="/mine_aboutqy">
-      <div class="gy_qx">
-        <div class="gy_qx2">
-          <span>寺库起源</span>
-          <span class="gy_r"></span>
-        </div>
-      </div>
-    </router-link>
-    <router-link to="/mine_aboutqx">
-      <div class="gy_qx">
-        <div class="gy_qx2">
-          <span>旗下品牌</span>
-          <span class="gy_r"></span>
-        </div>
-      </div>
-    </router-link>
-    <router-link to="/mine_aboutry">
-      <div class="gy_ry">
-        <span class="gy_text">集团荣誉</span>
-        <span class="gy_r"></span>
-      </div>
-    </router-link>
-
-    <div class="mine_footer">
+		<div class="wangshang">
+			<div class="wangshang2">
+				<span>网上商城</span>
+				<span class="qx_r"></span>
+			</div>
+		</div>
+		<div class="huisuo">
+			<div class="huisuo2">
+				<span>库会所</span>
+				<span class="qx_r"></span>
+			</div>
+		</div>
+		<div class="jianding">
+			<div class="jianding2">
+				<span>鉴定中心</span>
+				<span class="qx_r"></span>
+			</div>
+		</div>
+		<div class="yanghu">
+			<div class="yanghu2">
+				<span>养护中心</span>
+				<span class="qx_r"></span>
+			</div>
+		</div>
+		<div class="xueyuan">
+			<div class="xueyuan2">
+				<span>寺库商学院</span>
+				<span class="qx_r"></span>
+			</div>
+		</div>
+		<div class="mine_footer">
       <router-link to="./home">
         <div class="footer_home foot">
   				<span class="home_ico"></span>
@@ -57,16 +64,15 @@
 			</router-link>
 		</div>
   </div>
-
 </template>
 
 <script>
 export default {
-  methods: {
-    back() {
+	methods: {
+		back() {
       history.back()
     }
-  }
+	}
 }
 </script>
 
@@ -75,19 +81,14 @@ export default {
 html {
 	background: #F9F9F9;
 }
-.about{
-  font-size: .8rem;
-  font-family: STHeiti,Helvetica Neue;
-}
-.minegy_top {
+.qixia_top {
 	width: 20rem;
 	height: 2.5rem;
 	background: white;
 	position: relative;
-	border-bottom: 2px solid #cddde6;
-  font-size: .9rem;
+	font-size: .9rem;
 }
-.minegy_back {
+.qixia_back {
 	display: inline-block;
 	overflow: hidden;
 	width: 1.5rem;
@@ -98,58 +99,89 @@ html {
 	top: .5rem;
 	left: .5rem;
 }
-.minegy_backtext {
+.qixia_backtext {
 	position: absolute;
 	top: .5rem;
 	left: 1.7rem;
 }
-.minegy_gy {
+.qixia_qx {
 	position: absolute;
 	top: .5rem;
 	left: 8rem;
 }
-.gy_qy {
-  width: 20rem;
+.wangshang {
+	width: 20rem;
 	height: 2.3rem;
-	position: relative;
-	background: white;
-  margin-top: 2px;
-}
-.gy_qy2 {
-  width: 19rem;
-  height: 2.3rem;
-  margin-left: 1rem;
-  border-bottom: 2px solid #cddde6;
-  line-height: 2.3rem;
-}
-.gy_qx {
-  width: 20rem;
-	height: 2.3rem;
-	position: relative;
 	background: white;
 }
-.gy_qx2 {
-  width: 19rem;
-  height: 2.3rem;
-  margin-left: 1rem;
-  border-bottom: 2px solid #cddde6;
-  line-height: 2.3rem;
-  margin-top: 2px;
+.wangshang2 {
+	width: 19rem;
+	height: 2.3rem;
+	border-bottom: 2px solid #cddde6;
+	margin-left: 1rem;
+	line-height: 2.3rem;
+	font-size: .8rem;
 }
-.gy_ry {
-  width: 20rem;
-  height: 2.3rem;
-  margin-top: 2px;
-  position: relative;
-  background: white;
-  line-height: 2.3rem;
-  border-bottom: 2px solid #cddde6;
+.huisuo {
+	width: 20rem;
+	height: 2.3rem;
+	background: white;
+	margin-top: 2px;
 }
-.gy_text {
-  margin-left: 1rem;
+.huisuo2 {
+	width: 19rem;
+	height: 2.3rem;
+	border-bottom: 2px solid #cddde6;
+	margin-left: 1rem;
+	line-height: 2.3rem;
+	font-size: .8rem;
 }
-.gy_r {
-  float: right;
+.jianding {
+	width: 20rem;
+	height: 2.3rem;
+	background: white;
+	margin-top: 2px;
+
+}
+.jianding2 {
+	width: 19rem;
+	height: 2.3rem;
+	border-bottom: 2px solid #cddde6;
+	margin-left: 1rem;
+	line-height: 2.3rem;
+	font-size: .8rem;
+}
+.yanghu {
+	width: 20rem;
+	height: 2.3rem;
+	background: white;
+	margin-top: 2px;
+
+}
+.yanghu2 {
+	width: 19rem;
+	height: 2.3rem;
+	border-bottom: 2px solid #cddde6;
+	margin-left: 1rem;
+	line-height: 2.3rem;
+	font-size: .8rem;
+}
+.xueyuan {
+	width: 20rem;
+	height: 2.3rem;
+	background: white;
+	margin-top: 2px;
+	border-bottom: 2px solid #cddde6;
+}
+.xueyuan2 {
+	width: 19rem;
+	height: 2.3rem;
+	margin-left: 1rem;
+	line-height: 2.3rem;
+	font-size: .8rem;
+}
+.qx_r {
+	float: right;
 	display: inline-block;
 	overflow: hidden;
 	width: 1.5rem;
@@ -170,6 +202,7 @@ html {
 	font-size: .7rem;
 	color: gray;
 	margin-top: 2rem;
+	background: white;
 }
 .home_ico {
 	width: 2rem;

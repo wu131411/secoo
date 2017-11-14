@@ -3,7 +3,7 @@
       <ul>
           <li v-for="(item,index) of this.list">
               <div class="hot_list" v-if="item.id | hasword">
-                  <div class="main" @click="more(item.id)">
+                  <div class="hot_main" @click="more(item.id)">
                       <div class="user">
                           <div class="userInfo">
                               <img class="userImg" :src="item.showUserImg" alt="">

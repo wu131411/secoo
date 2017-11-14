@@ -33,6 +33,7 @@
 </template>
 
 <script>
+
 // 导入轮播图
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 // 导入评论列表组件
@@ -67,7 +68,8 @@ export default {
     components : {
         HotShow,
         swiper,
-        swiperSlide
+        swiperSlide,
+        HotShow
     },
     created(){
 

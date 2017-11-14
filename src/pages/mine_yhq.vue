@@ -56,7 +56,6 @@ export default {
 @import "../../static/css/reset.css";
 html {
 	background: #F9F9F9;
-  height: 120%;
 }
 .mineyhq_top {
 	width: 20rem;
