@@ -1,36 +1,27 @@
 <template lang="html">
-  <div class="about">
-    <div class="minegy_top">
+	<div class="qiyuan">
+		<div class="qiyuan_top">
       <div class="back" @click='back()'>
-        <span class="minegy_back"></span>
-        <span class="minegy_backtext">返回</span>
+        <span class="qiyuan_back"></span>
+        <span class="qiyuan_backtext">返回</span>
       </div>
-      <span class="minegy_gy">关于寺库</span>
+      <span class="qiyuan_gy">寺库起源</span>
     </div>
-    <router-link to="/mine_aboutqy">
-      <div class="gy_qx">
-        <div class="gy_qx2">
-          <span>寺库起源</span>
-          <span class="gy_r"></span>
-        </div>
-      </div>
-    </router-link>
-    <router-link to="/mine_aboutqx">
-      <div class="gy_qx">
-        <div class="gy_qx2">
-          <span>旗下品牌</span>
-          <span class="gy_r"></span>
-        </div>
-      </div>
-    </router-link>
-    <router-link to="/mine_aboutry">
-      <div class="gy_ry">
-        <span class="gy_text">集团荣誉</span>
-        <span class="gy_r"></span>
-      </div>
-    </router-link>
+		<div class="qiyuan_text">
+			<p class="text_title">寺库起源</p>
+			<p class="indent">礼宾之寺，天府之库，时尚寺库。</p>
+			<p class="text_title">关于我们</p>
+			<p class="indent">寺库致力打造全球最大奢侈品交流平台。总部位于中国北京，高端库会所设于北京、上海、成都、香港、东京等繁华之都，并筹建全球最大奢侈品养护工厂。</p>
+			<p class="indent">寺库业务涉及：奢侈品鉴定、销售、养护及线下交流会所。</p>
+			<p class="text_title">寺库文化</p>
+			<p>寺库本业——做109年以上的企业；</p>
+			<p>品牌标准——正人、正品、正思；</p>
+			<p>企业精神——诚信为先，让资源价值得到最大化利用；</p>
+		</div>
+		<div class="aboutqy_line">
 
-    <div class="mine_footer">
+		</div>
+		<div class="mine_footer">
       <router-link to="./home">
         <div class="footer_home foot">
   				<span class="home_ico"></span>
@@ -56,17 +47,16 @@
   			</div>
 			</router-link>
 		</div>
-  </div>
-
+	</div>
 </template>
 
 <script>
 export default {
-  methods: {
-    back() {
-      history.back()
-    }
-  }
+	methods: {
+		back() {
+			history.back()
+		}
+	}
 }
 </script>
 
@@ -75,19 +65,15 @@ export default {
 html {
 	background: #F9F9F9;
 }
-.about{
-  font-size: .8rem;
-  font-family: STHeiti,Helvetica Neue;
-}
-.minegy_top {
+.qiyuan_top {
 	width: 20rem;
 	height: 2.5rem;
 	background: white;
 	position: relative;
 	border-bottom: 2px solid #cddde6;
-  font-size: .9rem;
+	font-size: .9rem;
 }
-.minegy_back {
+.qiyuan_back {
 	display: inline-block;
 	overflow: hidden;
 	width: 1.5rem;
@@ -98,65 +84,40 @@ html {
 	top: .5rem;
 	left: .5rem;
 }
-.minegy_backtext {
+.qiyuan_backtext {
 	position: absolute;
 	top: .5rem;
 	left: 1.7rem;
 }
-.minegy_gy {
+.qiyuan_gy {
 	position: absolute;
 	top: .5rem;
 	left: 8rem;
 }
-.gy_qy {
-  width: 20rem;
-	height: 2.3rem;
-	position: relative;
+.qiyuan_text {
+	font-size: .7rem;
+	padding: 0 1rem;
 	background: white;
-  margin-top: 2px;
-}
-.gy_qy2 {
-  width: 19rem;
-  height: 2.3rem;
-  margin-left: 1rem;
-  border-bottom: 2px solid #cddde6;
-  line-height: 2.3rem;
-}
-.gy_qx {
-  width: 20rem;
-	height: 2.3rem;
-	position: relative;
-	background: white;
-}
-.gy_qx2 {
-  width: 19rem;
-  height: 2.3rem;
-  margin-left: 1rem;
-  border-bottom: 2px solid #cddde6;
-  line-height: 2.3rem;
-  margin-top: 2px;
-}
-.gy_ry {
-  width: 20rem;
-  height: 2.3rem;
-  margin-top: 2px;
-  position: relative;
-  background: white;
-  line-height: 2.3rem;
-  border-bottom: 2px solid #cddde6;
-}
-.gy_text {
-  margin-left: 1rem;
-}
-.gy_r {
-  float: right;
-	display: inline-block;
 	overflow: hidden;
-	width: 1.5rem;
-	height: 1.5rem;
-	background: url(../../static/images/mine_imgs/mine_r.png) no-repeat;
-	background-size: 1.5rem 1.5rem;
-	margin-top: .5rem;
+	padding-bottom: 1.5rem;
+	border-bottom: 2px solid #cddde6;
+}
+.qiyuan_text p {
+	line-height: 1.32rem;
+	color: #555;
+}
+.text_title {
+	font-size: .8rem;
+	font-weight: bold;
+	margin-top: 1rem;
+}
+.indent {
+	text-indent: 1.4rem;
+}
+.aboutqy_line {
+	width: 20rem;
+	height: 1rem;
+	border-bottom: 1px solid #cddde6;
 }
 .mine_footer {
 	display: flex;
@@ -169,7 +130,6 @@ html {
 	border: 1px solid #afe;
 	font-size: .7rem;
 	color: gray;
-	margin-top: 2rem;
 }
 .home_ico {
 	width: 2rem;

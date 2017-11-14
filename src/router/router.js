@@ -30,9 +30,13 @@ import Minedd from "../pages/mine_dd"//我的订单
 import Minejp from "../pages/mine_jp"//我的竞拍
 import Mineyhq from "../pages/mine_yhq"//我的红包优惠券
 import Mineyhqyhq from "../pages/mine_yhq_yhq"//优惠券二级路由优惠券
-// import Mineyhqhb from "../pages/mine_yhq_hb"//优惠券二级路由红包
+import Minepmq from "../pages/mine_pmq"//我的拍卖券
+import Minepmqpmq from "../pages/mine_pmq_pmq"//我的拍卖券二级页面
+import Mineseaout from "../pages/mine_seaout"//海外站购买说明
 import Mineabout from "../pages/mine_about" //关于寺库
-
+import Mineaboutqy from "../pages/mine_aboutqy"//关于寺库二级页面——寺库起源
+import Mineaboutqx from "../pages/mine_aboutqx"//关于寺库二级页面——旗下品牌
+import Mineaboutry from "../pages/mine_aboutry"//关于寺库二级页面——集团荣誉
 //VUE中使用router
 Vue.use(VueRouter)
 
@@ -76,11 +80,19 @@ let routes = [
     {path : "/mine_zh", component : Minezh},
     {path : "/mine_dd", component : Minedd},
     {path : "/mine_jp", component : Minejp},
+    {path : "/mine_seaout", component : Mineseaout},
     {path : "/mine_yhq", component : Mineyhq, children: [
       {path:"/mine_yhq",component : Mineyhqyhq},
       {path : "/mine_yhq/:id", component : Mineyhqyhq}
     ]},
-    {path : "/mine_about", component : Mineabout}
+    {path : "/mine_pmq", component : Minepmq, children: [
+      {path : "/mine_pmq", component : Minepmqpmq},
+      {path : "/mine_pmq/:id", component : Minepmqpmq}
+    ]},
+    {path : "/mine_about", component : Mineabout},
+    {path : "/mine_aboutqy", component : Mineaboutqy},
+    {path : "/mine_aboutqx", component : Mineaboutqx},
+    {path : "/mine_aboutry", component : Mineaboutry}
 
 ]
 //创建路由对象
