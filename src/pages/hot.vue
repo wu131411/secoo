@@ -21,10 +21,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 0e08045ca1d4d641eb2482bca6d7642e45c58473
 // 导入评论列表组件
 import HotShow from '../components/hot_show'
 

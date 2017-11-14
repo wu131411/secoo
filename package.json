@@ -11,10 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.17.0",
-<<<<<<< HEAD
     "jsonp": "^0.2.1",
-=======
->>>>>>> 0e08045ca1d4d641eb2482bca6d7642e45c58473
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^2.6.7",
     "vue-jsonp": "^0.1.7",

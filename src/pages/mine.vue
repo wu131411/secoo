@@ -404,7 +404,7 @@ html {
 	overflow: hidden;
 	width: 1.5rem;
 	height: 1.5rem;
-	background: url(../../static/images/mine_imgs/mine_r.png) no-repeat;
+	background: url('../../static/images/mine_imgs/mine_r.png') no-repeat;
 	background-size: 1.5rem 1.5rem;
 	margin-top: .5rem;
 }

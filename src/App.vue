@@ -32,22 +32,12 @@
 //引入rem布局
 import rem from "../static/js/rem"
 import reset from "../static/css/reset.css"
-<<<<<<< HEAD
-// 导入尖货组件
-// import Hot from './pages/hot'
-// import Mine from './pages/mine'
+
 export default {
   name: 'app',
   components: {
     //   Hot,
     //   Mine
-=======
-
-export default {
-  name: 'app',
-  components: {
-
->>>>>>> 0e08045ca1d4d641eb2482bca6d7642e45c58473
   }
 }
 
