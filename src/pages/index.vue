@@ -1,6 +1,6 @@
 <template lang="html">
    <section>
-      <Future v-for="listArr in result" :obj="listArr"></Future>
+      <Future v-for="listArr in result"  :obj="listArr"></Future>
    </section>
 </template>
 

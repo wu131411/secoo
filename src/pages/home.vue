@@ -5,7 +5,7 @@
        <div @click="go()" class="home-banner" >
             <swiper :options="swiperOption" ref="mySwiper">
                 <!-- slides -->
-                <swiper-slide v-for="item in home_swiper">
+                <swiper-slide v-for="item in home_swiper" >
                     <img :src="item.img">
                 </swiper-slide>
                 <!-- Optional controls -->
