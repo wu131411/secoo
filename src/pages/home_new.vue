@@ -113,7 +113,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
  /*section*/
     .mtArea {
       margin-bottom: 0.26rem;

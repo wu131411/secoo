@@ -78,7 +78,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .top_panel {
     width: 100%;
 }
