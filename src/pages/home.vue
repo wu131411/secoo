@@ -32,7 +32,7 @@ export default {
     },
     created () {
         this.$jsonp("http://las.secoo.com/api/home/home_page?c_app_ver=1.0.0&c_platform_type=3").then(data=>{
-            console.log(data.floors);
+            // console.log(data.floors);
             //获取轮播图数据，并赋给home_swiper
             this.home_swiper = data.floors[0].list
         })

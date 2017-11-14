@@ -29,10 +29,13 @@ import Hot from "../pages/hot"
 import HotShow from '../components/hot_show'
 import HotShowDetail from '../components/hot_show_detail'
 
+// 商品详情页
+import ProductDetail from '../components/product_detail'
+
 //VUE中使用router
 Vue.use(VueRouter)
 
-//创建一级路由规则
+//创建路由规则
 let routes = [
     {path : "/", component : Home, meta : {navShow : true}},
     //home首页
@@ -40,11 +43,9 @@ let routes = [
 
     //hot尖货
     {path : "/hot", component : Hot, meta : {navShow : false},children:[
-        // {path : '/hot' ,component : HotShow},
-        {path : '/hot/hot_show/:id', component : HotShow}
-        // {path:'/hot/hot_show_detail/:id',component: HotShowDetail}
+        {path : '/hot/hot_show/:id', component : HotShow},
     ]},
-    {path :'/hot/hot_show_detail/:id',component : HotShowDetail},
+    {path :'/hot_show_detail/:id',component : HotShowDetail},
 
 
 
@@ -72,7 +73,12 @@ let routes = [
       {path:"/mine_yhq",component : Mineyhqyhq},
       {path : "/mine_yhq/:id", component : Mineyhqyhq}
     ]},
-    {path : "/mine_about", component : Mineabout}
+    {path : "/mine_about", component : Mineabout},
+
+
+
+    // 商品详情页
+    {path : '/product_detail/:productId',component : ProductDetail}
 ]
 //创建路由对象
 let router = new VueRouter({

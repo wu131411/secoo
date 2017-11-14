@@ -2,6 +2,18 @@
   <div id="jianHuo">
       <div class="banner">
           <a href="#"><img src="../assets/jianhuo_img/banner.jpg" alt=""></a>
+
+
+          <!-- <div @click="go()" class="hot_banner" >
+            <swiper :options="swiperOption" ref="mySwiper">
+                <swiper-slide v-for="item in banner">
+                    <img :src="item.img">
+                </swiper-slide>
+                <div class="swiper-pagination"  slot="pagination"></div>
+            </swiper>
+          </div> -->
+
+
       </div>
       <div class="hot_tabbar">
           <div class="">
@@ -21,8 +33,8 @@
 </template>
 
 <script>
-// 引入二级路由的组件
-import Tabbar from '../components/circleTab'
+// 导入轮播图
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 // 导入评论列表组件
 import HotShow from '../components/hot_show'
 
@@ -31,6 +43,7 @@ let hot_tabbar_color = false;
 export default {
     data(){
         return {
+            banner : {},
             tabbar:{}
         }
     },
@@ -44,24 +57,25 @@ export default {
             // TODO:圆圈路由点击效果
             if (hot_tabbar_color) {
                 ev.currentTarget.classList.remove("hot_tabbar_color");
-                console.log(ev.currentTarget);
-                console.log('111');
                 hot_tabbar_color = true;
             } else {
                 ev.currentTarget.classList.add('hot_tabbar_color');
                 hot_tabbar_color = false;
-                console.log(ev.currentTarget);
-                console.log('111');
             }
         }
     },
     components : {
-        Tabbar,
-        HotShow
+        HotShow,
+        swiper,
+        swiperSlide
     },
     created(){
+
         this.$jsonp('http://las.secoo.com/api/show/hot_show_head').then(data => {
+            // console.log(data);
             this.tabbar = data.tags;
+            this.banner = data.banners;
+            // console.log(this.banner);
         })
     }
 
@@ -80,6 +94,44 @@ export default {
         width: 100%;
         height: 100%;
     }
+
+
+    /*lyk*/
+    /*轮播图*/
+    .hot_banner .swiper-container{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .hot_banner .swiper-wrapper{
+        width: 500%;
+        height: 100%;
+    }
+    .hot_banner .swiper-wrapper div{
+        float: left;
+    }
+    .hot_banner .swiper-wrapper img{
+        width: 100%;
+    }
+    /*分页器*/
+    .swiper-container .swiper-pagination{
+        font-size: 0;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 13.8rem;
+    }
+    .swiper-container .swiper-pagination .swiper-pagination-bullet{
+        display: inline-block;
+        width: 0.426667rem;
+        height: 0.426667rem;
+        background: #fff;
+        border-radius: 50%;
+    }
+
+
+/*lyk*/
 
     /*二级路由样式*/
     /*点击时的边框样式*/

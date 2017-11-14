@@ -38,7 +38,7 @@
                               <span class="sayYes">{{ num[index] }}</span>
                           </div>
                       </div>
-                      <div class="showBuy">
+                      <div class="showBuy" @click="goBuy(index)">
                           <span class="toBuy">去购买</span>
                           <span class="svg"></span>
                       </div>
@@ -64,7 +64,7 @@
                       </div>
                       <div class="hot_ad_imgs">
                           <ul>
-                              <li v-for="i in item.products">
+                              <li v-for="i in item.products" @click="gouMai(i.productId)">
                                   <div class="hot_ad_smallImg">
                                       <img :src="i.img" alt="">
                                   </div>
@@ -86,6 +86,8 @@
 </template>
 
 <script>
+
+
 let tag = false;
 export default {
     data(){
@@ -95,18 +97,20 @@ export default {
             num : [],
             content : [],
             hasword : '',
+            productId : '',
         }
     },
     methods : {
         sayYes(ev,index){
             // console.log(num);
             if(tag){
-                event.currentTarget.children[0].classList.remove("color");
+
+                ev.currentTarget.children[0].classList.remove("color");
                 this.num[index] -= 1;
                 ev.path[3].children[0].childNodes[2].innerText = this.num[index];
                 tag = false;
             } else {
-                event.currentTarget.children[0].classList.add("color");
+                ev.currentTarget.children[0].classList.add("color");
                 this.num[index] += 1;
                 ev.path[3].children[0].childNodes[2].innerText = this.num[index];
                 tag = true;
@@ -114,7 +118,20 @@ export default {
         },
         more(id){
             this.$router.push({
-                path : '/hot/hot_show_detail/' + id
+                path : '/hot_show_detail/' + id,
+                query : {
+                    commentShowDetail : id
+                }
+            })
+        },
+        goBuy(index){
+            this.$router.push({
+                path : '/product_detail/' + this.list[index].productId
+            })
+        },
+        gouMai(productId){
+            this.$router.push({
+                path : '/product_detail/' + productId
             })
         }
     },
@@ -134,9 +151,9 @@ export default {
     },
     created(){
         this.$jsonp(this.url).then(data => {
-            // console.log(data);
+            console.log(data);
             this.list = data.list;
-            console.log(this.list);
+            // console.log(this.list);
             this.num = [];
             this.content = [];
             for (var item of data.list) {
