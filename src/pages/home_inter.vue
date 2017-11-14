@@ -4,17 +4,17 @@
         <div class="top_panel activityHandle mtArea">
             <img src="//pic12.secooimg.com/comment/17/11/d352dc06eacd4e8c92544eedb983e36d.JPG" alt="">
         </div>
-        <div class="mtArea nav_floor">
-            <ul class="fixed">
-                <li>包袋</li>
-                <li>鞋靴</li>
-                <li>配饰</li>
-                <li>家居</li>
-                <li>明星推荐</li>
+        <div class="mtArea nav_floor searchBar">
+            <ul>
+                <li><a href="#bao">包袋</a></li>
+                <li><a href="#shoe">鞋靴</a></li>
+                <li><a href="#pei">配饰</a></li>
+                <li><a href="#jia">家居</a></li>
+                <li><a href="#">明星推荐</a></li>
             </ul>
         </div>
 
-        <div class="fifth_floor mtArea">
+        <div id="bao" class="fifth_floor mtArea">
             <div>包治百病</div>
         </div>
         <!-- 商品小图排列 -->
@@ -25,7 +25,7 @@
         </h2>
 
         <div class="fifth_floor mtArea">
-            <div>健步如飞</div>
+            <div id="shoe">健步如飞</div>
         </div>
         <!-- 商品小图排列 -->
         <HomeGoods></HomeGoods>
@@ -43,7 +43,7 @@
         <img src="//pic12.secooimg.com/comment/17/11/8165c0a8858045818a44a44606c04d1c.jpg" alt="">
 
         <div class="fifth_floor mtArea">
-            <div>珠光宝气</div>
+            <div id="pei">珠光宝气</div>
         </div>
         <!-- 商品小图排列 -->
         <HomeGoods></HomeGoods>
@@ -56,7 +56,7 @@
         <img src="//pic12.secooimg.com/comment/17/11/e5bcf3a319fb46828cd534a6ab3afca0.jpg" alt="">
 
         <div class="fifth_floor mtArea">
-            <div>独具匠心</div>
+            <div id="jia">独具匠心</div>
         </div>
         <!-- 商品小图排列 -->
         <HomeGoods></HomeGoods>
@@ -72,97 +72,116 @@ export default {
         HomeHead,
         HomeGoods
     },
-    watch:{
-
+    data () {
+        return {
+            searchBarFixed : false
+        }
+    },
+    methods:{
+        handleScroll(){
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            var offsetTop = document.querySelector('.searchBar').offsetTop;
+            if (scrollTop > offsetTop) {
+                document.querySelector('.searchBar').classList.add("isFixed")
+            }
+            if(scrollTop <= 400) {
+                document.querySelector('.searchBar').classList.remove("isFixed")
+            }
+        }
+    },
+    mounted () {
+        window.addEventListener('scroll',this.handleScroll);
+    },
+    destroyed () {
+        window.removeEventListener('scroll', this.handleScroll)
     }
 }
 </script>
 
-<style lang="css">
-.top_panel {
-    width: 100%;
-}
-.mtArea {
-    margin-bottom: 0.53rem;
-}
-img {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-.nav_floor ul {
-    display: -webkit-box;
-    height: 40px;
-    -webkit-box-align: center;
-    width: 100%;
-}
-/*.nav_floor ul.fixed {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 300;
-}*/
-.nav_floor li {
-    font-size: 12px;
-    line-height: 12px;
-    color: gray;
-    border-right: 1px solid gray;
-    -webkit-box-flex: 1;
-    height: 13px;
-    display: -webkit-box;
-    -webkit-box-align: center;
-    -webkit-box-pack: center;
-    position: relative;
-}
-.nav_floor li:last-child {
-    border: 0;
-}
+<style lang="css" scoped>
+    .top_panel {
+        width: 100%;
+    }
+    .mtArea {
+        margin-bottom: 0.53rem;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    .nav_floor {
+        width: 100%;
+        overflow: hidden;
+        height: 1.25rem;
+    }
+    .nav_floor ul {
+        display: -webkit-box;
+        height: 1.25rem;
+        -webkit-box-align: center;
+        background-color: white;
+        width: 100%;
+        z-index: 10;
+    }
+    .isFixed{
+        position: fixed;
+        left: 0;
+        top: 0;
+        font-weight: bold;
+    }
+    .nav_floor li {
+        font-size: 0.4rem;
+        color: gray;
+        border-right: 1px solid gray;
+        -webkit-box-flex: 1;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        position: relative;
+    }
+    .nav_floor li:last-child {
+        border: 0;
+    }
+    .nav_floor li:hover{
+        font-size: 0.625rem;
+    }
 
 
-#homeInter .fifth_floor {
-    height: 4.666rem;
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 1.28rem;
-    margin-top: 1.5rem;
-}
+    #homeInter .fifth_floor {
+        height: 4.666rem;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 1.28rem;
+        margin-top: 1.5rem;
+    }
 
-.fifth_floor div {
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    padding: 0 0.53rem;
-    width: 8.36rem;
-    height: 2.57rem;
-    line-height: 2.57rem;
-    border:1px solid #666;
-}
+    .fifth_floor div {
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        padding: 0 0.53rem;
+        width: 8.36rem;
+        height: 2.57rem;
+        line-height: 2.57rem;
+        border:1px solid #666;
+    }
 
-.title-big{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 1.6rem 0.8rem 0.267rem;
-    line-height: 1.173333rem;
-    font-size: 1.173333rem;
-}
-.title-big .more {
-    float: right;
-    padding-right: 0.5rem;
-    font-weight: normal;
-    font-size: 0.746667rem;
-    position: relative;
-}
-/*.title-big .more:before, .title-big .more:after {
-    content: '';
-    width: 0.4rem;
-    height: 1px;
-    background-color: #999;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    -webkit-transform-origin: right center;
-    transform-origin: right center;
-}*/
+    .title-big{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 1.6rem 0.8rem 0.267rem;
+        line-height: 1.17rem;
+        font-size: 1.17rem;
+    }
+    .title-big .more {
+        float: right;
+        padding-right: 0.5rem;
+        font-weight: normal;
+        font-size: 0.75rem;
+        position: relative;
+    }
 </style>

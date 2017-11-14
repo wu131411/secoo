@@ -1,5 +1,4 @@
 <template lang="html">
-    <div class="">
         <div class="pro_dList mtArea">
             <ul>
                 <li v-for="item in result">
@@ -17,7 +16,6 @@
                 </li>
             </ul>
         </div>
-    </div>
 </template>
 
 <script>
