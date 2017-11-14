@@ -36,6 +36,7 @@ import reset from "../static/css/reset.css"
 export default {
   name: 'app',
   components: {
+
   }
 }
 

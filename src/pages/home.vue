@@ -5,7 +5,7 @@
        <div @click="go()" class="home-banner" >
             <swiper :options="swiperOption" ref="mySwiper">
                 <!-- slides -->
-                <swiper-slide v-for="item in home_swiper">
+                <swiper-slide v-for="item in home_swiper" >
                     <img :src="item.img">
                 </swiper-slide>
                 <!-- Optional controls -->
@@ -16,7 +16,7 @@
        <div class="home-manner">
            <ul class="home-manner">
                <a href="#" v-for="item in home_manner">
-                   <li @click="erji(item)" >
+                   <li @click="fnOne(item)" >
                        <img :src="item.img" alt="">
                        {{item.title}}
                    </li></a>
@@ -24,10 +24,10 @@
        </div>
 
        <div v-for="items in main">
-           <div @click="fnOne(items)" v-if="items.type=='15'" class="main" >
+           <div @click="fnTwo(items)" v-if="items.type=='15'" class="main" >
                 <a href="#"><img :src="items.content.img" alt=""></a>
            </div>
-           <div class="main" v-if="items.type=='16'">
+           <div @click="fenlei(items)" class="main" v-if="items.type=='16'" >
                 <a href="#"><img :src="items.content.img" alt=""></a>
                 <p>
                     <span>{{items.content.title}}</span>
@@ -37,9 +37,9 @@
            <div class="main" v-if="items.type=='17'">
                 <a href="#"><img :src="items.content.img" alt=""></a>
            </div>
-           <!-- <div v-else-if="items.type=='18'"> -->
-               <div class="text" v-else-if="items.type=='18'">{{ items.content.title }}</div>
-           <!-- </div> -->
+           <div class="text" v-else-if="items.type=='18'">
+                  {{ items.content.title }}
+           </div>
        </div>
    </div>
 </template>
@@ -78,23 +78,35 @@ export default {
                 path:'/home_overseas/'
             })
         },
-        erji(i){
+        fnOne(i){
             console.log(i)
             if(i.title == '专柜自提'){
                 this.$router.push({
                     path:'/home_zhuanguiziti/'
                 })
-            } else if(i.title == '挖宝'){
+            } else if(i.title == '明星车库'){
                 this.$router.push({
                     path:'/home_wabao/'
                 })
+            } else if(i.title == '奢华体验'){
+                this.$router.push({
+                    path:'/home_shehua/'
+                })
             }
         },
-        fnOne(j){
+        fnTwo(j){
             console.log(j);
             if(j.index == 4){
                 this.$router.push({
                     path:'/home_new/'
+                })
+            }
+        },
+        fenlei(k){
+            console.log(k);
+            if(k.type == "16"){
+                this.$router.push({
+                    path:'/home_inter/'
                 })
             }
         }

@@ -8,6 +8,8 @@ import Home_overseas from "../pages/home_overseas"
 import Home_zhuanguiziti from "../pages/home_zhuanguiziti"
 import Home_wabao from "../pages/home_wabao"
 import HomeNew from "../pages/home_new"
+import HomeShehua from "../pages/home_shehua"
+import HomeInter from "../pages/home_inter"
 
 //hot尖货
 import Hot from "../pages/hot"
@@ -49,15 +51,18 @@ let routes = [
 
     // home
     {path : "/home", component : Home, meta : {navShow : true},children:[
-        {path:"/home/home-overseas",component:Home_overseas},
-        {path:"/home/home-zhuanguiziti/",component:Home_zhuanguiziti},
-        {path:"/home/home_wabao",component:Home_wabao},
-        {path:"/home/home_new",component:HomeNew}
+        // {path:"/home/home-overseas",component:Home_overseas},
+        // {path:"/home/home-zhuanguiziti/",component:Home_zhuanguiziti},
+        // {path:"/home/home_wabao",component:Home_wabao},
+        // {path:"/home/home_new",component:HomeNew},
+        // {path:"home_inter",component:HomeInter},
     ]},
     {path:"/home_overseas",component:Home_overseas},
     {path:"/home_zhuanguiziti/",component:Home_zhuanguiziti},
     {path:"/home_wabao",component:Home_wabao},
     {path:"/home_new",component:HomeNew},
+    {path:"/home_inter",component:HomeInter},
+    {path:"/home_shehua",component:HomeShehua},
 
     // hot
     {path : "/hot", component : Hot, meta : {navShow : false},children:[
