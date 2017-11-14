@@ -38,12 +38,13 @@
   			<span class="auction_r"></span>
   		</div>
     </router-link>
-
-		<div class="mine_money">
-			<span class="money_ico"></span>
-			<span class="money_text">我的拍卖券</span>
-			<span class="money_r"></span>
-		</div>
+    <router-link to="/mine_pmq">
+      <div class="mine_money">
+  			<span class="money_ico"></span>
+  			<span class="money_text">我的拍卖券</span>
+  			<span class="money_r"></span>
+  		</div>
+    </router-link>
     <router-link to="/mine_about">
       <div class="mine_about">
   			<span class="about_ico"></span>
@@ -58,11 +59,14 @@
 			<span class="call_num">400 875 6789</span>
 			<span class="call_r"></span>
 		</div>
-		<div class="mine_seaout">
-			<span class="seaout_ico"></span>
-			<span class="seaout_text">海外站购买说明</span>
-			<span class="seaout_r"></span>
-		</div>
+    <router-link to="/mine_seaout">
+      <div class="mine_seaout">
+  			<span class="seaout_ico"></span>
+  			<span class="seaout_text">海外站购买说明</span>
+  			<span class="seaout_r"></span>
+  		</div>
+    </router-link>
+
 		<div class="mine_footer">
       <router-link to="./home">
         <div class="footer_home foot">
@@ -108,7 +112,6 @@ methods: {
 @import "../../static/css/reset.css";
 html {
 	background: #F9F9F9;
-  height: 120%;
 }
 .mine{
   font-size: .8rem;
