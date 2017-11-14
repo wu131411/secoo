@@ -46,15 +46,19 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import swiperCss from "../../static/css/swiper.css"
 export default {
     name: 'home',
-    components: { swiper, swiperSlide },
+    components: {
+        swiper,
+        swiperSlide
+     },
     data (){
         return {
             home_swiper : {},
             home_manner : {},
             main : {},
-            swiperOption: {
+            swiperOption : {
                 loop : true,
                 autoplay: 3000,
                 direction : 'horizontal',
@@ -66,7 +70,7 @@ export default {
     created(){
 
         this.$jsonp('http://las.secoo.com/api/home/home_page?c_app_ver=1.0.0&c_platform_type=3').then( data=>{
-            console.log(data.floors);
+            // console.log(data.floors);
             this.home_swiper = data.floors[0].list;
             this.home_manner = data.floors[1].list;
             this.main = data.floors
@@ -153,36 +157,5 @@ export default {
         text-align: center;
         font-size: 0.746667rem;
     }
-    /*轮播图*/
-    .home-banner .swiper-container{
-        width: 100%;
-        /*height: 100%;*/
-        overflow: hidden;
-    }
-    .home-banner .swiper-wrapper{
-        width: 700%;
-        /*height: 100%;*/
-    }
-    .home-banner .swiper-wrapper div{
-        float: left;
-    }
-    .home-banner .swiper-wrapper img{
-        width: 100%;
-    }
-    /*分页器*/
-    .swiper-container .swiper-pagination{
-        font-size: 0;
-        text-align: center;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 13.8rem;
-    }
-    .swiper-container .swiper-pagination .swiper-pagination-bullet{
-        display: inline-block;
-        width: 0.426667rem;
-        height: 0.426667rem;
-        background: #fff;
-        border-radius: 50%;
-    }
+
     </style>

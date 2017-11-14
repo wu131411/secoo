@@ -1,7 +1,14 @@
 <template lang="html">
   <div id="jianHuo">
       <div class="banner">
-          <a href="#"><img src="../assets/jianhuo_img/banner.jpg" alt=""></a>
+          <swiper :options="swiperOption" ref="mySwiper">
+              <!-- slides -->
+              <swiper-slide v-for="item in hot_swiper">
+                  <img :src="item.img">
+              </swiper-slide>
+              <!-- Optional controls -->
+              <div class="swiper-pagination"  slot="pagination"></div>
+          </swiper>
       </div>
       <div class="hot_tabbar">
           <div class="">
@@ -21,19 +28,24 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 0e08045ca1d4d641eb2482bca6d7642e45c58473
 // 导入评论列表组件
 import HotShow from '../components/hot_show'
-
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import swiperCss from "../../static/css/swiper.css"
 let hot_tabbar_color = false;
 
 export default {
     data(){
         return {
-            tabbar:{}
+            tabbar:{},
+            hot_swiper : {},
+            swiperOption : {
+                loop : true,
+                autoplay: 3000,
+                direction : 'horizontal',
+                pagination : '.swiper-pagination',
+                autoplayDisableOnInteraction : false,
+            }
         }
     },
     methods : {
@@ -58,11 +70,14 @@ export default {
         }
     },
     components : {
-        HotShow
+        HotShow,
+        swiper,
+        swiperSlide
     },
     created(){
         this.$jsonp('http://las.secoo.com/api/show/hot_show_head').then(data => {
             this.tabbar = data.tags;
+            this.hot_swiper = data.banners
         })
     }
 
@@ -151,4 +166,5 @@ export default {
         width: 100%;
         overflow: hidden;
     }
+
 </style>

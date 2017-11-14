@@ -1,6 +1,6 @@
 <template lang="html">
    <section>
-      <Future v-for="listArr in result" :obj="listArr"></Future>
+      <Future></Future>
    </section>
 </template>
 
@@ -17,7 +17,6 @@ export default {
    created(){
       this.$jsonp('//android.secoo.com/appservice/cartAndBrand.action?v=2.0').then(data => {
          this.result = data.rp_result.categorys
-         // console.log(this.result);
       })
    },
    components:{

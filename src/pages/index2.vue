@@ -75,4 +75,4 @@ export default {
    color: #fff;
 }
 </style>
-//android.secoo.com/appservice/all_brand.action
+<!-- //android.secoo.com/appservice/all_brand.action -->

@@ -134,9 +134,7 @@ export default {
     },
     created(){
         this.$jsonp(this.url).then(data => {
-            // console.log(data);
             this.list = data.list;
-            console.log(this.list);
             this.num = [];
             this.content = [];
             for (var item of data.list) {
