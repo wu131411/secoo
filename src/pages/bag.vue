@@ -19,11 +19,20 @@
 </template>
 
 <script>
+import Bus from '../bus'
 export default {
     methods : {
         lastPage () {
             history.back()
         }
+    },
+    created(){
+        console.log('12345');
+        console.log(Bus);
+        Bus.$on('data',(data)=>{
+            console.log('niin');
+            console.log(data);
+        })
     }
 }
 </script>

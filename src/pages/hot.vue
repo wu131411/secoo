@@ -18,9 +18,9 @@
       <div class="hot_tabbar">
           <div class="">
               <ul>
-                  <li v-for="item in tabbar" class="tab" @click="push(item.id)">
+                  <li v-for="item in tabbar" class="tab">
                           <img :src="item.img" alt="" >
-                          <p class="title">{{ item.title }}</p>
+                          <p class="title" @click="push(item.id)">{{ item.title }}</p>
                   </li>
               </ul>
           </div>

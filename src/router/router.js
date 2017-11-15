@@ -50,13 +50,7 @@ let routes = [
     {path : "/", component : Home, meta : {navShow : true}},
 
     // home
-    {path : "/home", component : Home, meta : {navShow : true},children:[
-        // {path:"/home/home-overseas",component:Home_overseas},
-        // {path:"/home/home-zhuanguiziti/",component:Home_zhuanguiziti},
-        // {path:"/home/home_wabao",component:Home_wabao},
-        // {path:"/home/home_new",component:HomeNew},
-        // {path:"home_inter",component:HomeInter},
-    ]},
+    {path : "/home", component : Home, meta : {navShow : true}},
     {path:"/home_overseas",component:Home_overseas},
     {path:"/home_zhuanguiziti/",component:Home_zhuanguiziti},
     {path:"/home_wabao",component:Home_wabao},
