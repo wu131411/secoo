@@ -23,6 +23,8 @@ import List from "../pages/list"
 import Index from "../pages/index"
 import Index2 from "../pages/index2"
 import Three from "../pages/three"
+import Threetwo from "../pages/threetwo"
+import Threethree from "../pages/threethree"
 
 //hot尖货
 import Hot from "../pages/hot"
@@ -52,17 +54,21 @@ let routes = [
     {path : "/list", component : List, meta : {navShow : false}, children :[
       { path : '/list',component : Index},
       { path : '/list/index',component: Index},
+      { path : '/list',component : Index2},
       { path : '/list/index2',component: Index2}]
     },
-    {path:'/three/:id',component: Three},
-
+    {name: 'three',path: '/list/three',component:Three,children:[
+      {path: '/three/threetwo',component:Threetwo},
+      {path: '/three/threethree',component:Threethree}
+   ]},
+   //  {name: 'xiala',path: '/list/three/',component:Three},
 
 
     //bag购物袋
     {path : "/bag", component : Bag, meta : {navShow : false}},
 
 
-   // {name: 'three',path: '/list/three',component:Three},
+
    // mine我的页面路由
     {path : "/mine", component : Mine, meta : {navShow : false}},
     {path : "/mine_zh", component : Minezh},

@@ -13,6 +13,10 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
 // Vue.use(VueResource)
 Vue.use(VueJsonp)
+// 引入占位模块
+import VueOccupy from 'vue-occupy'
+Vue.use(VueOccupy)
+
 // Vue.prototype.axios = Axios
 Vue.config.productionTip = false
 /* eslint-disable no-new */
