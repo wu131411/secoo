@@ -8,6 +8,7 @@ Vue.prototype.axios = axios
 
 //引入路由模块
 import router from "./router/router"
+Vue.use(VueJsonp)
 
 //引入轮播图插件
 import VueAwesomeSwiper from 'vue-awesome-swiper'

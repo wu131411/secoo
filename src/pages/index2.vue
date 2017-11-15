@@ -1,6 +1,6 @@
 <template lang="html">
    <div class="top">
-      <Brands v-for="listArr in result" :obj="listArr"></Brands>
+      <Brands v-for="listArr in result" :obj="listArr" :key="listArr.key"></Brands>
       <div class="black-list">
          <a href="#">A</a>
          <a href="#">B</a>
@@ -75,4 +75,3 @@ export default {
    color: #fff;
 }
 </style>
-<!-- //android.secoo.com/appservice/all_brand.action -->

@@ -13,9 +13,14 @@
                  <span @click="bagChange()">{{ msg1 }}</span>
              </div>
         </div>
-         <div class="bag_main">
+
+         <div class="bag_main" v-if="bagShow">
             <bagone v-if="isShow" :data1="dataAll"></bagone>
             <bagtwo v-else :data2="dataAll"></bagtwo>
+         </div>
+         <div v-else class="bagNull">
+            <p><img src="../../static/images/bag_bag.png" alt=""></p>
+            <p>您的购物袋空空如也~</p>
          </div>
      </div>
 </template>
@@ -26,6 +31,7 @@ import BagTwo from "../components/bag_two"
 export default {
     data () {
         return {
+            bagShow : true,
             isShow : true,
             msg1 : "编辑",
             dataAll : []
@@ -56,13 +62,25 @@ export default {
                 msg : "蒂芙尼/Tiffany & Co.  女式925纯银蓝色时尚双心珐琅项链 16英寸 TBDZ0079",
                 i : 1,
                 price : "1356",
+                isTrue : 0
             },
             {
                 url : "http://pic.secoo.com/product/120/120/56/56/883b896ab06146f8b13be0647424bd28.jpg",
                 msg : "奥蓝/ALLE 赫拉HERA系列富贵花镂空白金色项链",
                 i : 1,
-                price : "1290"
-            }]}
+                price : "1290",
+                isTrue : 0
+            }
+        ]
+        if(this.dataAll.length == 0){
+            this.bagShow = false
+        }
+    },
+    updated(){
+        if(this.dataAll.length == 0){
+            this.bagShow = false
+        }
+    }
 }
 </script>
 
@@ -111,5 +129,28 @@ export default {
         padding-bottom: 100px;
         margin-top: 44px;
         padding-top: 10px;
+    }
+    .bagNull{
+        width: 100%;
+        text-align: center;
+        line-height: 42px;
+        clear: both;
+        padding-top: 167px;
+        min-height: 200px;
+        font-size: 30px;
+        background: rgb(249, 249, 249);
+    }
+    .bagNull p img{
+        width: 60px;
+        max-width: 100%;
+    }
+    .bagNull p{
+        font-size: 13px;
+        color: #999999;
+        margin-bottom: 10px;
+    }
+    /*如果购物车没商品，则隐藏商品列表*/
+    .bag_hidden{
+        display: none;
     }
 </style>

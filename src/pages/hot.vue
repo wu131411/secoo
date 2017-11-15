@@ -3,7 +3,7 @@
       <div class="banner">
           <swiper :options="swiperOption" ref="mySwiper">
               <!-- slides -->
-              <swiper-slide v-for="item in hot_swiper">
+              <swiper-slide v-for="item in hot_swiper" :key="item.key">
                   <img :src="item.img">
               </swiper-slide>
               <!-- Optional controls -->
@@ -58,14 +58,10 @@ export default {
             // TODO:圆圈路由点击效果
             if (hot_tabbar_color) {
                 ev.currentTarget.classList.remove("hot_tabbar_color");
-                console.log(ev.currentTarget);
-                console.log('111');
                 hot_tabbar_color = true;
             } else {
                 ev.currentTarget.classList.add('hot_tabbar_color');
                 hot_tabbar_color = false;
-                console.log(ev.currentTarget);
-                console.log('111');
             }
         }
     },
@@ -75,7 +71,9 @@ export default {
         swiperSlide
     },
     created(){
+
         this.$jsonp('http://las.secoo.com/api/show/hot_show_head').then(data => {
+            // console.log(data);
             this.tabbar = data.tags;
             this.hot_swiper = data.banners
         })
@@ -96,6 +94,44 @@ export default {
         width: 100%;
         height: 100%;
     }
+
+
+    /*lyk*/
+    /*轮播图*/
+    .hot_banner .swiper-container{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .hot_banner .swiper-wrapper{
+        width: 500%;
+        height: 100%;
+    }
+    .hot_banner .swiper-wrapper div{
+        float: left;
+    }
+    .hot_banner .swiper-wrapper img{
+        width: 100%;
+    }
+    /*分页器*/
+    .swiper-container .swiper-pagination{
+        font-size: 0;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 13.8rem;
+    }
+    .swiper-container .swiper-pagination .swiper-pagination-bullet{
+        display: inline-block;
+        width: 0.426667rem;
+        height: 0.426667rem;
+        background: #fff;
+        border-radius: 50%;
+    }
+
+
+/*lyk*/
 
     /*二级路由样式*/
     /*点击时的边框样式*/

@@ -2,7 +2,7 @@
   <div id="app">
       <div class="container" v-show="$route.meta.navShow">
           <ul>
-              <li><router-link to="/home">
+              <li><router-link to="/home" class="router-link-active">
                   <img src="../static/images/home.png" alt="">
                   <p>首页</p>
               </router-link></li>

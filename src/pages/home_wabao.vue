@@ -1,5 +1,6 @@
 <template lang="html">
   <div id="wabao">
+      <HomeHead></HomeHead>
       <div class="top_panel" v-for="item in result">
            <img :src="item.one" alt="">
       </div>
@@ -7,7 +8,11 @@
 </template>
 
 <script>
+import HomeHead from "../components/home_head"
 export default {
+    components:{
+        HomeHead
+    },
     data(){
         return{
             result:{}
@@ -24,15 +29,11 @@ export default {
             {"one":"//pic12.secooimg.com/comment/17/11/6f1ef02d160b4022b7b1c39186e698f1.jpg"},
             {"one":"//pic12.secooimg.com/comment/17/11/e221522b27514661a780b37c3c90f057.jpg"}
         ]
-        // console.log(this.result[0].one);
     }
 }
 </script>
 
 <style lang="css">
-    /*.mtArea {
-        margin-bottom: 0.53333333333333rem;
-    }*/
     .top_panel {
         width: 100%;
         margin-bottom: 0.53333333333333rem;
