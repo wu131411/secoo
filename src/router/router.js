@@ -25,7 +25,10 @@ import Bag from "../pages/bag"
 
 //mine我的
 import Mine from "../pages/mine"
+import Minedl from "../pages/mine_dl"
 import Minezh from "../pages/mine_zh"//我的账户
+import Minerecommend from "../pages/mine_recommend"//我的账户二级页面——推荐人
+import Mineaddress from "../pages/mine_address"//我的账户二级页面——收货地址
 import Minedd from "../pages/mine_dd"//我的订单
 import Minejp from "../pages/mine_jp"//我的竞拍
 import Mineyhq from "../pages/mine_yhq"//我的红包优惠券
@@ -36,6 +39,11 @@ import Mineseaout from "../pages/mine_seaout"//海外站购买说明
 import Mineabout from "../pages/mine_about" //关于寺库
 import Mineaboutqy from "../pages/mine_aboutqy"//关于寺库二级页面——寺库起源
 import Mineaboutqx from "../pages/mine_aboutqx"//关于寺库二级页面——旗下品牌
+import Mineaboutqxhuisuo from "../pages/mine_aboutqx_huisuo"//旗下品牌三级页面库会所
+import Mineaboutqxjianding from "../pages/mine_aboutqx_jianding"//旗下品牌三级页面鉴定中心
+import Mineaboutqxyanghu from "../pages/mine_aboutqx_yanghu"//旗下品牌三级页面养护中心
+import Mineaboutqxxueyuan from "../pages/mine_aboutqx_xueyuan"//旗下品牌三级页面寺库商学院
+
 import Mineaboutry from "../pages/mine_aboutry"//关于寺库二级页面——集团荣誉
 //VUE中使用router
 Vue.use(VueRouter)
@@ -78,6 +86,9 @@ let routes = [
     // mine
     {path : "/mine", component : Mine, meta : {navShow : false}},
     {path : "/mine_zh", component : Minezh},
+    {path : "/mine_dl", component : Minedl},
+    {path : "/mine_recommend", component : Minerecommend},
+    {path : "/mine_address", component : Mineaddress},
     {path : "/mine_dd", component : Minedd},
     {path : "/mine_jp", component : Minejp},
     {path : "/mine_seaout", component : Mineseaout},
@@ -92,6 +103,10 @@ let routes = [
     {path : "/mine_about", component : Mineabout},
     {path : "/mine_aboutqy", component : Mineaboutqy},
     {path : "/mine_aboutqx", component : Mineaboutqx},
+    {path : "/mine_aboutqx_huisuo", component : Mineaboutqxhuisuo},
+    {path : "/mine_aboutqx_jianding", component : Mineaboutqxjianding},
+    {path : "/mine_aboutqx_yanghu", component : Mineaboutqxyanghu},
+    {path : "/mine_aboutqx_xueyuan", component : Mineaboutqxxueyuan},
     {path : "/mine_aboutry", component : Mineaboutry}
 
 ]

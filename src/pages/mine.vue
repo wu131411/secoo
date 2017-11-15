@@ -6,7 +6,9 @@
   			<span class="mine_backtext">返回</span>
       </div>
 			<span class="mine_siku">我的寺库</span>
-			<span class="mine_close"></span>
+      <router-link to="/mine_dl">
+        <span class="mine_close"></span>
+      </router-link>
 	  </div>
     <router-link to="/mine_zh">
       <div class="mine_user">
@@ -94,7 +96,7 @@
 			</router-link>
 		</div>
 		<p class="foot_text foot_text1">北京寺库商贸有限公司 联系电话：400 875 6789</p>
-		<p class="foot_text">地址：北京市东城区朝阳门内大街银河SOHO C座15层</p>
+		<p class="foot_text foot_text2">地址：北京市东城区朝阳门内大街银河SOHO C座15层</p>
   </div>
 </template>
 
@@ -108,7 +110,7 @@ methods: {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 @import "../../static/css/reset.css";
 html {
 	background: #F9F9F9;
@@ -509,5 +511,8 @@ html {
 }
 .mine_footer p {
   text-align: center;
+}
+.foot_text2 {
+  margin-bottom: 1rem;
 }
 </style>
