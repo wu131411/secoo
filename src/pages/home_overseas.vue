@@ -1,5 +1,6 @@
 <template lang="html">
     <div id="overseas">
+        <HomeHead></HomeHead>
         <div class="sea-head">
             <img src="../../static/images/home-img/change.gif" alt="">
         </div>
@@ -130,25 +131,15 @@
 </template>
 
 <script>
+import HomeHead from "../components/home_head"
 export default {
-    data(){
-        return{
-            id:''
-        }
-    },
-    watch:{
-        // '$route'(overseas,home){
-        //     this.id = overseas.params.sea
-        //     console.log(this.id);
-        // }
+    components:{
+        HomeHead
     }
 }
 </script>
 
 <style lang="css">
-    /*#overseas{
-        z-index: -10;
-    }*/
     #overseas .sea-head{
         width: 100%;
     }
@@ -161,7 +152,6 @@ export default {
         background: #3e80d6;
         height: 6.933333rem;
         padding: 1.28rem 0 1.386667rem 0;
-        /*z-index: -10;*/
     }
     .time-axis {
         position: relative;
@@ -202,7 +192,6 @@ export default {
         line-height: 1.28rem;
         font-weight: bold;
         text-align: center;
-        /*color: rgba(255, 255, 255, 0.5);*/
     }
     .time-text {
         position: absolute;
@@ -223,7 +212,6 @@ export default {
         height: 100%;
         padding: 0 3%;
         display: inline-block;
-        /*-webkit-border-radius: 0.133333rem;*/
         border-radius: 0.133333rem;
         color: rgba(255, 255, 255, 0.4);
         background-color: rgba(255, 255, 255, 0.2);
@@ -321,7 +309,6 @@ export default {
         line-height: 1.28rem;
         font-weight: bold;
         text-align: center;
-        /*color: rgba(255, 255, 255, 0.5);*/
     }
     .axis-bottom .time-item:nth-child(1) h5 {
         margin: 0;
@@ -362,7 +349,6 @@ export default {
         width: 1.5479876%;
         height: 0.266667rem;
         border-radius: 50%;
-        /*background-color: #ffdbda;*/
         position: relative;
     }
     .time-item.pre .time-text-inner {
@@ -389,10 +375,7 @@ export default {
         height: 100%;
         padding: 0 3%;
         display: inline-block;
-        /*-webkit-border-radius: 0.133333rem;*/
         border-radius: 0.133333rem;
-        /*color: rgba(255, 255, 255, 0.4);*/
-        /*background-color: rgba(255, 255, 255, 0.2);*/
     }
     .time-text h5 {
         font-size: 0.666667rem;
@@ -417,4 +400,3 @@ export default {
     border-bottom-color: #35508c;
 }
 </style>
-<!-- https://m.secoo.com//appActivity//171111_overseas.shtml?pageid=171111_overseas -->

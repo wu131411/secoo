@@ -8,11 +8,15 @@ import Home_overseas from "../pages/home_overseas"
 import Home_zhuanguiziti from "../pages/home_zhuanguiziti"
 import Home_wabao from "../pages/home_wabao"
 import HomeNew from "../pages/home_new"
+import HomeShehua from "../pages/home_shehua"
+import HomeInter from "../pages/home_inter"
 
 //hot尖货
 import Hot from "../pages/hot"
 import HotShow from '../components/hot_show'
 import HotShowDetail from '../components/hot_show_detail'
+// 商品详情页
+import ProductDetail from '../components/product_detail'
 
 //list分类
 import List from "../pages/list"
@@ -48,29 +52,27 @@ import Mineaboutry from "../pages/mine_aboutry"//关于寺库二级页面——�
 //VUE中使用router
 Vue.use(VueRouter)
 
-//创建一级路由规则
+//创建路由规则
 let routes = [
     {path : "/", component : Home, meta : {navShow : true}},
 
     // home
     {path : "/home", component : Home, meta : {navShow : true},children:[
-        {path:"/home/home-overseas",component:Home_overseas},
-        {path:"/home/home-zhuanguiziti/",component:Home_zhuanguiziti},
-        {path:"/home/home_wabao",component:Home_wabao},
-        {path:"/home/home_new",component:HomeNew}
     ]},
     {path:"/home_overseas",component:Home_overseas},
     {path:"/home_zhuanguiziti/",component:Home_zhuanguiziti},
     {path:"/home_wabao",component:Home_wabao},
     {path:"/home_new",component:HomeNew},
+    {path:"/home_inter",component:HomeInter},
+    {path:"/home_shehua",component:HomeShehua},
 
     // hot
     {path : "/hot", component : Hot, meta : {navShow : false},children:[
+        {path : '/hot/hot_show/:id', component : HotShow},
         {path : '/hot',component : HotShow},
         {path : '/hot/hot_show/:id', component : HotShow},
-        // {path:'/hot/hot_show_detail/:id',component: HotShowDetail}
     ]},
-    {path :'/hot/hot_show_detail/:id',component : HotShowDetail},
+    {path :'/hot_show_detail/:id',component : HotShowDetail},
 
     //list列表
     {path : "/list", component : List, meta : {navShow : false}, children :[
@@ -103,11 +105,8 @@ let routes = [
     {path : "/mine_about", component : Mineabout},
     {path : "/mine_aboutqy", component : Mineaboutqy},
     {path : "/mine_aboutqx", component : Mineaboutqx},
-    {path : "/mine_aboutqx_huisuo", component : Mineaboutqxhuisuo},
-    {path : "/mine_aboutqx_jianding", component : Mineaboutqxjianding},
-    {path : "/mine_aboutqx_yanghu", component : Mineaboutqxyanghu},
-    {path : "/mine_aboutqx_xueyuan", component : Mineaboutqxxueyuan},
-    {path : "/mine_aboutry", component : Mineaboutry}
+    // 商品详情页
+    {path : '/product_detail/:productId',component : ProductDetail},
 
 ]
 //创建路由对象

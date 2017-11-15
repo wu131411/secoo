@@ -4,11 +4,9 @@
         <!-- 轮播图 -->
        <div @click="go()" class="home-banner" >
             <swiper :options="swiperOption" ref="mySwiper">
-                <!-- slides -->
                 <swiper-slide v-for="item in home_swiper">
                     <img :src="item.img">
                 </swiper-slide>
-                <!-- Optional controls -->
                 <div class="swiper-pagination"  slot="pagination"></div>
             </swiper>
        </div>
@@ -16,7 +14,7 @@
        <div class="home-manner">
            <ul class="home-manner">
                <a href="#" v-for="item in home_manner">
-                   <li @click="erji(item)" >
+                   <li @click="fnOne(item)" >
                        <img :src="item.img" alt="">
                        {{item.title}}
                    </li></a>
@@ -24,10 +22,10 @@
        </div>
 
        <div v-for="items in main">
-           <div @click="fnOne(items)" v-if="items.type=='15'" class="main" >
+           <div @click="fnTwo(items)" v-if="items.type=='15'" class="main" >
                 <a href="#"><img :src="items.content.img" alt=""></a>
            </div>
-           <div class="main" v-if="items.type=='16'">
+           <div @click="fenlei(items)" class="main" v-if="items.type=='16'" >
                 <a href="#"><img :src="items.content.img" alt=""></a>
                 <p>
                     <span>{{items.content.title}}</span>
@@ -37,9 +35,9 @@
            <div class="main" v-if="items.type=='17'">
                 <a href="#"><img :src="items.content.img" alt=""></a>
            </div>
-           <!-- <div v-else-if="items.type=='18'"> -->
-               <div class="text" v-else-if="items.type=='18'">{{ items.content.title }}</div>
-           <!-- </div> -->
+           <div class="text" v-else-if="items.type=='18'">
+                  {{ items.content.title }}
+           </div>
        </div>
    </div>
 </template>
@@ -66,7 +64,7 @@ export default {
     created(){
 
         this.$jsonp('http://las.secoo.com/api/home/home_page?c_app_ver=1.0.0&c_platform_type=3').then( data=>{
-            console.log(data.floors);
+            // console.log(data.floors);
             this.home_swiper = data.floors[0].list;
             this.home_manner = data.floors[1].list;
             this.main = data.floors
@@ -78,23 +76,35 @@ export default {
                 path:'/home_overseas/'
             })
         },
-        erji(i){
-            console.log(i)
+        fnOne(i){
+            // console.log(i)
             if(i.title == '专柜自提'){
                 this.$router.push({
                     path:'/home_zhuanguiziti/'
                 })
-            } else if(i.title == '挖宝'){
+            } else if(i.title == '明星车库'){
                 this.$router.push({
                     path:'/home_wabao/'
                 })
+            } else if(i.title == '奢华体验' || i.title == '艺术' || i.title == '名物'){
+                this.$router.push({
+                    path:'/home_shehua/'
+                })
             }
         },
-        fnOne(j){
-            console.log(j);
-            if(j.index == 4){
+        fnTwo(j){
+            // console.log(j);
+            if(j.type == "15"){
                 this.$router.push({
                     path:'/home_new/'
+                })
+            }
+        },
+        fenlei(k){
+            // console.log(k);
+            if(k.type == "16"){
+                this.$router.push({
+                    path:'/home_inter/'
                 })
             }
         }
@@ -127,7 +137,7 @@ export default {
     }
     .main{
         width: 100%;
-        margin-bottom: 2.666666%;
+        margin-bottom: 2.66%;
         position: relative;
         overflow: hidden;
     }
@@ -140,12 +150,12 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        margin: 10.4% 0 0 6.266666%;
+        margin: 10.4% 0 0 6.26%;
         font-size:0.65rem;
     }
     .main span {
         display: block;
-        line-height: 1.333333rem;
+        line-height: 1.33rem;
         font-size: 0.96rem;
     }
     .text {
@@ -156,12 +166,10 @@ export default {
     /*轮播图*/
     .home-banner .swiper-container{
         width: 100%;
-        /*height: 100%;*/
         overflow: hidden;
     }
     .home-banner .swiper-wrapper{
         width: 700%;
-        /*height: 100%;*/
     }
     .home-banner .swiper-wrapper div{
         float: left;

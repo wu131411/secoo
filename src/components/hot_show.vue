@@ -3,7 +3,7 @@
       <ul>
           <li v-for="(item,index) of this.list">
               <div class="hot_list" v-if="item.id | hasword">
-                  <div class="main" @click="more(item.id)">
+                  <div class="hot_main" @click="more(item.id)">
                       <div class="user">
                           <div class="userInfo">
                               <img class="userImg" :src="item.showUserImg" alt="">
@@ -38,7 +38,7 @@
                               <span class="sayYes">{{ num[index] }}</span>
                           </div>
                       </div>
-                      <div class="showBuy">
+                      <div class="showBuy" @click="goBuy(index)">
                           <span class="toBuy">去购买</span>
                           <span class="svg"></span>
                       </div>
@@ -46,7 +46,7 @@
               </div>
               <div class="hot_ad" v-else>
                   <div class="">
-                      <div class="hot_ad_img">
+                      <div class="hot_ad_img" @click="goWabao()">
                           <img :src="item.titleImg" alt="">
                           <div class="img_view"></div>
                           <div class="hot_ad_title">
@@ -64,7 +64,7 @@
                       </div>
                       <div class="hot_ad_imgs">
                           <ul>
-                              <li v-for="i in item.products">
+                              <li v-for="i in item.products" @click="gouMai(i.productId)">
                                   <div class="hot_ad_smallImg">
                                       <img :src="i.img" alt="">
                                   </div>
@@ -86,6 +86,8 @@
 </template>
 
 <script>
+
+
 let tag = false;
 export default {
     data(){
@@ -95,18 +97,20 @@ export default {
             num : [],
             content : [],
             hasword : '',
+            productId : '',
         }
     },
     methods : {
         sayYes(ev,index){
             // console.log(num);
             if(tag){
-                event.currentTarget.children[0].classList.remove("color");
+
+                ev.currentTarget.children[0].classList.remove("color");
                 this.num[index] -= 1;
                 ev.path[3].children[0].childNodes[2].innerText = this.num[index];
                 tag = false;
             } else {
-                event.currentTarget.children[0].classList.add("color");
+                ev.currentTarget.children[0].classList.add("color");
                 this.num[index] += 1;
                 ev.path[3].children[0].childNodes[2].innerText = this.num[index];
                 tag = true;
@@ -114,7 +118,25 @@ export default {
         },
         more(id){
             this.$router.push({
-                path : '/hot/hot_show_detail/' + id
+                path : '/hot_show_detail/' + id,
+                query : {
+                    commentShowDetail : id
+                }
+            })
+        },
+        goBuy(index){
+            this.$router.push({
+                path : '/product_detail/' + this.list[index].productId
+            })
+        },
+        gouMai(productId){
+            this.$router.push({
+                path : '/product_detail/' + productId
+            })
+        },
+        goWabao(){
+            this.$router.push({
+                path : '/home_wabao'
             })
         }
     },
@@ -134,9 +156,7 @@ export default {
     },
     created(){
         this.$jsonp(this.url).then(data => {
-            // console.log(data);
             this.list = data.list;
-            console.log(this.list);
             this.num = [];
             this.content = [];
             for (var item of data.list) {
@@ -149,9 +169,7 @@ export default {
         '$route'(newValue, oldValue){
             this.url = 'http://las.secoo.com/api/show/hot_show_list?lineNumber=1&tagId=' + this.$route.params.id + '&size=20&c_upk=&c_app_ver=1.0&c_channel=&c_device_id=98f0f00e-8938-48f9-b70c-e714487a8241&c_platform=&c_platform_type=&c_platform_ver=&c_screen_width=414&c_screen_height=736&_='+ Math.random() + '&callback';
             this.$jsonp(this.url).then(data => {
-                // console.log(data);
                 this.list = data.list;
-                // console.log(this.list);
                 this.num = [];
                 this.content = [];
                 for (var item of data.list) {
