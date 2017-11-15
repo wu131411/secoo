@@ -1,6 +1,6 @@
 <template lang="html">
    <li class="bao">
-      <dl class="dl" v-for = "item in result">
+      <dl class="dl" v-for = "item in obj">
          <dt><img :src=" a + item.imgUrl" alt=""></dt>
          <dd class="dd">
             <h6>{{item.productName}}</h6>
@@ -14,17 +14,11 @@
 export default {
    data(){
       return{
-         result : '',
          a : "http://pic.secoo.com/product/200/200/"
       }
    },
-   props:['obj'],
-   created(){
-      this.$jsonp('http://m.secoo.com/appservice/search_cateGoods.action?categoryId=_30_31_&orderType=1&currPage=1&st=10&_=1510385321636&callback:').then(data => {
-         this.result = data.rp_result.productlist
-         console.log(this.result);
-      })
-   }
+   props:['obj']
+
 }
 </script>
 

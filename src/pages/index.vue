@@ -1,6 +1,14 @@
 <template lang="html">
    <section>
+<<<<<<< HEAD
       <Future></Future>
+=======
+<<<<<<< HEAD
+      <Future></Future>
+=======
+      <Future v-for="listArr in result"  :obj="listArr"></Future>
+>>>>>>> 22563648a027f4fda145a0a99954275594294dd5
+>>>>>>> b040db4f72862fb9e303d4f43fe490131f84e184
    </section>
 </template>
 
@@ -9,6 +17,7 @@
 import Future from '../components/future'
 
 export default {
+<<<<<<< HEAD
    data(){
       return{
          result:{}
@@ -19,6 +28,8 @@ export default {
          this.result = data.rp_result.categorys
       })
    },
+=======
+>>>>>>> b040db4f72862fb9e303d4f43fe490131f84e184
    components:{
       Future
    }
@@ -26,9 +37,7 @@ export default {
 </script>
 
 <style lang="css">
-.two .router-link-active{
-   border: none;
-   color: #fff;
-   background-color: #474747;
+section{
+   margin-top: 2.7rem;
 }
 </style>

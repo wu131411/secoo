@@ -11,7 +11,7 @@
 			<div class="yhq heigh" @click="chang('yhq')" :class="{'hover':isA,'haha':isB}">
 				优惠券
 			</div>
-			<div class="hb heigh" @click="chang('hb')" :class="{'haha':isA,'hover':isB}">
+			<div class="hb heigh" @click="changs('hb')" :class="{'haha':isA,'hover':isB}">
 				红包
 			</div>
 
@@ -40,11 +40,20 @@ export default {
 				path:"/mine_yhq/" + item
 			})
       if (this.isA) {
-        this.isA = false
-        this.isB = true
+        this.isA = true
+        this.isB = false
       }else if (this.isB) {
         this.isA = true
         this.isB = false
+      }
+		},
+    changs(item) {
+			this.$router.push({
+				path:"/mine_yhq/" + item
+			})
+      if (this.isA) {
+        this.isA = false
+        this.isB = true
       }
 		}
 
@@ -91,7 +100,7 @@ html {
 	margin: 0 auto;
 	height: 1.5rem;
 	border: 1px solid #7148bf;
-
+  margin-bottom: 3rem;
 }
 .yhq,.hb {
 	width: 9rem;
@@ -100,9 +109,6 @@ html {
 	line-height: 1.5rem;
 	font-size: .7rem;
 }
-/*.yhq {
-  background: red;
-}*/
 .heigh {
 	float: left;
 	display: inline-block;

@@ -55,20 +55,20 @@
               <span class="fontTopPro icon-top"></span>
               新人推荐top榜
           </div>
-          <div class="mtArea nav_floor searchBar" id="searchBar">
+          <div class="mtArea nav_floor searchBar">
               <ul>
-                  <li class="selected">美妆</li>
-                  <li>家居百货</li>
-                  <li>包袋</li>
-                  <li>首饰</li>
-                  <li>男装</li>
-                  <li>腕表</li>
-                  <li>鞋靴</li>
-                  <li>女装</li>
+                  <li><a href="#new">美妆</a></li>
+                  <li><a href="#new">家居百货</a></li>
+                  <li><a href="#new">包袋</a></li>
+                  <li><a href="#new">首饰</a></li>
+                  <li><a href="#new">男装</a></li>
+                  <li><a href="#new">腕表</a></li>
+                  <li><a href="#new">鞋靴</a></li>
+                  <li><a href="#new">女装</a></li>
               </ul>
           </div>
           <!-- 商品小图排列 -->
-          <HomeGoods></HomeGoods>
+          <HomeGoods id="new"></HomeGoods>
       </section>
   </div>
 </template>
@@ -78,38 +78,34 @@ import HomeHead from "../components/home_head"
 import HomeList from "../components/home_list"
 import HomeGoods from "../components/home_goods"
 export default {
+    data () {
+        return {
+            searchBarFixed : false
+        }
+    },
     components:{
         HomeHead,
         HomeList,
         HomeGoods
     },
-    // mounted(){
-    //     window.addEventListener('scroll',this.handleScroll);
-    //
-    // },
-    // handleScroll () {
-    //     var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-    //     var offsetTop = document.querySelector('#searchBar').offsetTop;
-    //     if (scrollTop > offsetTop) {
-    //         this.searchBarFixed = true;
-    //     } else {
-    //         this.searchBarFixed = false;
-    //     }
-    // },
-
-    // destroyed () {
-    //     window.removeEventListener('scroll', this.handleScroll)
-    // }
-
-
-
-    // watch:{
-    //     if (window.clientHeight >= '2000px') {
-    //         ul.addClass('isFixed');
-    //     } else {
-    //         ul.removeClass('isFixed');
-    //     }
-    // },
+    methods : {
+        handleScroll () {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            var offsetTop = document.querySelector('.searchBar').offsetTop;
+            if (scrollTop > offsetTop) {
+                document.querySelector('.searchBar').classList.add("isFixed")
+            }
+            if(scrollTop <= 2083) {
+                document.querySelector('.searchBar').classList.remove("isFixed")
+            }
+        }
+    },
+    mounted () {
+        window.addEventListener('scroll',this.handleScroll);
+    },
+    destroyed () {
+      window.removeEventListener('scroll', this.handleScroll)
+    }
 }
 </script>
 
@@ -170,19 +166,19 @@ export default {
         overflow: hidden;
     }
     .twelfth_floor .text_tips_1 {
-        font-size: 15px;
-        line-height: 15px;
+        font-size: 0.468rem;
+        line-height: 0.468rem;
         margin-top: 0.6rem;
         font-weight: bold;
     }
     .twelfth_floor .text_tips_2 {
-        font-size: 12px;
-        line-height: 12px;
+        font-size: 0.375rem;
+        line-height: 0.375rem;
         margin-top: 0.3rem;
     }
     .twelfth_floor .text_tips_3 {
         margin-top: 0.5rem;
-        font-size: 13px;
+        font-size: 0.4rem;
         width: 5.28rem;
         height: 1.146rem;
         display: -webkit-box;
@@ -195,37 +191,34 @@ export default {
     .nav_floor {
         width: 100%;
         overflow: hidden;
-        height: 40px;
+        height: 1.25rem;
     }
     .nav_floor ul {
         display: -webkit-box;
-        height: 40px;
+        height: 1.25rem;
         -webkit-box-align: center;
         width: 100%;
         background-color: white;
     }
-    /*.searchBar{*/
-        .isFixed{
-           position: fixed;
-           left: 0;
-           top: 0;
-           z-index: 300;
-       }
-    /*}*/
-
-    .nav_floor li {
-        font-size: 12px;
-        line-height: 12px;
+    .isFixed{
+       position: fixed;
+       left: 0;
+       top: 0;
+       font-weight: bold;
+   }
+    .nav_floor ul li {
+        font-size: 0.4rem;
         border-right: 1px solid;
         -webkit-box-flex: 1;
-        height: 13px;
+        height: 0.4rem;
+        line-height: 0.4rem;
         display: -webkit-box;
         -webkit-box-align: center;
         -webkit-box-pack: center;
         position: relative;
     }
-    .nav_floor li::before {
-        top: -100%;
+    .nav_floor ul li:nth-of-type(8){
+        border-right: none;
     }
     .nav_floor li::before, .nav_floor li::after {
         content: "";

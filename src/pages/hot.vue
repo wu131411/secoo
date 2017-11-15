@@ -1,5 +1,6 @@
 <template lang="html">
   <div id="jianHuo">
+<<<<<<< HEAD
       <div class="banner">
           <swiper :options="swiperOption" ref="mySwiper">
               <!-- slides -->
@@ -9,6 +10,22 @@
               <!-- Optional controls -->
               <div class="swiper-pagination"  slot="pagination"></div>
           </swiper>
+=======
+      <div class="banner" @click="goWabao()">
+          <a href="#"><img src="../assets/jianhuo_img/banner.jpg" alt=""></a>
+
+
+          <!-- <div @click="go()" class="hot_banner" >
+            <swiper :options="swiperOption" ref="mySwiper">
+                <swiper-slide v-for="item in banner">
+                    <img :src="item.img">
+                </swiper-slide>
+                <div class="swiper-pagination"  slot="pagination"></div>
+            </swiper>
+          </div> -->
+
+
+>>>>>>> b040db4f72862fb9e303d4f43fe490131f84e184
       </div>
       <div class="hot_tabbar">
           <div class="">
@@ -63,6 +80,11 @@ export default {
                 ev.currentTarget.classList.add('hot_tabbar_color');
                 hot_tabbar_color = false;
             }
+        },
+        goWabao(){
+            this.$router.push({
+                path : '/home_wabao'
+            })
         }
     },
     components : {
@@ -73,9 +95,12 @@ export default {
     created(){
 
         this.$jsonp('http://las.secoo.com/api/show/hot_show_head').then(data => {
-            // console.log(data);
             this.tabbar = data.tags;
+<<<<<<< HEAD
             this.hot_swiper = data.banners
+=======
+            this.banner = data.banners;
+>>>>>>> b040db4f72862fb9e303d4f43fe490131f84e184
         })
     }
 
@@ -95,8 +120,6 @@ export default {
         height: 100%;
     }
 
-
-    /*lyk*/
     /*轮播图*/
     .hot_banner .swiper-container{
         width: 100%;
@@ -129,9 +152,6 @@ export default {
         background: #fff;
         border-radius: 50%;
     }
-
-
-/*lyk*/
 
     /*二级路由样式*/
     /*点击时的边框样式*/

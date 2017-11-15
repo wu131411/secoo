@@ -4,11 +4,14 @@
         <!-- 轮播图 -->
        <div @click="go()" class="home-banner" >
             <swiper :options="swiperOption" ref="mySwiper">
+<<<<<<< HEAD
                 <!-- slides -->
                 <swiper-slide v-for="item in home_swiper" :key="item.key">
+=======
+                <swiper-slide v-for="item in home_swiper">
+>>>>>>> b040db4f72862fb9e303d4f43fe490131f84e184
                     <img :src="item.img">
                 </swiper-slide>
-                <!-- Optional controls -->
                 <div class="swiper-pagination"  slot="pagination"></div>
             </swiper>
        </div>
@@ -83,7 +86,7 @@ export default {
             })
         },
         fnOne(i){
-            console.log(i)
+            // console.log(i)
             if(i.title == '专柜自提'){
                 this.$router.push({
                     path:'/home_zhuanguiziti/'
@@ -92,22 +95,22 @@ export default {
                 this.$router.push({
                     path:'/home_wabao/'
                 })
-            } else if(i.title == '奢华体验'){
+            } else if(i.title == '奢华体验' || i.title == '艺术' || i.title == '名物'){
                 this.$router.push({
                     path:'/home_shehua/'
                 })
             }
         },
         fnTwo(j){
-            console.log(j);
-            if(j.index == 4){
+            // console.log(j);
+            if(j.type == "15"){
                 this.$router.push({
                     path:'/home_new/'
                 })
             }
         },
         fenlei(k){
-            console.log(k);
+            // console.log(k);
             if(k.type == "16"){
                 this.$router.push({
                     path:'/home_inter/'
@@ -143,7 +146,7 @@ export default {
     }
     .main{
         width: 100%;
-        margin-bottom: 2.666666%;
+        margin-bottom: 2.66%;
         position: relative;
         overflow: hidden;
     }
@@ -156,12 +159,12 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        margin: 10.4% 0 0 6.266666%;
+        margin: 10.4% 0 0 6.26%;
         font-size:0.65rem;
     }
     .main span {
         display: block;
-        line-height: 1.333333rem;
+        line-height: 1.33rem;
         font-size: 0.96rem;
     }
     .text {
@@ -169,5 +172,38 @@ export default {
         text-align: center;
         font-size: 0.746667rem;
     }
+<<<<<<< HEAD
 
+=======
+    /*轮播图*/
+    .home-banner .swiper-container{
+        width: 100%;
+        overflow: hidden;
+    }
+    .home-banner .swiper-wrapper{
+        width: 700%;
+    }
+    .home-banner .swiper-wrapper div{
+        float: left;
+    }
+    .home-banner .swiper-wrapper img{
+        width: 100%;
+    }
+    /*分页器*/
+    .swiper-container .swiper-pagination{
+        font-size: 0;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 13.8rem;
+    }
+    .swiper-container .swiper-pagination .swiper-pagination-bullet{
+        display: inline-block;
+        width: 0.426667rem;
+        height: 0.426667rem;
+        background: #fff;
+        border-radius: 50%;
+    }
+>>>>>>> b040db4f72862fb9e303d4f43fe490131f84e184
     </style>

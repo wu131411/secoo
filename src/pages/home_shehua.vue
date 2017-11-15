@@ -7,19 +7,21 @@
       <div class="top_panel">
           <img src="//pic12.secooimg.com/comment/17/11/52f2a465df7c4ab0821f806d89592357.jpg" alt="">
       </div>
-      <div class="nav_floor">
+      <div class="nav_floor searchBar">
           <ul>
-              <li>精选</li>
-              <li>游艇</li>
-              <li>全部商品</li>
+              <li><a href="#jing">精选</a></li>
+              <li><a href="#you">游艇</a></li>
+              <li><a href="#quan">全部商品</a></li>
           </ul>
       </div>
-      <div class="top_panel">
+      <!-- 精选 -->
+      <div id="jing" class="top_panel">
           <img src="//pic12.secooimg.com/comment/17/10/cacddadbebc54c2b8951e7b4596f1e0d.jpg" alt="">
       </div>
       <HomeGoods></HomeGoods>
 
-      <div class="top_panel">
+      <!-- 游艇 -->
+      <div id="you" class="top_panel">
           <img src="//pic12.secooimg.com/comment/17/11/2251ed0ff34d444589b05e97574e0b49.jpg" alt="">
       </div>
       <div class="eleventh_floor activityHandle">
@@ -63,7 +65,8 @@
           </div>
       </div>
 
-      <div class="top_panel">
+      <!-- 全部商品 -->
+      <div id="quan" class="top_panel">
           <img src="//pic12.secooimg.com/comment/17/10/4d01c043d834459abb5c6fdcc8e25421.jpg" alt="">
       </div>
       <HomeList></HomeList>
@@ -94,83 +97,119 @@ export default {
         HomeHead,
         HomeGoods,
         HomeList
+    },
+    data () {
+        return {
+            searchBarFixed : false
+        }
+    },
+    methods:{
+        handleScroll(){
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            var offsetTop = document.querySelector('.searchBar').offsetTop;
+            if (scrollTop > offsetTop) {
+                document.querySelector('.searchBar').classList.add("isFixed")
+            }
+            if(scrollTop <= 897) {
+                document.querySelector('.searchBar').classList.remove("isFixed")
+            }
+        }
+    },
+    mounted () {
+        window.addEventListener('scroll',this.handleScroll);
+    },
+    destroyed () {
+        window.removeEventListener('scroll', this.handleScroll)
     }
 }
 </script>
 
-<style lang="css">
-/*#she{
-    background-color: #ECF7FB;
-}*/
-.top_panel {
-    width: 100%;
-}
-img {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-.nav_floor {
-    width: 100%;
-    overflow: hidden;
-    height: 40px;
-    color:#78c2e7;
-}
-.nav_floor ul {
-    display: -webkit-box;
-    height: 40px;
-    -webkit-box-align: center;
-    width: 100%;
-}
-.nav_floor li {
-    font-size: 12px;
-    line-height: 12px;
-    border-right: 1px solid;
-    -webkit-box-flex: 1;
-    height: 13px;
-    display: -webkit-box;
-    -webkit-box-align: center;
-    -webkit-box-pack: center;
-    position: relative;
-}
+<style lang="css" scoped>
+    .top_panel {
+        width: 100%;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    .nav_floor {
+        width: 100%;
+        overflow: hidden;
+        height: 1.25rem;
 
-.eleventh_floor {
-    height: 9.333rem;
-    display: -webkit-box;
-}
-.eleventh_floor .sub_box_1 {
-    width: 11.733rem;
-    height: 100%;
-}
-.eleventh_floor .sub_box_2 {
-    -webkit-box-flex: 1;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-box-align: center;
-    overflow: hidden;
-    white-space: nowrap;
-    color: #1e77a2;
-    background-color: #ECF7FB;
-}
-.eleventh_floor .text_tips_1 {
-    font-size: 1.066rem;
-    line-height: 1.066rem;
-    margin-top: 2.746rem;
-    font-weight: bold;
-}
-.eleventh_floor .text_tips_2 {
-    font-size: 13px;
-    line-height: 13px;
-    margin-top: 0.373rem;
-}
-.eleventh_floor .text_tips_3 {
-    margin-top: 1.413rem;
-    font-size: 13px;
-    width: 5.28rem;
-    height: 1.146rem;
-    display: -webkit-box;
-    -webkit-box-align: center;
-    -webkit-box-pack: center;
-    border: 1px solid #1e77a2;
-}
+    }
+    .isFixed{
+        position: fixed;
+        left: 0;
+        top: 0;
+        font-weight: bold;
+    }
+    .nav_floor ul {
+        display: -webkit-box;
+        height: 1.25rem;
+        -webkit-box-align: center;
+        width: 100%;
+        background-color: #ECF7FB;
+    }
+    .nav_floor li {
+        font-size: 0.375rem;
+        line-height: 0.4rem;
+        border-right: 1px solid #1e77a2;
+        -webkit-box-flex: 1;
+        height: #1e77a2;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        position: relative;
+    }
+    .nav_floor li:nth-of-type(3){
+        border-right: none;
+    }
+    .nav_floor li a{
+        color:#1e77a2;
+    }
+    .nav_floor li a:hover{
+        color:#1e77a2;
+    }
+
+    .eleventh_floor {
+        height: 9.333rem;
+        display: -webkit-box;
+    }
+    .eleventh_floor .sub_box_1 {
+        width: 11.733rem;
+        height: 100%;
+    }
+    .eleventh_floor .sub_box_2 {
+        -webkit-box-flex: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-box-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        color: #1e77a2;
+        background-color: #ECF7FB;
+    }
+    .eleventh_floor .text_tips_1 {
+        font-size: 1.066rem;
+        line-height: 1.066rem;
+        margin-top: 2.746rem;
+        font-weight: bold;
+    }
+    .eleventh_floor .text_tips_2 {
+        font-size: 0.4rem;
+        line-height: 0.4rem;
+        margin-top: 0.373rem;
+    }
+    .eleventh_floor .text_tips_3 {
+        margin-top: 1.413rem;
+        font-size: 10.4rem;
+        width: 5.28rem;
+        height: 1.146rem;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        border: 1px solid #1e77a2;
+    }
 </style>

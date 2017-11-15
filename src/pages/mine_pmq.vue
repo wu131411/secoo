@@ -8,10 +8,10 @@
 			<span class="pmq_pmq">拍卖券</span>
 	  </div>
 		<div class="pmq_nav">
-			<div class="mypmq pmqs" @click="change('my')" :class="{'hover':isA,'haha':isB}">
+			<div class="mypmq pmqs" @click="change('my')" :class="{'hovers':isA,'haha':isB}">
 				我的拍卖券
 			</div>
-			<div class="buypmq pmqs" @click="change('buy')" :class="{'haha':isA,'hover':isB}">
+			<div class="buypmq pmqs" @click="changes('buy')" :class="{'haha':isA,'hovers':isB}">
 				购买拍卖券
 			</div>
 			<router-view></router-view>
@@ -29,20 +29,33 @@ export default {
   },
 	methods: {
 	  back() {
-	    history.back()
+			this.$router.push({
+				path:"/mine"
+			})
 	  },
 		change(item) {
 			this.$router.push({
 				path:"/mine_pmq/" + item
 			})
       if (this.isA) {
-        this.isA = false
-        this.isB = true
+        this.isA = true
+        this.isB = false
       }else if (this.isB) {
         this.isA = true
         this.isB = false
       }
+		},
+    changes(item) {
+			this.$router.push({
+				path:"/mine_pmq/" + item
+			})
+      if (this.isA) {
+        this.isA = false
+        this.isB = true
+      }
 		}
+
+
 	}
 }
 </script>
@@ -81,30 +94,35 @@ export default {
 	width: 20rem;
 	margin: 0 auto;
 	height: 2rem;
+	padding-top: 1px;
 }
 .mypmq {
 	border-right: 1px solid #cddde6;
 }
 .pmqs {
+	width: 9.9rem;
+	height: 1.9rem;
 	float: left;
 	display: inline-block;
 	width: 9.9rem;
-	height: 2rem;
+	height: 1.9rem;
 	text-align: center;
 	line-height: 2rem;
 	font-size: .7rem;
 }
-.hover {
+.hovers {
 	background-color: white;
   border-top: solid 1px #d5d5d5;
   border-bottom: none;
+	width: 9.9rem;
+	height: 1.9rem;
 }
 .haha {
-	text-align: center;
-    border-bottom: solid 1px #d5d5d5;
-    background-color: #f9f9f9;
-    border-top: solid 1px transparent;
-    float: left;
-    color: #737373;
+	width: 9.9rem;
+	height: 1.9rem;
+  border-bottom: solid 1px #d5d5d5;
+  background-color: #f9f9f9;
+  border-top: solid 1px transparent;
+  color: #737373;
 }
 </style>
