@@ -12,13 +12,13 @@
             </hgroup>
           <!-- right -->
           <div class="rightPic siteWrapper_r">
-              <div v-show="true" class="right_menu_list">
+              <div v-show="isShow" class="right_menu_list">
                   <em></em>
                   <div>
-                      <span>首页</span>
-                      <span>分类</span>
-                      <span>购物袋</span>
-                      <span>我的寺库</span>
+                      <span><router-link to="../home">首页</router-link></span>
+                      <span><router-link to="../list">分类</router-link></span>
+                      <span><router-link to="../bag">购物袋</router-link></span>
+                      <span><router-link to="../mine">我的寺库</router-link></span>
                   </div>
               </div>
               <div @click="show()" class="right_menu_btn">
@@ -33,7 +33,7 @@
 export default {
     data(){
         return{
-            // isShow:flase
+            isShow : false
         }
     },
     methods:{
@@ -41,15 +41,17 @@ export default {
             history.go(-2)
         },
         show(){
-            // if(isShow = false){
-            //     isShow=ture;
-            // }
+            if(this.isShow == false){
+                this.isShow = true;
+            }else{
+                this.isShow = false;
+            }
         }
     }
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 #headerAll {
     width: 100%;
     height: 44px;
@@ -99,14 +101,15 @@ em, b {
 }
 .right_menu_list {
     width: 6.133rem;
-    height: 0px;
+    height: 9rem;
+    position: fixed;
     top: 44px;
-    position: absolute;
     right: 0px;
     overflow: hidden;
     font-size: .693rem;
     color: #1a191e;
     -webkit-transition: all .2s cubic-bezier(1,.01,.46,.82);
+    /*background: red;*/
 }
 .right_menu_list > em {
     position: absolute;
