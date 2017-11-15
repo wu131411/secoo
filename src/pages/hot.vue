@@ -1,19 +1,14 @@
 <template lang="html">
   <div id="jianHuo">
       <div class="banner" @click="goWabao()">
-          <a href="#"><img src="../assets/jianhuo_img/banner.jpg" alt=""></a>
-
-
-          <!-- <div @click="go()" class="hot_banner" >
-            <swiper :options="swiperOption" ref="mySwiper">
-                <swiper-slide v-for="item in banner">
-                    <img :src="item.img">
-                </swiper-slide>
-                <div class="swiper-pagination"  slot="pagination"></div>
-            </swiper>
-          </div> -->
-
-
+          <swiper :options="swiperOption" ref="mySwiper">
+              <!-- slides -->
+              <swiper-slide v-for="item in hot_swiper" :key="item.key">
+                  <img :src="item.img">
+              </swiper-slide>
+              <!-- Optional controls -->
+              <div class="swiper-pagination"  slot="pagination"></div>
+          </swiper>
       </div>
       <div class="hot_tabbar">
           <div class="">
@@ -33,19 +28,24 @@
 </template>
 
 <script>
-
-// 导入轮播图
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
 // 导入评论列表组件
 import HotShow from '../components/hot_show'
-
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import swiperCss from "../../static/css/swiper.css"
 let hot_tabbar_color = false;
 
 export default {
     data(){
         return {
-            banner : {},
-            tabbar:{}
+            tabbar:{},
+            hot_swiper : {},
+            swiperOption : {
+                loop : true,
+                autoplay: 3000,
+                direction : 'horizontal',
+                pagination : '.swiper-pagination',
+                autoplayDisableOnInteraction : false,
+            }
         }
     },
     methods : {
@@ -73,13 +73,13 @@ export default {
     components : {
         HotShow,
         swiper,
-        swiperSlide,
-        HotShow
+        swiperSlide
     },
     created(){
 
         this.$jsonp('http://las.secoo.com/api/show/hot_show_head').then(data => {
             this.tabbar = data.tags;
+            this.hot_swiper = data.banners
             this.banner = data.banners;
         })
     }
@@ -202,4 +202,5 @@ export default {
         width: 100%;
         overflow: hidden;
     }
+
 </style>

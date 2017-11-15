@@ -13,30 +13,39 @@
 				<span class="qx_r"></span>
 			</div>
 		</div>
-		<div class="huisuo">
-			<div class="huisuo2">
-				<span>库会所</span>
-				<span class="qx_r"></span>
-			</div>
-		</div>
-		<div class="jianding">
-			<div class="jianding2">
-				<span>鉴定中心</span>
-				<span class="qx_r"></span>
-			</div>
-		</div>
-		<div class="yanghu">
-			<div class="yanghu2">
-				<span>养护中心</span>
-				<span class="qx_r"></span>
-			</div>
-		</div>
-		<div class="xueyuan">
-			<div class="xueyuan2">
-				<span>寺库商学院</span>
-				<span class="qx_r"></span>
-			</div>
-		</div>
+    <router-link to="/mine_aboutqx_huisuo">
+      <div class="huisuo">
+  			<div class="huisuo2">
+  				<span>库会所</span>
+  				<span class="qx_r"></span>
+  			</div>
+  		</div>
+    </router-link>
+		<router-link to="/mine_aboutqx_jianding">
+      <div class="jianding">
+  			<div class="jianding2">
+  				<span>鉴定中心</span>
+  				<span class="qx_r"></span>
+  			</div>
+  		</div>
+		</router-link>
+		<router-link to="/mine_aboutqx_yanghu">
+      <div class="yanghu">
+  			<div class="yanghu2">
+  				<span>养护中心</span>
+  				<span class="qx_r"></span>
+  			</div>
+  		</div>
+		</router-link>
+		<router-link to="/mine_aboutqx_xueyuan">
+      <div class="xueyuan">
+  			<div class="xueyuan2">
+  				<span>寺库商学院</span>
+  				<span class="qx_r"></span>
+  			</div>
+  		</div>
+		</router-link>
+
 		<div class="mine_footer">
       <router-link to="./home">
         <div class="footer_home foot">

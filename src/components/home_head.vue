@@ -2,10 +2,12 @@
   <div class="">
       <header id="headerAll">
           <!-- 返回 -->
+          <router-link to="/">
           <div class="leftPic orderListWrapper_l ">
               <span class="goBack"></span>
               <em @click="back()">返回</em>
           </div>
+          </router-link>
           <!-- SECOO -->
           <hgroup class="pagesTitles">
               <div class="orderListWrapper">SECOO</div>
@@ -37,9 +39,6 @@ export default {
         }
     },
     methods:{
-        back(){
-            history.go(-2)
-        },
         show(){
             if(this.isShow == false){
                 this.isShow = true;

@@ -19,14 +19,19 @@
 				<span class="money2_num">0库币</span>
 			</div>
 		</div>
-		<div class="minezh_man">
-			<span class="man_text">推荐人</span>
-			<span class="man_r"></span>
-		</div>
-		<div class="minezh_address">
-			<span class="address_text">收货地址</span>
-			<span class="address_r"></span>
-		</div>
+		<router-link to="/mine_recommend">
+			<div class="minezh_man">
+				<span class="man_text">推荐人</span>
+				<span class="man_r"></span>
+			</div>
+		</router-link>
+		<router-link to="/mine_address">
+			<div class="minezh_address">
+				<span class="address_text">收货地址</span>
+				<span class="address_r"></span>
+			</div>
+		</router-link>
+
 		<div class="mine_footer">
 			<router-link to="./home">
 				<div class="footer_home foot">
