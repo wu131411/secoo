@@ -1,35 +1,29 @@
 <template lang="html">
-  <div class="about">
-    <div class="minegy_top">
+  <div class="qx_jianding">
+    <div class="qixia_top">
       <div class="back" @click='back()'>
-        <span class="minegy_back"></span>
-        <span class="minegy_backtext">返回</span>
+        <span class="qixia_back"></span>
+        <span class="qixia_backtext">返回</span>
       </div>
-      <span class="minegy_gy">关于寺库</span>
+      <span class="qixia_qx">鉴定中心</span>
     </div>
-    <router-link to="/mine_aboutqy">
-      <div class="gy_qx">
-        <div class="gy_qx2">
-          <span>寺库起源</span>
-          <span class="gy_r"></span>
-        </div>
-      </div>
-    </router-link>
-    <router-link to="/mine_aboutqx">
-      <div class="gy_qx">
-        <div class="gy_qx2">
-          <span>旗下品牌</span>
-          <span class="gy_r"></span>
-        </div>
-      </div>
-    </router-link>
-    <router-link to="/mine_aboutry">
-      <div class="gy_ry">
-        <span class="gy_text">集团荣誉</span>
-        <span class="gy_r"></span>
-      </div>
-    </router-link>
+    <div class="jianding_texts">
+      <p class="jianding_titles">鉴定中心简介</p>
+      <p class="jianding_content">"对每一件奢侈品，我们都十足挑剔。"</p>
+      <p class="jianding_content">全国权威奢侈品鉴定评估机构，全国寄卖工作委员会授权单位，为您带来奢侈品鉴定评估技术的专业服务。鉴定评估物品范围包括奢侈品皮具、腕表、珠宝饰品等。SECOO奢侈品鉴定评估技术中心的每一项鉴定工艺，都遵循严苛的标准和严谨的服务流程。</p>
+      <p class="jianding_content">中国315电子商务诚信平台官方指定唯一奢侈品鉴定评估中心。</p>
+      <p class="jianding_titles">鉴定评估范围</p>
+      <p class="jianding_content">SECOO奢侈品鉴定评估技术中心主要提供皮具、腕表、珠宝玉器、艺术品等物品的鉴定评估服务和相应技术交流活动。</p>
+      <p class="jianding_titles">资质</p>
+      <p class="jianding_content">全国寄卖工作委员会授权合作单位</p>
+      <p class="jianding_content">对外经济贸易大学奢侈品职业技能培训中心战略合作伙伴</p>
+      <p class="jianding_titles">贵宾专线：400-658-6659</p>
+      <p class="jianding_content">地址：中国北京市东城区金宝街18-8号</p>
+      <p class="jianding_content">营业时间：早10：00--晚19：00（节假日不休）</p>
+    </div>
+    <div class="kong">
 
+    </div>
     <div class="mine_footer">
       <router-link to="./home">
         <div class="footer_home foot">
@@ -57,7 +51,6 @@
 			</router-link>
 		</div>
   </div>
-
 </template>
 
 <script>
@@ -75,19 +68,14 @@ export default {
 html {
 	background: #F9F9F9;
 }
-.about{
-  font-size: .8rem;
-  font-family: STHeiti,Helvetica Neue;
-}
-.minegy_top {
+.qixia_top {
 	width: 20rem;
 	height: 2.5rem;
 	background: white;
 	position: relative;
-	border-bottom: 2px solid #cddde6;
-  font-size: .9rem;
+	font-size: .9rem;
 }
-.minegy_back {
+.qixia_back {
 	display: inline-block;
 	overflow: hidden;
 	width: 1.5rem;
@@ -98,65 +86,39 @@ html {
 	top: .5rem;
 	left: .5rem;
 }
-.minegy_backtext {
+.qixia_backtext {
 	position: absolute;
 	top: .5rem;
 	left: 1.7rem;
 }
-.minegy_gy {
+.qixia_qx {
 	position: absolute;
 	top: .5rem;
 	left: 8rem;
 }
-.gy_qy {
-  width: 20rem;
-	height: 2.3rem;
-	position: relative;
-	background: white;
-  margin-top: 2px;
+.jianding_titles {
+  font-size: .75rem;
+  color: #000;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
 }
-.gy_qy2 {
-  width: 19rem;
-  height: 2.3rem;
-  margin-left: 1rem;
-  border-bottom: 2px solid #cddde6;
-  line-height: 2.3rem;
+.jianding_content {
+  width: 18rem;
+  font-size: .6rem;
+  color: #666;
+  line-height: 1.2rem;
 }
-.gy_qx {
-  width: 20rem;
-	height: 2.3rem;
-	position: relative;
-	background: white;
-}
-.gy_qx2 {
-  width: 19rem;
-  height: 2.3rem;
-  margin-left: 1rem;
-  border-bottom: 2px solid #cddde6;
-  line-height: 2.3rem;
-  margin-top: 2px;
-}
-.gy_ry {
-  width: 20rem;
-  height: 2.3rem;
-  margin-top: 2px;
-  position: relative;
+.jianding_texts {
+  width: 18rem;
   background: white;
-  line-height: 2.3rem;
+  padding: 1rem;
+  padding-bottom: 2rem;
   border-bottom: 2px solid #cddde6;
 }
-.gy_text {
-  margin-left: 1rem;
-}
-.gy_r {
-  float: right;
-	display: inline-block;
-	overflow: hidden;
-	width: 1.5rem;
-	height: 1.5rem;
-	background: url(../../static/images/mine_imgs/mine_r.png) no-repeat;
-	background-size: 1.5rem 1.5rem;
-	margin-top: .5rem;
+.kong {
+  width: 20rem;
+  height: 1rem;
+  border-bottom: 1px solid #cddde6;
 }
 .mine_footer {
 	display: flex;
@@ -169,7 +131,7 @@ html {
 	border: 1px solid #afe;
 	font-size: .7rem;
 	color: gray;
-	margin-top: 2rem;
+	margin-top: 1rem;
 }
 .home_ico {
 	width: 2rem;
@@ -211,15 +173,7 @@ html {
 	margin-top: .6rem;
 	margin-bottom: .2rem;
 }
-.foot_text {
-	font-size: .6rem;
-	font-weight: 600;
-  text-align: center;
-}
-.foot_text1 {
-  margin-top: 1rem;
-}
-.mine_footer p {
+.foot p {
   text-align: center;
 }
 </style>

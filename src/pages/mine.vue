@@ -6,7 +6,9 @@
   			<span class="mine_backtext">返回</span>
       </div>
 			<span class="mine_siku">我的寺库</span>
-			<span class="mine_close"></span>
+      <router-link to="/mine_dl">
+        <span class="mine_close"></span>
+      </router-link>
 	  </div>
     <router-link to="/mine_zh">
       <div class="mine_user">
@@ -38,12 +40,13 @@
   			<span class="auction_r"></span>
   		</div>
     </router-link>
-
-		<div class="mine_money">
-			<span class="money_ico"></span>
-			<span class="money_text">我的拍卖券</span>
-			<span class="money_r"></span>
-		</div>
+    <router-link to="/mine_pmq">
+      <div class="mine_money">
+  			<span class="money_ico"></span>
+  			<span class="money_text">我的拍卖券</span>
+  			<span class="money_r"></span>
+  		</div>
+    </router-link>
     <router-link to="/mine_about">
       <div class="mine_about">
   			<span class="about_ico"></span>
@@ -58,11 +61,14 @@
 			<span class="call_num">400 875 6789</span>
 			<span class="call_r"></span>
 		</div>
-		<div class="mine_seaout">
-			<span class="seaout_ico"></span>
-			<span class="seaout_text">海外站购买说明</span>
-			<span class="seaout_r"></span>
-		</div>
+    <router-link to="/mine_seaout">
+      <div class="mine_seaout">
+  			<span class="seaout_ico"></span>
+  			<span class="seaout_text">海外站购买说明</span>
+  			<span class="seaout_r"></span>
+  		</div>
+    </router-link>
+
 		<div class="mine_footer">
       <router-link to="./home">
         <div class="footer_home foot">
@@ -90,7 +96,7 @@
 			</router-link>
 		</div>
 		<p class="foot_text foot_text1">北京寺库商贸有限公司 联系电话：400 875 6789</p>
-		<p class="foot_text">地址：北京市东城区朝阳门内大街银河SOHO C座15层</p>
+		<p class="foot_text foot_text2">地址：北京市东城区朝阳门内大街银河SOHO C座15层</p>
   </div>
 </template>
 
@@ -104,11 +110,10 @@ methods: {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 @import "../../static/css/reset.css";
 html {
 	background: #F9F9F9;
-  height: 120%;
 }
 .mine{
   font-size: .8rem;
@@ -404,7 +409,7 @@ html {
 	overflow: hidden;
 	width: 1.5rem;
 	height: 1.5rem;
-	background: url(../../static/images/mine_imgs/mine_r.png) no-repeat;
+	background: url('../../static/images/mine_imgs/mine_r.png') no-repeat;
 	background-size: 1.5rem 1.5rem;
 	margin-top: .5rem;
 }
@@ -506,5 +511,8 @@ html {
 }
 .mine_footer p {
   text-align: center;
+}
+.foot_text2 {
+  margin-bottom: 1rem;
 }
 </style>

@@ -1,0 +1,442 @@
+getDataCallback({
+    "floors": [
+        {
+            "type": "2",
+            "list": [
+                {
+                    "urlType": "5",
+                    "title": "",
+                    "customerGroup": [
+                        "1"
+                    ],
+                    "url": "https:\/\/m.secoo.com\/appActivity\/171111_overseas.shtml?pageid=171111_overseas",
+                    "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/ec09f21f74ba4b3abbf0d511b27f8de3.jpg"
+                },
+                {
+                    "urlType": "1",
+                    "title": "寺库·坊 - 青岛大融城 11\/10 隆重开幕",
+                    "customerGroup": [
+                        "1"
+                    ],
+                    "url": "qingdaokaiye",
+                    "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/2540b3dbf3df4ccbb0a9e23d1e493124.jpg"
+                }
+            ],
+            "index": 1
+        },
+        {
+            "type": "14",
+            "list": [
+                {
+                    "urlType": "5",
+                    "icon": "",
+                    "url": "https:\/\/las.secoo.com\/api\/topic\/topic_list_new?id=17650&pageid=topicNew\/17650",
+                    "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/5f4027536d10407085eea17d8a7bc1ab.jpg",
+                    "title": "专柜自提"
+                },
+                {
+                    "urlType": "5",
+                    "icon": "",
+                    "url": "https:\/\/las.secoo.com\/api\/topic\/topic_list_new?id=18787&pageid=18787",
+                    "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/ee608673bcf5432cb03637a4f58c3155.jpg",
+                    "title": "挖宝"
+                },
+                {
+                    "urlType": "5",
+                    "icon": "",
+                    "url": "https:\/\/m.secoo.com\/appActivity\/171111_cj2.shtml?pageid=171111_cj2",
+                    "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/719cd79d5ac6499a89dce1272e9f22ab.png",
+                    "title": "11.11抽奖"
+                },
+                {
+                    "urlType": "5",
+                    "icon": "",
+                    "url": "https:\/\/las.secoo.com\/api\/topic\/topic_list_new?id=17648&pageid=topicNew\/17648",
+                    "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/4b11add8b5be4ddcbebb2b8285b5b414.png",
+                    "title": "奢华体验"
+                },
+                {
+                    "urlType": "5",
+                    "icon": "",
+                    "url": "http:\/\/las.secoo.com\/api\/topic\/topic_list_new?id=17738&pageid=topicNew\/17738",
+                    "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/3b0b3edf6c4845a890830600bcf5d640.png",
+                    "title": "名物"
+                }
+            ],
+            "platform": "0",
+            "index": 2
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/18869",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/d841bd18a5294322a62ff17f4a02b1cb.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 4,
+            "customerGroup": [
+                "2"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17856",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/18aee8fb191e4df49db9b3a17a84e923.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 5,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/18111",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/e386f2325efc4cef9892aa8849d34e5a.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 6,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17880",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/1a8c509bfc8b4c7594cf7f8a916b9eab.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 7,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17872",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/f5200ab609a84e4b85c18a352eb75801.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 8,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/18588",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/fa967a7cf4cd4972a0f12fc3003961bf.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 9,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "18",
+            "content": {
+                "title": "双十一品类分会场"
+            },
+            "index": 10
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17856",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/1217d8c9c4804b20b51152a724c095aa.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 11,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17604",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/78d1f975dd8342b987d45f5c68909958.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 12,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17792",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/a004b252f9cf484cb3b32a7957afca02.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 13,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17822",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/dada712e3a4d47d7a88ce8bdfa5746a1.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 14,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17661",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/f23b400ca8574975966a65766f21e5b0.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 15,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17671",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/19f8deff772d49948d7baf20f598431b.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 16,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/15150",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/c26cfd7e045743429bc1781f1cd7bd51.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 17,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17823",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/10f5de7b104e40c2a0b991780334262f.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 18,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/18147",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/5da46d818576415fa4935cb2ca1551a7.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 19,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/14620",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/226b1d68b50d400d9f057d4efca74cfe.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 20,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17738",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/4fe91a05c5874491bb8864da6bb5f88f.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 21,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/18692",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/596fd990e0fa4f6f8123a15d9f05eaad.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 22,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17622",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/a0a549aee26c4ebfb7a3184fb8463f96.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 23,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/18623",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/ee9519881c28461792719c25211e6f79.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 24,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/18548",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/a45abe0f7661473d81d3364caa6d0e39.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 25,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17789",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/778f16f0201d44f59f706bd624e2a180.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 26,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/17833",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/7e04fee7ea6244afa1c9718f91c71952.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 27,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "1",
+                "url": "topicNew\/18743",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/db77d903175a4a249fbb68cb58f534f7.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 28,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "15",
+            "content": {
+                "urlType": "5",
+                "url": "http:\/\/auction.secoo.com\/template\/1068.html",
+                "img": "http:\/\/pic12.secooimg.com\/comment\/17\/11\/e7e1ee9cc1794eb59714b2ee05e00e9d.jpg",
+                "imgHeight": 420,
+                "imgWidth": 750
+            },
+            "index": 29,
+            "customerGroup": [
+                "1"
+            ]
+        },
+        {
+            "type": "18",
+            "content": {
+                "title": "猜您喜欢 RECOMMEND"
+            },
+            "index": 30
+        },
+        {
+            "type": "13",
+            "url": "https:\/\/las.secoo.com\/api\/home\/you_may_like",
+            "index": 31
+        }
+    ],
+    "hash": "CF9EE92129C869955F97100F4AFF627A",
+    "retMsg": "查询成功",
+    "retCode": 0
+})

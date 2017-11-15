@@ -1,35 +1,18 @@
 <template lang="html">
-  <div class="about">
-    <div class="minegy_top">
+  <div class="qx_xueyuan">
+    <div class="qixia_top">
       <div class="back" @click='back()'>
-        <span class="minegy_back"></span>
-        <span class="minegy_backtext">返回</span>
+        <span class="qixia_back"></span>
+        <span class="qixia_backtext">返回</span>
       </div>
-      <span class="minegy_gy">关于寺库</span>
+      <span class="qixia_qx">养护中心</span>
     </div>
-    <router-link to="/mine_aboutqy">
-      <div class="gy_qx">
-        <div class="gy_qx2">
-          <span>寺库起源</span>
-          <span class="gy_r"></span>
-        </div>
-      </div>
-    </router-link>
-    <router-link to="/mine_aboutqx">
-      <div class="gy_qx">
-        <div class="gy_qx2">
-          <span>旗下品牌</span>
-          <span class="gy_r"></span>
-        </div>
-      </div>
-    </router-link>
-    <router-link to="/mine_aboutry">
-      <div class="gy_ry">
-        <span class="gy_text">集团荣誉</span>
-        <span class="gy_r"></span>
-      </div>
-    </router-link>
+    <div class="xueyuan_texts">
+      <p class="xueyuan_content">师资力量雄厚，由国内奢侈品领域权威性大学教授、行业专家、奢侈品品牌高管等担任。课程涉及奢侈品文化管理、鉴定、营销等方面</p>
+    </div>
+    <div class="kong">
 
+    </div>
     <div class="mine_footer">
       <router-link to="./home">
         <div class="footer_home foot">
@@ -57,7 +40,6 @@
 			</router-link>
 		</div>
   </div>
-
 </template>
 
 <script>
@@ -71,23 +53,17 @@ export default {
 </script>
 
 <style lang="css">
-@import "../../static/css/reset.css";
 html {
 	background: #F9F9F9;
 }
-.about{
-  font-size: .8rem;
-  font-family: STHeiti,Helvetica Neue;
-}
-.minegy_top {
+.qixia_top {
 	width: 20rem;
 	height: 2.5rem;
 	background: white;
 	position: relative;
-	border-bottom: 2px solid #cddde6;
-  font-size: .9rem;
+	font-size: .9rem;
 }
-.minegy_back {
+.qixia_back {
 	display: inline-block;
 	overflow: hidden;
 	width: 1.5rem;
@@ -98,65 +74,28 @@ html {
 	top: .5rem;
 	left: .5rem;
 }
-.minegy_backtext {
+.qixia_backtext {
 	position: absolute;
 	top: .5rem;
 	left: 1.7rem;
 }
-.minegy_gy {
+.qixia_qx {
 	position: absolute;
 	top: .5rem;
 	left: 8rem;
 }
-.gy_qy {
-  width: 20rem;
-	height: 2.3rem;
-	position: relative;
-	background: white;
-  margin-top: 2px;
-}
-.gy_qy2 {
-  width: 19rem;
-  height: 2.3rem;
-  margin-left: 1rem;
-  border-bottom: 2px solid #cddde6;
-  line-height: 2.3rem;
-}
-.gy_qx {
-  width: 20rem;
-	height: 2.3rem;
-	position: relative;
-	background: white;
-}
-.gy_qx2 {
-  width: 19rem;
-  height: 2.3rem;
-  margin-left: 1rem;
-  border-bottom: 2px solid #cddde6;
-  line-height: 2.3rem;
-  margin-top: 2px;
-}
-.gy_ry {
-  width: 20rem;
-  height: 2.3rem;
-  margin-top: 2px;
-  position: relative;
+.xueyuan_texts {
+  width: 18rem;
   background: white;
-  line-height: 2.3rem;
+  padding: 1rem;
+  padding-bottom: 2rem;
   border-bottom: 2px solid #cddde6;
 }
-.gy_text {
-  margin-left: 1rem;
-}
-.gy_r {
-  float: right;
-	display: inline-block;
-	overflow: hidden;
-	width: 1.5rem;
-	height: 1.5rem;
-	background: url(../../static/images/mine_imgs/mine_r.png) no-repeat;
-	background-size: 1.5rem 1.5rem;
-	margin-top: .5rem;
+.xueyuan_content {
+  width: 18rem;
+  font-size: .6rem;
+  color: #666;
+  line-height: 1.2rem;
 }
 .mine_footer {
 	display: flex;
@@ -169,7 +108,7 @@ html {
 	border: 1px solid #afe;
 	font-size: .7rem;
 	color: gray;
-	margin-top: 2rem;
+	margin-top: 1rem;
 }
 .home_ico {
 	width: 2rem;
@@ -211,15 +150,7 @@ html {
 	margin-top: .6rem;
 	margin-bottom: .2rem;
 }
-.foot_text {
-	font-size: .6rem;
-	font-weight: 600;
-  text-align: center;
-}
-.foot_text1 {
-  margin-top: 1rem;
-}
-.mine_footer p {
+.foot p {
   text-align: center;
 }
 </style>

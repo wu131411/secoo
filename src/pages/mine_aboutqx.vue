@@ -1,61 +1,75 @@
 <template lang="html">
-	<div class="minezh">
-		<div class="minezh_top">
-			<div class="back" @click='back()'>
-				<span class="minezh_back"></span>
-				<span class="minezh_backtext">返回</span>
-			</div>
-			<span class="minezh_zh">账号</span>
-	  </div>
-		<div class="minezh_user">
-			<div class="minezh_user2">
-				<span class="user2_text">账户名</span>
-				<span class="user2_num"></span>
-			</div>
-		</div>
-		<div class="minezh_money">
-			<div class="minezh_money2">
-				<span class="money2_text">库币</span>
-				<span class="money2_num">0库币</span>
+  <div class="qixia">
+		<div class="qixia_top">
+      <div class="back" @click='back()'>
+        <span class="qixia_back"></span>
+        <span class="qixia_backtext">返回</span>
+      </div>
+      <span class="qixia_qx">旗下品牌</span>
+    </div>
+		<div class="wangshang">
+			<div class="wangshang2">
+				<span>网上商城</span>
+				<span class="qx_r"></span>
 			</div>
 		</div>
-		<router-link to="/mine_recommend">
-			<div class="minezh_man">
-				<span class="man_text">推荐人</span>
-				<span class="man_r"></span>
-			</div>
+    <router-link to="/mine_aboutqx_huisuo">
+      <div class="huisuo">
+  			<div class="huisuo2">
+  				<span>库会所</span>
+  				<span class="qx_r"></span>
+  			</div>
+  		</div>
+    </router-link>
+		<router-link to="/mine_aboutqx_jianding">
+      <div class="jianding">
+  			<div class="jianding2">
+  				<span>鉴定中心</span>
+  				<span class="qx_r"></span>
+  			</div>
+  		</div>
 		</router-link>
-		<router-link to="/mine_address">
-			<div class="minezh_address">
-				<span class="address_text">收货地址</span>
-				<span class="address_r"></span>
-			</div>
+		<router-link to="/mine_aboutqx_yanghu">
+      <div class="yanghu">
+  			<div class="yanghu2">
+  				<span>养护中心</span>
+  				<span class="qx_r"></span>
+  			</div>
+  		</div>
+		</router-link>
+		<router-link to="/mine_aboutqx_xueyuan">
+      <div class="xueyuan">
+  			<div class="xueyuan2">
+  				<span>寺库商学院</span>
+  				<span class="qx_r"></span>
+  			</div>
+  		</div>
 		</router-link>
 
 		<div class="mine_footer">
-			<router-link to="./home">
-				<div class="footer_home foot">
-					<span class="home_ico"></span>
-					<p>首页</p>
-				</div>
-			</router-link>
+      <router-link to="./home">
+        <div class="footer_home foot">
+  				<span class="home_ico"></span>
+  				<p>首页</p>
+  			</div>
+      </router-link>
 			<router-link to="./list">
-				<div class="footer_pai foot">
-					<span class="pai_ico"></span>
-					<p>品牌</p>
-				</div>
+        <div class="footer_pai foot">
+  				<span class="pai_ico"></span>
+  				<p>品牌</p>
+  			</div>
 			</router-link>
 			<router-link to="./bag">
-				<div class="footer_bag foot">
-					<span class="bag_ico"></span>
-					<p>购物袋</p>
-				</div>
+        <div class="footer_bag foot">
+  				<span class="bag_ico"></span>
+  				<p>购物袋</p>
+  			</div>
 			</router-link>
 			<router-link to="./mine">
-				<div class="footer_mine foot">
-					<span class="mine_ico"></span>
-					<p>我的寺库</p>
-				</div>
+        <div class="footer_mine foot">
+  				<span class="mine_ico"></span>
+  				<p>我的寺库</p>
+  			</div>
 			</router-link>
 		</div>
   </div>
@@ -64,9 +78,9 @@
 <script>
 export default {
 	methods: {
-	  back() {
-	    history.back()
-	  }
+		back() {
+      history.back()
+    }
 	}
 }
 </script>
@@ -76,14 +90,14 @@ export default {
 html {
 	background: #F9F9F9;
 }
-.minezh_top {
+.qixia_top {
 	width: 20rem;
 	height: 2.5rem;
 	background: white;
 	position: relative;
-	border-bottom: 2px solid #cddde6;
+	font-size: .9rem;
 }
-.minezh_back {
+.qixia_back {
 	display: inline-block;
 	overflow: hidden;
 	width: 1.5rem;
@@ -94,101 +108,88 @@ html {
 	top: .5rem;
 	left: .5rem;
 }
-.minezh_backtext {
+.qixia_backtext {
 	position: absolute;
 	top: .5rem;
 	left: 1.7rem;
 }
-.minezh_zh {
+.qixia_qx {
 	position: absolute;
 	top: .5rem;
-	left: 9rem;
+	left: 8rem;
 }
-.minezh_user {
+.wangshang {
 	width: 20rem;
 	height: 2.3rem;
-	margin-top: 1rem;
-	position: relative;
 	background: white;
-	border-top: 2px solid #cddde6;
 }
-.minezh_user2 {
+.wangshang2 {
 	width: 19rem;
-	height: 2.2rem;
+	height: 2.3rem;
 	border-bottom: 2px solid #cddde6;
 	margin-left: 1rem;
-}
-.user2_text {
 	line-height: 2.3rem;
 	font-size: .8rem;
 }
-.user2_num {
-	float: right;
-	line-height: 2.3rem;
-	margin-right: .4rem;
-}
-.minezh_money {
+.huisuo {
 	width: 20rem;
 	height: 2.3rem;
-	margin-top: 1px;
-	position: relative;
 	background: white;
+	margin-top: 2px;
 }
-.minezh_money2 {
+.huisuo2 {
 	width: 19rem;
-	height: 2.2rem;
+	height: 2.3rem;
 	border-bottom: 2px solid #cddde6;
 	margin-left: 1rem;
-}
-.money2_text {
 	line-height: 2.3rem;
 	font-size: .8rem;
 }
-.money2_num {
-	float: right;
+.jianding {
+	width: 20rem;
+	height: 2.3rem;
+	background: white;
+	margin-top: 2px;
+
+}
+.jianding2 {
+	width: 19rem;
+	height: 2.3rem;
+	border-bottom: 2px solid #cddde6;
+	margin-left: 1rem;
 	line-height: 2.3rem;
-	margin-right: 1rem;
 	font-size: .8rem;
 }
-.minezh_man {
+.yanghu {
 	width: 20rem;
-	height: 2.5rem;
-	margin-top: 1px;
-	position: relative;
+	height: 2.3rem;
 	background: white;
+	margin-top: 2px;
+
+}
+.yanghu2 {
+	width: 19rem;
+	height: 2.3rem;
+	border-bottom: 2px solid #cddde6;
+	margin-left: 1rem;
+	line-height: 2.3rem;
+	font-size: .8rem;
+}
+.xueyuan {
+	width: 20rem;
+	height: 2.3rem;
+	background: white;
+	margin-top: 2px;
 	border-bottom: 2px solid #cddde6;
 }
-.man_text {
-	line-height: 2.5rem;
-	font-size: .8rem;
+.xueyuan2 {
+	width: 19rem;
+	height: 2.3rem;
 	margin-left: 1rem;
-}
-.man_r {
-	float: right;
-	display: inline-block;
-	overflow: hidden;
-	width: 1.5rem;
-	height: 1.5rem;
-	background: url(../../static/images/mine_imgs/mine_r.png) no-repeat;
-	background-size: 1.5rem 1.5rem;
-	margin-top: .5rem;
-}
-.minezh_address {
-	width: 20rem;
-	height: 2.5rem;
-	margin-top: 1px;
-	position: relative;
-	background: white;
-	margin-top: 1rem;
-	border-bottom: 2px solid #cddde6;
-	border-top: 2px solid #cddde6;
-}
-.address_text {
-	line-height: 2.5rem;
+	line-height: 2.3rem;
 	font-size: .8rem;
-	margin-left: 1rem;
 }
-.address_r {
+.qx_r {
 	float: right;
 	display: inline-block;
 	overflow: hidden;
@@ -210,6 +211,7 @@ html {
 	font-size: .7rem;
 	color: gray;
 	margin-top: 2rem;
+	background: white;
 }
 .home_ico {
 	width: 2rem;
@@ -254,6 +256,10 @@ html {
 .foot_text {
 	font-size: .6rem;
 	font-weight: 600;
+  text-align: center;
+}
+.foot_text1 {
+  margin-top: 1rem;
 }
 .mine_footer p {
   text-align: center;

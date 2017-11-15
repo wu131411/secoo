@@ -33,4 +33,3 @@ export default {
    width:100%;
 }
 </style>
-//android.secoo.com/appservice/all_brand.action
