@@ -199,6 +199,7 @@ export default {
         top: 0;
         left: 0;
         right: 0;
+        z-index: 1000;
     }
     .hot_show_detail .header_inner{
         display: -webkit-box;
