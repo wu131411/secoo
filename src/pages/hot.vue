@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="jianHuo">
-      <div class="banner">
+      <div class="banner" @click="goWabao()">
           <a href="#"><img src="../assets/jianhuo_img/banner.jpg" alt=""></a>
 
 
@@ -63,6 +63,11 @@ export default {
                 ev.currentTarget.classList.add('hot_tabbar_color');
                 hot_tabbar_color = false;
             }
+        },
+        goWabao(){
+            this.$router.push({
+                path : '/home_wabao'
+            })
         }
     },
     components : {
@@ -74,10 +79,8 @@ export default {
     created(){
 
         this.$jsonp('http://las.secoo.com/api/show/hot_show_head').then(data => {
-            // console.log(data);
             this.tabbar = data.tags;
             this.banner = data.banners;
-            // console.log(this.banner);
         })
     }
 
@@ -97,8 +100,6 @@ export default {
         height: 100%;
     }
 
-
-    /*lyk*/
     /*轮播图*/
     .hot_banner .swiper-container{
         width: 100%;
@@ -131,9 +132,6 @@ export default {
         background: #fff;
         border-radius: 50%;
     }
-
-
-/*lyk*/
 
     /*二级路由样式*/
     /*点击时的边框样式*/

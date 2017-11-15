@@ -46,7 +46,7 @@
               </div>
               <div class="hot_ad" v-else>
                   <div class="">
-                      <div class="hot_ad_img">
+                      <div class="hot_ad_img" @click="goWabao()">
                           <img :src="item.titleImg" alt="">
                           <div class="img_view"></div>
                           <div class="hot_ad_title">
@@ -133,6 +133,11 @@ export default {
             this.$router.push({
                 path : '/product_detail/' + productId
             })
+        },
+        goWabao(){
+            this.$router.push({
+                path : '/home_wabao'
+            })
         }
     },
     filters:{
@@ -151,9 +156,7 @@ export default {
     },
     created(){
         this.$jsonp(this.url).then(data => {
-            console.log(data);
             this.list = data.list;
-            // console.log(this.list);
             this.num = [];
             this.content = [];
             for (var item of data.list) {
@@ -166,9 +169,7 @@ export default {
         '$route'(newValue, oldValue){
             this.url = 'http://las.secoo.com/api/show/hot_show_list?lineNumber=1&tagId=' + this.$route.params.id + '&size=20&c_upk=&c_app_ver=1.0&c_channel=&c_device_id=98f0f00e-8938-48f9-b70c-e714487a8241&c_platform=&c_platform_type=&c_platform_ver=&c_screen_width=414&c_screen_height=736&_='+ Math.random() + '&callback';
             this.$jsonp(this.url).then(data => {
-                // console.log(data);
                 this.list = data.list;
-                // console.log(this.list);
                 this.num = [];
                 this.content = [];
                 for (var item of data.list) {

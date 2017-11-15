@@ -159,9 +159,6 @@ export default {
             })
         }
     },
-    filters :{
-
-    },
     created(){
         // 晒货详情数据请求
         this.$jsonp('http://las.secoo.com/api/show/comment_show?commentShowDetailId=' + this.id + '&c_upk=&c_app_ver=1.0&c_channel=&c_device_id=98f0f00e-8938-48f9-b70c-e714487a8241&c_platform=&c_platform_type=&c_platform_ver=&c_screen_width=414&c_screen_height=736&_=' + Math.random() + '&callback').then(data => {
@@ -170,12 +167,11 @@ export default {
             this.likeNum = data.show.favoriteCount;
             this.productInfo = data.show.productInfo[0];
             this.productId = data.show.productId;
-            // console.log(data);
         })
 
         // 详细评论数据请求
         this.$jsonp('http://las.secoo.com/api/show/comment_show_comments?commentShowDetailId=' + this.id + '&currpage=1&pagesize=20&c_upk=&c_app_ver=1.0&c_channel=&c_device_id=98f0f00e-8938-48f9-b70c-e714487a8241&c_platform=&c_platform_type=&c_platform_ver=&c_screen_width=414&c_screen_height=736&_=' + Math.random() + '&callback').then(data => {
-            console.log(data);
+            // console.log(data);
             this.comment = data.data;
             if (data.recode == 2002) {
                 comment_length = 0;
@@ -334,6 +330,7 @@ export default {
         list-style: none;
         margin: 0;
         padding: 0;
+        margin-bottom: 2.38rem;
     }
     .hot_show_detail .comment_list li{
         width: 100%;
@@ -341,6 +338,7 @@ export default {
         padding: 0.75rem 0;
         font-size: .64rem;
         text-align: -webkit-match-parent;
+
     }
     .comment_list li .user_icon{
         width: 1.87rem;
@@ -358,7 +356,8 @@ export default {
         -webkit-box-flex: 1;
         font-size: .64rem;
         padding-right: .8rem;
-        padding-bottom: 0.64rem;
+        padding-bottom: 0.6rem;
+        border-bottom: .04rem solid #ededed;
     }
     .comment_list .user_wrap .user_group{
         display: -webkit-box;

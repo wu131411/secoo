@@ -4,7 +4,7 @@
           <!-- 返回 -->
           <div class="leftPic orderListWrapper_l ">
               <span class="goBack"></span>
-              <em @click="back">返回</em>
+              <em @click="back()">返回</em>
           </div>
           <!-- SECOO -->
           <hgroup class="pagesTitles">
