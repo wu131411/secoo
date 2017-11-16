@@ -14,9 +14,15 @@ Vue.use(VueJsonp)
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
 
+
 //引入vue-jsonp模块
 import VueJsonp from "vue-jsonp"
 Vue.use(VueJsonp)
+
+// 引入占位模块
+import VueOccupy from 'vue-occupy'
+Vue.use(VueOccupy)
+
 
 
 Vue.config.productionTip = false

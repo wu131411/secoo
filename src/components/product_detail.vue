@@ -6,17 +6,17 @@
                 <img src="../../static/images/hot_back.png" alt="">
             </div>
             <ul>
-                <li>商品</li>
-                <li>评论</li>
-                <li>详情</li>
-                <li>推荐</li>
+                <li @click="jump($event,0)" :class="{'on' : tag1}">商品</li>
+                <li @click="jump($event,1)" :class="{'on' : tag2}">评论</li>
+                <li @click="jump($event,2)" :class="{'on' : tag3}">详情</li>
+                <li @click="jump($event,3)" :class="{'on' : tag4}">推荐</li>
             </ul>
             <div class="gohome" @click="gohome()">
                 <img src="../../static/images/home.png" alt="">
             </div>
         </div>
         <!-- 商品图片轮播图部分 -->
-        <div class="product_banner">
+        <div class="product_banner d_jump">
             <!-- 轮播图部分 -->
             <div class="imgs">
                 <img src="http://pic12.secooimg.com/product/500/500/54/53/655eb447900f4e77b2fee34a4fe39485.jpg" alt="">
@@ -89,10 +89,73 @@
                 </tr>
             </table>
         </div>
+        <!-- 用户评价部分 -->
+        <div class="userComment d_jump">
+            <div class="comment_title">
+                <h2>{{ '用户评价(' + this.commentCount +')' }}</h2>
+                <div class="">
+                    <span>{{ '综合评分' + this.productGrade }}</span>
+                    <img src="../../static/images/forward.png" alt="">
+                </div>
+            </div>
+            <ul class="comment_list">
+                <!-- 将列表控制在两个以内 -->
+                <li v-for="(item,index) in commentList" v-if="index<2">
+                    <div class="comment_user">
+                        <span class="user_name">{{ item.userName }}</span>
+                        <div class=" star">
+                            <img v-for="i in item.grade" src="../../static/images/star.png" alt="">
+                        </div>
+                    </div>
+                    <div class="comment_content">
+                        {{ item.content }}
+                    </div>
+                    <div class="comment_info">
+                        <time>{{ time[index] }}</time>
+                        <div class="zan svg">
+                            <span></span>
+                            <span>{{ item.praiseCount }}</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- 商品详情部分 -->
+        <div class="product_imgs d_jump">
+            <h2>商品详情</h2>
+            <ul>
+                <li v-for="item in productInfo.detail">
+                    <img :src="item.info" alt="">
+                </li>
+            </ul>
+        </div>
+        <!-- 精品推荐部分 -->
+        <div class="recommend d_jump">
+            <p class="recommend_title">-精品推荐-</p>
+            <ul class="recommend_content">
+                <li v-for="item in tuiJianList">
+                    <div class="recommend_img">
+                        <img :src="'http://pic.secoo.com/product/300/300/' + item.picUrl" alt="">
+                    </div>
+                    <p class="recommend_name">{{ item.name }}</p>
+                    <p class="recommend_price">{{ '￥' + item.secooPrice }}</p>
+                </li>
+            </ul>
+        </div>
+        <!-- 底部按钮部分 -->
+        <div class="button">
+            <div class="button_bag" @click="goBag()">
+                <img src="../../static/images/bag.png" alt="">
+            </div>
+            <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="buyBag(item.type)">
+                {{ item.title }}
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+import Bus from '../bus'
 export default {
     data(){
         return{
@@ -103,34 +166,156 @@ export default {
             price : '',
             serviceList : {}, // 权益：假一赔十部分数据
             ziTiTag : '', // 到店自提是否存在的判断
+            commentList : {}, // 商品评论列表
+            productGrade : 0, // 商品综合评分
+            commentCount : 0, // 当前商品评论数量
+            brandCommentCount : 0, // 同品牌评价数量,
+            time : [], //时间戳转为日期时间
+            tuiJianList : {}, // 精品推荐列表
+            buttonList : {}, // 按钮列表
+            // 控制顶部导航样式的标签
+            total1 : 0,
+            total2 : 0,
+            total3 : 0,
+            total4 : 0,
+            tag1 : true,
+            tag2 : false,
+            tag3 : false,
+            tag4 : false,
+            scroll : 0,//监听页面滚动
+            total : 0,
         }
     },
     methods : {
         goback(){
             history.back()
         },
+        buyBag(type){
+            if (type == 0) {
+                // 加入购物袋
+                let goods = {
+                    url : this.productInfo.imgList[0],
+                    msg : this.productInfo.title,
+                    i : 1,
+                    price : this.price.nowPrice,
+                    isTrue : 0,
+                }
+                Bus.$emit('data',goods);
+                console.log('123');
+            } else if (type == 1) {
+                // 立即购买
+            }
+        },
+        goBag(){
+            this.$router.push({
+                path : '/bag'
+            })
+        },
         gohome(){
             this.$router.push({
                 path : '/home'
             })
+        },
+        menu() {
+            this.scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            // console.log(this.scroll)
+            let jump = document.querySelectorAll('.d_jump');
+            // 获取需要滚动的距离
+            this.total1 = jump[0].offsetTop
+            this.total2 = jump[1].offsetTop
+            this.total3 = jump[2].offsetTop
+            this.total4 = jump[3].offsetTop
+
+            if (this.scroll < this.total2 && this.scroll >= this.total1) {
+                this.tag1 = true;
+                this.tag2 = false;
+                this.tag3 = false;
+                this.tag4 = false;
+            } else if (this.scroll < this.total3 && this.scroll >= this.total2) {
+                this.tag2 = true;
+                this.tag1 = false;
+                this.tag3 = false;
+                this.tag4 = false;
+            } else if (this.scroll < this.total4 && this.scroll >= this.total3) {
+                this.tag3 = true;
+                this.tag1 = false;
+                this.tag2 = false;
+                this.tag4 = false;
+            } else {
+                this.tag4 = true;
+                this.tag1 = false;
+                this.tag2 = false;
+                this.tag3 = false;
+            }
+        },
+        jump(ev,index){
+            let jump = document.querySelectorAll('.d_jump')
+            // 获取需要滚动的距离
+            let total = jump[index].offsetTop
+            // console.log(ev.currentTarget);
+            // Chrome
+            document.body.scrollTop = total
+            // Firefox
+            document.documentElement.scrollTop = total
+            // Safari
+            window.pageYOffset = total
         }
     },
     created(){
         // 请求商品详情
         this.$jsonp('http://las.secoo.com/api/product/detail_new?upk=&productId=' + this.productId + '&size=2&c_platform_type=0&_=' + Math.random() + '&callback').then(data => {
             this.data = data;
-            console.log(data);
+            // console.log(data);
             this.topImgUrl  = data.productInfo.imgList;
             this.price = data.productInfo.priceInfo;
             this.productInfo = data.productInfo;
             this.serviceList = data.serviceList;
+            this.buttonList = data.button.buttonList;
             // 判断到店自提是否存在，如果存在就展示
             if (data.pickupInfo.title) {
                 this.ziTiTag = true;
             } else {
                 this.ziTiTag = false;
             }
+        }),
+        // 请求商品的用户评价
+        this.$jsonp('http://las.secoo.com/api/comment/show_product_comment?upk=affe88828a1641749c7e730b6483dcd9%7C464572656233%7Ccc4a951855c94198896b905a9d51c3a2%7CBF13678943951D86DD851ABD04D322F1&productId=' + this.productId + '&size=2&c_platform_type=0&type=0&filter=0&page=1&pageSize=8&productBrandId=5987&productCategoryId=1828&_=' + Math.random() + '&callback').then( data => {
+            // console.log(data);
+            if (data.retCode == 0) {
+                this.commentList = data.commentList; //评论列表
+                this.commentCount = data.totalCurrCommentNum; //该品牌评论数量
+                this.brandCommentCount = data.totalBrandCommentNum; //同品牌评论数量
+                this.productGrade = parseInt(data.productGrade * 10) / 10; //评论综合评分
+                // 时间戳转为规定的时间格式
+                for (var i of data.commentList) {
+                    var date = new Date(i.createDate);
+                    var year = date.getFullYear();
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var date = year + '.' + month + '.' + day;
+                    this.time.push(date)
+                }
+            } else {
+                this.commentList = data.commentList; //评论列表
+                this.commentCount = 0; //该品牌评论数量
+                this.brandCommentCount = data.totalBrandCommentNum; //同品牌评论数量
+                this.productGrade = '5.0'; //评论综合评分
+            }
+        }),
+        // 请求精品推荐数据
+        this.$jsonp('https://lr.secooimg.com/recommend?upk=affe88828a1641749c7e730b6483dcd9%7C464572656233%7Ccc4a951855c94198896b905a9d51c3a2%7CBF13678943951D86DD851ABD04D322F1&productId=' + this.productId + '&size=2&c_platform_type=0&type=similar&count=12&platformType=2&categoryId=1449&brandId=6836&_=' + Math.random() + '&callback').then(data => {
+            // console.log(data);
+            if (data.recode == 0) {
+                this.tuiJianList = data.productList;
+                // console.log(this.tuiJianList);
+            }
         })
+    },
+    mounted(){
+         window.addEventListener('scroll', this.menu)
+    },
+    destroyed(){
+        window.removeEventListener('scroll', this.menu)
     }
 }
 </script>
@@ -140,6 +325,7 @@ export default {
         font: 0.693333rem/1.12rem 'STHeiti', 'Helvetica Neue';
         color: #1A191E;
         background-color: #fff;
+        position: relative;
     }
     .product_detail .nav_wrap{
         height: 2.35rem;
@@ -295,4 +481,162 @@ export default {
     .product_detail .product_info td:nth-of-type(1){
         width: 6rem;
     }
+    /*评论部分*/
+    .color{
+        color : #ff0000!important;
+    }
+    .svg{
+        font-family: 'icomoon';
+    }
+    .userComment{
+        /*padding-bottom: 1rem;*/
+        border-bottom: 1px solid #ebebeb;
+        overflow: hidden;
+    }
+    .userComment .comment_title{
+        padding: 1.5rem 1rem;
+        line-height: 1.5rem;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ebebeb;
+    }
+    .userComment .comment_title h2{
+        font-size: 1.1rem;
+    }
+    .userComment .comment_title span,.userComment .comment_title img{
+        font-size: .75rem;
+    }
+    .userComment .comment_list li{
+        padding: 1rem 0 1rem 1.5rem;
+        border-top: 1px solid #ebebeb;
+    }
+    .userComment .comment_list .comment_user{
+        line-height: 1rem;
+    }
+    .userComment .comment_user div{
+        display: inline-block;
+        margin-left: .5rem;
+    }
+    .userComment .comment_user div img{
+        margin-left: 0.2rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        line-height: 1rem;
+    }
+    .userComment .comment_list .comment_content{
+        margin: 0.4rem 1.3rem 0.3rem 0;
+        max-height: 3.36rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .userComment .comment_list .comment_info{
+        margin-right: 1.333333rem;
+        color: #666;
+    }
+    .userComment .comment_info div{
+        display: inline-block;
+        float: right;
+    }
+    /*商品详情部分*/
+    .product_detail .product_imgs{
+        width: 100%;
+    }
+    .product_detail .product_imgs h2{
+        font-size: 1.1rem;
+        padding: 1.5rem 1rem;
+    }
+    .product_detail .product_imgs li{
+        width: 100%;
+        margin-bottom: .5rem;
+        text-align: center;
+    }
+    .product_detail .product_imgs img{
+        width: 90%;
+    }
+    /*精品推荐部分*/
+    .recommend{
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 2.5rem;
+    }
+    .recommend .recommend_title{
+        width: 100%;
+        line-height: 3.6rem;
+        font-size: 0.96rem;
+        text-align: center;
+        background-color: #f5f5f5;
+    }
+    .recommend .recommend_content{
+        width: 100%;
+    }
+    .recommend .recommend_content li{
+        width: 49.5%;
+        display: inline-block;
+        border-right: .1rem solid #f5f5f5;
+        border-bottom: .1rem solid #f5f5f5;
+    }
+    .recommend .recommend_content .recommend_img{
+        width: 100%;
+        height: 10rem;
+    }
+    .recommend .recommend_content img{
+        width: 100%;
+        height: 100%;
+    }
+    .recommend .recommend_content p:nth-of-type(1){
+        margin: 0.8rem;
+        height: 1.92rem;
+        line-height: 0.96rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .recommend .recommend_content p:nth-of-type(2){
+        margin: 0 0.8rem .5rem .8rem;
+        height: 1rem;
+        line-height: 1;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+    /*底部按钮样式*/
+    .product_detail .button{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2.5rem;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .product_detail .button .button_bag{
+        flex: 0 1 15%;
+        height: 100%;
+        line-height: 3rem;
+        background-color: white;
+        text-align: center;
+    }
+    .product_detail .button .button_bag img{
+        width: 40%;
+        height: 50%;
+    }
+    .product_detail .button .btn{
+        text-align: center;
+        line-height: 2.5rem;
+        font-size: .8rem;
+        width: 100%;
+        height: 100%;
+        flex: 0 1 42.5%;
+    }
+    /*.product_detail .button div:nth-of-type(2){
+        border-radius: .3rem 0 0 .3rem;
+    }
+    .product_detail .button div:nth-of-type(3){
+        border-radius:0 .3rem .3rem 0;
+    }*/
 </style>

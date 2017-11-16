@@ -4,7 +4,11 @@
         <!-- 轮播图 -->
        <div @click="bannerGo()" class="home-banner" >
             <swiper :options="swiperOption" ref="mySwiper">
-                <swiper-slide v-for="item in home_swiper">
+
+                <!-- slides -->
+                <swiper-slide v-for="item in home_swiper" :key="item.key">
+
+                <!-- <swiper-slide v-for="item in home_swiper"> -->
                     <img :src="item.img">
                 </swiper-slide>
                 <div class="swiper-pagination"  slot="pagination"></div>
@@ -17,7 +21,8 @@
                    <li @click="fnOne(item)" >
                        <img :src="item.img" alt="">
                        {{item.title}}
-                   </li></a>
+                   </li>
+               </a>
            </ul>
        </div>
 
@@ -46,19 +51,21 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import swiperCss from "../../static/css/swiper.css"
 import HomeTop from "../components/home_top"
 export default {
     name: 'home',
     components: {
         swiper,swiperSlide,
         HomeTop
+
      },
     data (){
         return {
             home_swiper : {},
             home_manner : {},
             main : {},
-            swiperOption: {
+            swiperOption : {
                 loop : true,
                 autoplay: 3000,
                 direction : 'horizontal',
@@ -170,6 +177,9 @@ export default {
         text-align: center;
         font-size: 0.746667rem;
     }
+
+
+
     /*轮播图*/
     .home-banner .swiper-container{
         width: 100%;

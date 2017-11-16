@@ -1,31 +1,19 @@
 <template lang="html">
-  <div class="rongyu">
-		<div class="rongyu_top">
+  <div class="qx_xueyuan">
+    <div class="qixia_top">
       <div class="back" @click='back()'>
-        <span class="rongyu_back"></span>
-        <span class="rongyu_backtext">返回</span>
+        <span class="qixia_back"></span>
+        <span class="qixia_backtext">返回</span>
       </div>
-      <span class="rongyu_ry">集团荣誉</span>
+      <span class="qixia_qx">养护中心</span>
     </div>
-		<div class="rongyu_text">
-			<p>⊙寺库中国荣膺2012（第十二届）中国企业“未来之星”！（2012中国企业家杂志社评选</p>
-			<p>⊙全国寄卖工作委员会会长单位《全国寄卖行业管理规范（审议草案）》起草单位</p>
-			<p>⊙对外经贸大学奢侈品研究中心战略合作伙伴</p>
-			<p>⊙2012年，与新浪奢品达成战略合作，成为新浪奢侈品指定奢侈品售后服务中心</p>
-			<p>⊙2012年，成为中国315电子商务诚信平台官方指定唯一奢侈品鉴定评估中心</p>
-			<p>⊙2011年，YOKA奢侈品商城官方奢侈品鉴定指定机构</p>
-			<p>⊙2011年，与中国青少年发展基金会管理的大型公益慈善活动"爱心衣橱"结成战略合作伙伴，并与新浪、凡客、远东一起被选为四大荣誉理事单位。携百位明星参与，倾注对弱势群体的仁爱之心。</p>
-			<p>⊙2011年时尚大典主赞助商、星光大典特别赞助商、凤凰网2011年会高级赞助商</p>
-			<p>⊙搜房网高端市场活动战略合作伙伴</p>
-			<p>⊙中国互联网络信息中心可信网站示范单位</p>
-			<p>⊙"最受风险投资青睐的创业项目"称号（2010年国际人力资源协会等联合评选）</p>
-			<p>⊙中国最具成长魅力企业30强（2009清华大学媒介调查实验室）</p>
-			<p>⊙"中国企业未来之星"百强（2010中国企业家杂志社）</p>
-			<p>⊙最受关注创新商业模式电商（《中国经营报》2011年中小企业高峰论坛）</p>
-			<p>⊙保利拍卖奢侈品专场主要委托人</p>
-			<p>⊙中国互联网络信息中心可信网站示范单位</p>
-		</div>
-		<div class="mine_footer">
+    <div class="xueyuan_texts">
+      <p class="xueyuan_content">师资力量雄厚，由国内奢侈品领域权威性大学教授、行业专家、奢侈品品牌高管等担任。课程涉及奢侈品文化管理、鉴定、营销等方面</p>
+    </div>
+    <div class="kong">
+
+    </div>
+    <div class="mine_footer">
       <router-link to="./home">
         <div class="footer_home foot">
   				<span class="home_ico"></span>
@@ -56,27 +44,26 @@
 
 <script>
 export default {
-	methods: {
-		back() {
+  methods: {
+    back() {
       history.back()
     }
-	}
+  }
 }
 </script>
 
 <style lang="css">
-@import "../../static/css/reset.css";
 html {
 	background: #F9F9F9;
 }
-.rongyu_top {
+.qixia_top {
 	width: 20rem;
 	height: 2.5rem;
 	background: white;
 	position: relative;
 	font-size: .9rem;
 }
-.rongyu_back {
+.qixia_back {
 	display: inline-block;
 	overflow: hidden;
 	width: 1.5rem;
@@ -87,31 +74,33 @@ html {
 	top: .5rem;
 	left: .5rem;
 }
-.rongyu_backtext {
+.qixia_backtext {
 	position: absolute;
 	top: .5rem;
 	left: 1.7rem;
 }
-.rongyu_ry {
+.qixia_qx {
 	position: absolute;
 	top: .5rem;
 	left: 8rem;
 }
-.rongyu_text {
-	background: #fff;
-	font-size: .6rem;
-	padding: 1rem .8rem;
-	border-bottom: 2px solid #cddde6;
+.xueyuan_texts {
+  width: 18rem;
+  background: white;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #cddde6;
 }
-.rongyu_text p {
-	line-height: 1.25rem;
-	color: #666;
+.xueyuan_content {
+  width: 18rem;
+  font-size: .6rem;
+  color: #666;
+  line-height: 1.2rem;
 }
 .mine_footer {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-  margin-bottom: 2rem;
 }
 .foot {
 	width: 4.5rem;
@@ -119,8 +108,7 @@ html {
 	border: 1px solid #afe;
 	font-size: .7rem;
 	color: gray;
-	margin-top: 2rem;
-	background: #fff;
+	margin-top: 1rem;
 }
 .home_ico {
 	width: 2rem;
@@ -161,5 +149,8 @@ html {
 	margin: 0 auto;
 	margin-top: .6rem;
 	margin-bottom: .2rem;
+}
+.foot p {
+  text-align: center;
 }
 </style>

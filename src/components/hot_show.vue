@@ -14,7 +14,6 @@
                           </div>
                           <div class="userContent">
                               <div>
-                                  <!-- {{ item.content }} -->
                                   {{ content[index] }}
                               </div>
                               <span class="seeMore">查看详情</span>
@@ -34,19 +33,18 @@
                               <div class="finger" @click="sayYes($event,index)" >
                                   <span class="right svg"></span>
                               </div>
-                              <!-- <span class="sayYes">{{ item.praiseCount }}</span> -->
                               <span class="sayYes">{{ num[index] }}</span>
                           </div>
                       </div>
                       <div class="showBuy" @click="goBuy(index)">
                           <span class="toBuy">去购买</span>
-                          <span class="svg"></span>
+                          <span class="svg"></span>
                       </div>
                   </div>
               </div>
               <div class="hot_ad" v-else>
                   <div class="">
-                      <div class="hot_ad_img">
+                      <div class="hot_ad_img" @click="goWabao()">
                           <img :src="item.titleImg" alt="">
                           <div class="img_view"></div>
                           <div class="hot_ad_title">
@@ -87,7 +85,7 @@
 
 <script>
 
-
+import Bus from '../bus'
 let tag = false;
 export default {
     data(){
@@ -98,6 +96,7 @@ export default {
             content : [],
             hasword : '',
             productId : '',
+            lineNumber : 1, // 数据懒加载的请求参数
         }
     },
     methods : {
@@ -118,29 +117,40 @@ export default {
         },
         more(id){
             this.$router.push({
-                path : '/hot_show_detail/' + id,
-                query : {
-                    commentShowDetail : id
-                }
+                path : '/hot_show_detail/' + id
             })
         },
         goBuy(index){
             this.$router.push({
                 path : '/product_detail/' + this.list[index].productId
             })
+            console.log(this.list[index]);
         },
         gouMai(productId){
             this.$router.push({
                 path : '/product_detail/' + productId
             })
-        }
-    },
-    filters:{
-        over(index){
-            if (this.content[index].length >= 30) {
-                // TODO
+        },
+        goWabao(){
+            this.$router.push({
+                path : '/home_wabao'
+            })
+        },
+        menu() {
+            this.scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            if ((this.scroll + 736) >= document.body.offsetHeight) {
+                this.$jsonp('http://las.secoo.com/api/show/hot_show_list?lineNumber=' + this.lineNumber + '%2C1%2Ccontent_2087%2C1%2C0&tagId=1&size=20&c_upk=affe88828a1641749c7e730b6483dcd9%7C464572656233%7Ccc4a951855c94198896b905a9d51c3a2%7CBF13678943951D86DD851ABD04D322F1&c_app_ver=1.0&c_channel=&c_device_id=98f0f00e-8938-48f9-b70c-e714487a8241&c_platform=&c_platform_type=&c_platform_ver=&c_screen_width=414&c_screen_height=736&_=1510727822330&callback').then(data=>{
+                    for (var item of data.list) {
+                        this.list.push(item);
+                        this.num.push(item.praiseCount);
+                        this.content.push(item.content);
+                    }
+                })
+                this.lineNumber -= 16;
             }
         },
+    },
+    filters:{
         haswords(str){
             if (str.indexof('content') != -1) {
                 this.hasword = true;
@@ -151,33 +161,35 @@ export default {
     },
     created(){
         this.$jsonp(this.url).then(data => {
-            console.log(data);
             this.list = data.list;
-            // console.log(this.list);
+            console.log(data);
             this.num = [];
             this.content = [];
             for (var item of data.list) {
                 this.num.push(item.praiseCount);
                 this.content.push(item.content);
             }
+            this.lineNumber = parseInt(data.list[18].id);
         })
     },
     watch : {
         '$route'(newValue, oldValue){
             this.url = 'http://las.secoo.com/api/show/hot_show_list?lineNumber=1&tagId=' + this.$route.params.id + '&size=20&c_upk=&c_app_ver=1.0&c_channel=&c_device_id=98f0f00e-8938-48f9-b70c-e714487a8241&c_platform=&c_platform_type=&c_platform_ver=&c_screen_width=414&c_screen_height=736&_='+ Math.random() + '&callback';
             this.$jsonp(this.url).then(data => {
-                // console.log(data);
                 this.list = data.list;
-                // console.log(this.list);
                 this.num = [];
                 this.content = [];
                 for (var item of data.list) {
                     this.num.push(item.praiseCount);
                     this.content.push(item.content);
                 }
+                this.lineNumber = parseInt(data.list[18].id);
             })
         }
-    }
+    },
+    mounted(){
+         window.addEventListener('scroll', this.menu)
+    },
 }
 </script>
 

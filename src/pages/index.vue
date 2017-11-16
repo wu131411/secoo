@@ -1,6 +1,11 @@
 <template lang="html">
    <section>
+      <Future></Future>
+
+      <!-- <Future></Future> -->
+
       <Future v-for="listArr in result"  :obj="listArr"></Future>
+
    </section>
 </template>
 
@@ -9,6 +14,7 @@
 import Future from '../components/future'
 
 export default {
+
    data(){
       return{
          result:{}
@@ -17,7 +23,6 @@ export default {
    created(){
       this.$jsonp('//android.secoo.com/appservice/cartAndBrand.action?v=2.0').then(data => {
          this.result = data.rp_result.categorys
-         // console.log(this.result);
       })
    },
    components:{
@@ -27,9 +32,7 @@ export default {
 </script>
 
 <style lang="css">
-.two .router-link-active{
-   border: none;
-   color: #fff;
-   background-color: #474747;
+section{
+   margin-top: 2.7rem;
 }
 </style>
