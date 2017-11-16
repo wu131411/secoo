@@ -24,8 +24,8 @@
       <div class="black-list">
          <a href="#">A</a>
          <a href="#">B</a>
-         <a href="#C">C</a>
-         <a href="#D">D</a>
+         <a href="#">C</a>
+         <a href="#">D</a>
          <a href="#">E</a>
          <a href="#">F</a>
          <a href="#">G</a>

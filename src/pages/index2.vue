@@ -1,8 +1,6 @@
 <template lang="html">
    <div class="top">
-      <div class="">
-         <Brands></Brands>
-      </div>
+      <Brands></Brands>
    </div>
 </template>
 

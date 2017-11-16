@@ -17,16 +17,13 @@ Vue.use(VueAwesomeSwiper)
 //引入vue-jsonp模块
 import VueJsonp from "vue-jsonp"
 Vue.use(VueJsonp)
-<<<<<<< HEAD
-// 引入占位模块
-import VueOccupy from 'vue-occupy'
-Vue.use(VueOccupy)
 
-// Vue.prototype.axios = Axios
-=======
+// 引入UI组件库
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
 
 
->>>>>>> 22563648a027f4fda145a0a99954275594294dd5
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

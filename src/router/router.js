@@ -12,17 +12,11 @@ import HomeShehua from "../pages/home_shehua"
 import HomeInter from "../pages/home_inter"
 
 //hot尖货
-import Hot from "../pages/hot"
-import HotShow from '../components/hot_show'
-import HotShowDetail from '../components/hot_show_detail'
+// import Hot from "../pages/hot"
+// import HotShow from '../components/hot_show'
+// import HotShowDetail from '../components/hot_show_detail'
 // 商品详情页
 import ProductDetail from '../components/product_detail'
-
-//list分类
-import List from "../pages/list"
-import Index from "../pages/index"
-import Index2 from "../pages/index2"
-import Three from "../pages/three"
 
 //bag购物袋
 import Bag from "../pages/bag"
@@ -41,22 +35,21 @@ import Minepmq from "../pages/mine_pmq"//我的拍卖券
 import Minepmqpmq from "../pages/mine_pmq_pmq"//我的拍卖券二级页面
 import Mineseaout from "../pages/mine_seaout"//海外站购买说明
 import Mineabout from "../pages/mine_about" //关于寺库
-<<<<<<< HEAD
 
 //list分类
 import List from "../pages/list"
 import Index from "../pages/index"
 import Index2 from "../pages/index2"
 import Three from "../pages/three"
-import Threetwo from "../pages/threetwo"
-import Threethree from "../pages/threethree"
+// import Xiala from "../pages/xiala"
+// import Threetwo from "../pages/threetwo"
+// import Threethree from "../pages/threethree"
 
 //hot尖货
 import Hot from "../pages/hot"
 import HotShow from '../components/hot_show'
 import HotShowDetail from '../components/hot_show_detail'
 
-=======
 import Mineaboutqy from "../pages/mine_aboutqy"//关于寺库二级页面——寺库起源
 import Mineaboutqx from "../pages/mine_aboutqx"//关于寺库二级页面——旗下品牌
 import Mineaboutqxhuisuo from "../pages/mine_aboutqx_huisuo"//旗下品牌三级页面库会所
@@ -65,7 +58,6 @@ import Mineaboutqxyanghu from "../pages/mine_aboutqx_yanghu"//旗下品牌三级
 import Mineaboutqxxueyuan from "../pages/mine_aboutqx_xueyuan"//旗下品牌三级页面寺库商学院
 
 import Mineaboutry from "../pages/mine_aboutry"//关于寺库二级页面——集团荣誉
->>>>>>> 22563648a027f4fda145a0a99954275594294dd5
 //VUE中使用router
 Vue.use(VueRouter)
 
@@ -95,33 +87,19 @@ let routes = [
     {path : "/list", component : List, meta : {navShow : false}, children :[
       { path : '/list',component : Index},
       { path : '/list/index',component: Index},
-<<<<<<< HEAD
       { path : '/list',component : Index2},
-      { path : '/list/index2',component: Index2}]
-    },
-    {name: 'three',path: '/list/three',component:Three,children:[
-      {path: '/three/threetwo',component:Threetwo},
-      {path: '/three/threethree',component:Threethree}
+      { path : '/list/index2',component: Index2}
    ]},
-   //  {name: 'xiala',path: '/list/three/',component:Three},
+    {name: 'three',path: '/list/three',component:Three},
 
 
     //bag购物袋
     {path : "/bag", component : Bag, meta : {navShow : false}},
 
-
-
    // mine我的页面路由
-=======
-      { path : '/list/index2',component: Index2}
-    ]},
-    {path:'/three/:id',component: Three},
-
-    // bag
-    {path : "/bag", component : Bag, meta : {navShow : false}},
+   //  {path:'/three/:id',component: Three},
 
     // mine
->>>>>>> 22563648a027f4fda145a0a99954275594294dd5
     {path : "/mine", component : Mine, meta : {navShow : false}},
     {path : "/mine_zh", component : Minezh},
     {path : "/mine_dl", component : Minedl},

@@ -4,7 +4,7 @@
         <!-- 轮播图 -->
        <div @click="go()" class="home-banner" >
             <swiper :options="swiperOption" ref="mySwiper">
-                <swiper-slide v-for="item in home_swiper">
+                <swiper-slide v-for="item in home_swiper" :key="item.key">
                     <img :src="item.img">
                 </swiper-slide>
                 <div class="swiper-pagination"  slot="pagination"></div>
