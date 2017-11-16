@@ -58,7 +58,9 @@
 export default {
 	methods: {
 		back() {
-      history.back()
+      this.$router.push({
+				path:"/mine_about"
+			})
     }
 	}
 }
@@ -89,7 +91,7 @@ html {
 }
 .rongyu_backtext {
 	position: absolute;
-	top: .5rem;
+	top: .6rem;
 	left: 1.7rem;
 }
 .rongyu_ry {

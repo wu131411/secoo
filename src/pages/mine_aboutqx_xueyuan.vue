@@ -5,7 +5,7 @@
         <span class="qixia_back"></span>
         <span class="qixia_backtext">返回</span>
       </div>
-      <span class="qixia_qx">养护中心</span>
+      <span class="qixia_qx">寺库商学院</span>
     </div>
     <div class="xueyuan_texts">
       <p class="xueyuan_content">师资力量雄厚，由国内奢侈品领域权威性大学教授、行业专家、奢侈品品牌高管等担任。课程涉及奢侈品文化管理、鉴定、营销等方面</p>
@@ -46,7 +46,9 @@
 export default {
   methods: {
     back() {
-      history.back()
+      this.$router.push({
+				path:"/mine_aboutqx"
+			})
     }
   }
 }
@@ -76,7 +78,7 @@ html {
 }
 .qixia_backtext {
 	position: absolute;
-	top: .5rem;
+	top: .6rem;
 	left: 1.7rem;
 }
 .qixia_qx {

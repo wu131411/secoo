@@ -24,7 +24,6 @@ import VueOccupy from 'vue-occupy'
 Vue.use(VueOccupy)
 
 
-
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
