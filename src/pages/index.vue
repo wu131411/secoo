@@ -1,11 +1,14 @@
 <template lang="html">
    <section>
       <Future></Future>
+<<<<<<< HEAD
+=======
 
       <!-- <Future></Future> -->
 
       <Future v-for="listArr in result"  :obj="listArr"></Future>
 
+>>>>>>> 71f03a8c7b3eb0048eb0541d125ad80beb1a0f9e
    </section>
 </template>
 

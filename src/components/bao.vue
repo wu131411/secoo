@@ -1,23 +1,38 @@
 <template lang="html">
    <li class="bao">
-      <dl class="dl" v-for = "item in obj">
+      <dl class="dl" v-for = "item in obj" @click="goDetail(item)">
          <dt><img :src=" a + item.imgUrl" alt=""></dt>
          <dd class="dd">
             <h6>{{item.productName}}</h6>
-            <p><b>{{'￥'+item.refPrice}}</b></p>
+            <p><b>{{item.refPrice}}</b></p>
          </dd>
       </dl>
    </li>
 </template>
 
 <script>
+
+// import { InfiniteScroll } from 'mint-ui'
+// import Vue from 'vue'
+// Vue.use(InfiniteScroll)
+
 export default {
    data(){
       return{
          a : "http://pic.secoo.com/product/200/200/"
       }
    },
-   props:['obj']
+   props:['obj'],
+   methods : {
+      goDetail(item){
+         this.$router.push({
+            path : '/product_detail/' + item.productId
+         })
+      }
+   },
+   created(){
+      // console.log(this.obj);
+   }
 
 }
 </script>

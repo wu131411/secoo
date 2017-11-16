@@ -18,10 +18,10 @@ Vue.use(VueAwesomeSwiper)
 //引入vue-jsonp模块
 import VueJsonp from "vue-jsonp"
 Vue.use(VueJsonp)
-
-// 引入占位模块
-import VueOccupy from 'vue-occupy'
-Vue.use(VueOccupy)
+// 引入UI组件库
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
 
 
 Vue.config.productionTip = false

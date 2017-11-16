@@ -1,8 +1,7 @@
  <template lang="html">
-    <div class="lazy_load _eventBind">
         <div class="products mtArea">
             <ul class="activityHandles">
-                <li v-for="item in data">
+                <li @click="san()" v-for="item in data">
                     <div>
                         <img :src="item.img" alt="">
                     </div>
@@ -12,11 +11,17 @@
                 </li>
             </ul>
         </div>
-    </div>
 </template>
 
 <script>
 export default {
+    methods:{
+        san(){
+            this.$router.push({
+                path:'/product_detail/22986660'
+            })
+        }
+    },
     data(){
         return{
             data:{}
@@ -83,7 +88,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
     .mtArea {
         margin-bottom: 0.53rem;
     }
@@ -99,15 +104,18 @@ export default {
         overflow-x: auto;
         overflow-y: hidden;
     }
-    .products li {
+    .products ul li {
         padding: 0.267rem 0.8rem 0 0;
         width: 6.933333rem;
     }
-    .products div {
+    .products ul li div {
         height: 6.933333rem;
         overflow: hidden;
         position: relative;
-        z-index: -4;
+        width: 100%;
+    }
+    .products ul li div img{
+        width: 100%;
     }
     .products li:nth-child(1) {
         padding-left: 0.8rem;

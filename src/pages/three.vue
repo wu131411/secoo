@@ -31,20 +31,17 @@
             <div class="pin" @click="pinxiala()">
                品牌
             </div>
-            <div class="shai" @click="shaixuan()">
+            <div class="shai" @click="shaixuanxiala()">
                筛选
             </div>
          </div>
       </div>
       <div class="bao-wrap" v-if='dibu'>
          <ul>
-            <Bao :obj="result"></Bao>
+            <Bao :obj="resultZ"></Bao>
          </ul>
       </div>
-      <div class="bao-wrap2">
-
-      </div>
-      <div class="downArr" v-if="bol">
+      <mt-popup class="downArr" v-model="pop" position="bottom">
          <p>热门搜索</p>
          <ul>
             <li>爆款</li>
@@ -54,7 +51,7 @@
             <li>Fendi包税</li>
             <li>欧米茄</li>
          </ul>
-      </div>
+      </mt-popup>
       <div id="zonghe-bai" class="zong-xiala" v-if='zonghe'>
        <div id="zonghe-hei" class="zong-bai">
           <ul class="zong-ul">
@@ -65,36 +62,106 @@
           </ul>
        </div>
       </div>
-      <div class="zong-xiala" v-if="pinpai">
-         <div class="zong-bai">
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
-               <h1>品牌</h1>
+      <div id="zongheb" class="zong-xiala" v-if="pinpai">
+         <div id="zongheh" class="zong-bai">
+            <div class="bao-wrap2">
+               <ul id="pin-ul">
+                  <li v-for="index in resultPin">{{index.name}}</li>
+               </ul>
             </div>
+         </div>
+      </div>
+      <div id="hei" class="zong-xiala" v-if="shaixuan">
+         <div id="bai" class="zong-bai">
+            <ul class="shai-ul">
+               <li>
+                  <dl>
+                     <dt><b>{{name.name}}</b></dt>
+                     <dd>
+                        <a href="#" v-for = "index in (name.value)">{{index.name}}</a>
+                     </dd>
+                  </dl>
+               </li>
+               <li>
+                  <dl>
+                     <dt><b>{{name3.name}}</b></dt>
+                     <dd>
+                        <a href="#">1000以下</a>
+                        <a href="#">1001-2000</a>
+                        <a href="#">2001-5000</a>
+                        <a href="#">5001-10000</a>
+                        <a href="#">10001-50000</a>
+                        <a href="#">50001-100000</a>
+                        <a href="#">100001以上</a>
+                     </dd>
+                  </dl>
+               </li>
+               <li>
+                  <dl>
+                     <dt><b>{{name4.name}}</b></dt>
+                     <dd>
+                        <a href="#" v-for = "index in name4.value">{{index.name}}</a>
+                     </dd>
+                  </dl>
+               </li>
+               <li>
+                  <dl>
+                     <dt><b>{{name5.name}}</b></dt>
+                     <dd>
+                        <a href="#" v-for = "index in name5.value">{{index.name}}</a>
+                     </dd>
+                  </dl>
+               </li>
+               <li>
+                  <dl>
+                     <dt><b>{{name6.name}}</b></dt>
+                     <dd>
+                        <a href="#" v-for = "index in name6.value">{{index.name}}</a>
+                     </dd>
+                  </dl>
+               </li>
+               <li>
+                  <dl>
+                     <dt><b>{{name7.name}}</b></dt>
+                     <dd>
+                        <a href="#" v-for = "index in name7.value">{{index.name}}</a>
+                     </dd>
+                  </dl>
+               </li>
+               <li>
+                  <dl>
+                     <dt><b>{{name8.name}}</b></dt>
+                     <dd>
+                        <a href="#" v-for = "index in name8.value">{{index.name}}</a>
+                     </dd>
+                  </dl>
+               </li>
+               <li>
+                  <dl>
+                     <dt><b>{{name9.name}}</b></dt>
+                     <dd>
+                        <a href="#" v-for = "index in name9.value">{{index.name}}</a>
+                     </dd>
+                  </dl>
+               </li>
+               <li>
+                  <dl>
+                     <dt><b>{{name10.name}}</b></dt>
+                     <dd>
+                        <a href="#" v-for = "index in name10.value">{{index.name}}</a>
+                     </dd>
+                  </dl>
+               </li>
+               <li>
+                  <dl>
+                     <dt><b>{{name11.name}}</b></dt>
+                     <dd>
+                        <a href="#" v-for = "index in name11.value">{{index.name}}</a>
+                     </dd>
+                  </dl>
+               </li>
+            </ul>
+         </div>
       </div>
      <router-view></router-view>
    </div>
@@ -103,18 +170,24 @@
 <script>
 
 import Bao from '../components/bao'
+import { Toast } from 'mint-ui'
+import Vue from 'vue'
+import { Popup } from 'mint-ui';
+Vue.component(Popup.name, Popup);
 
 export default {
    data(){
       return{
          fag:true,
-         dibu:true,
-         result : {},
-         bol:false,
+         resultZ : {},
+         resultZtwo:{},
+         resultPin:{},
+         pop:false,
          dibu:true,
          sou:true,
          closs:false,
          zonghe:false,
+         shaixuan:false,
          active1:'color',
          active2:'',
          active3:'',
@@ -123,12 +196,23 @@ export default {
          ss:false,
          xx:false,
          kk:false,
-         pinpai:false
+         pinpai:false,
+         result:{},
+         name:'',
+         name3:'',
+         name4:'',
+         name5:'',
+         name6:'',
+         name7:'',
+         name8:'',
+         name9:'',
+         name10:'',
+         name11:''
       }
    },
    created(){
       this.$jsonp('http://m.secoo.com/appservice/search_cateGoods.action?categoryId=_30_31_&orderType=1&currPage=1&st=10&_=1510385321636&callback:').then(data => {
-         this.result = data.rp_result.productlist
+         this.resultZ = data.rp_result.productlist
          this.fag = false
       })
    },
@@ -145,16 +229,25 @@ export default {
          })
       },
       down(){
-         this.bol = true
+         this.pop = true
          this.sou = false
          this.closs = true
       },
       clossdon(){
-         this.bol = false
+         this.pop = false
          this.closs = false
          this.sou = true
       },
       zongxiala(){
+         // if (this.zonghe == true || this.dibu == false || this.pinpai == true) {
+         //    this.zonghe = false
+         //    this.dibu = true
+         //    this.pinpai = false
+         // }else {
+         //    this.zonghe = true
+         //    this.dibu = false
+         //    this.pinpai = false
+         // }
          if (this.zonghe == true && this.dibu == false) {
             this.zonghe = false
             this.dibu = true
@@ -162,18 +255,52 @@ export default {
             this.zonghe = true
             this.dibu = false
          }
-         pinpai:false
+         this.pinpai = false
+         this.shaixuan = false
       },
       pinxiala(){
-         if (this.pinpai == true) {
+         // this.pinpai = true
+         if (this.pinpai == true && this.dibu == false) {
             this.pinpai = false
+            this.dibu = true
          }else {
             this.pinpai = true
+            this.dibu = false
          }
+         this.zonghe = false
+         this.shaixuan = false
+         this.$jsonp('http://m.secoo.com/appservice/search_cateGoods.action?categoryId=_30_31_&orderType=3&currPage=1&st=10&_=1510659850918&callback:').then(data => {
+            this.resultPin = data.rp_result.filterlist[1].value
+            console.log(this.resultPin);
+         })
+      },
+      shaixuanxiala(){
+         if (this.shaixuan == true && this.dibu == false) {
+            this.shaixuan = false
+            this.dibu = true
+         }else {
+            this.shaixuan = true
+            this.dibu = false
+         }
+         this.zonghe = false
+         this.pinpai = false
+         this.$jsonp('http://m.secoo.com/appservice/search_cateGoods.action?categoryId=_30_31_&orderType=1&currPage=1&st=10&_=1510552205474&callback:').then(data => {
+            this.result = data.rp_result.filterlist
+            this.name = this.result[2];
+            this.name3 = this.result[3];
+            this.name4 = this.result[4];
+            this.name5 = this.result[5];
+            this.name6 = this.result[6];
+            this.name7 = this.result[7];
+            this.name8 = this.result[8];
+            this.name9 = this.result[9];
+            this.name10 = this.result[10];
+            this.name11 = this.result[11];
+         })
       },
       sheng(){
          this.$jsonp('http://m.secoo.com/appservice/search_cateGoods.action?categoryId=_30_31_&orderType=3&currPage=1&st=10&_=1510659850918&callback:').then(data => {
-            this.result = data.rp_result.productlist
+            this.resultZ = data.rp_result.productlist
          })
          this.zonghe = false
          this.active1 = ''
@@ -185,10 +312,15 @@ export default {
          this.kk = false
          this.ss = true
          this.dibu = true
+         Toast({
+            message: '已刷新',
+            position: '中',
+            duration: 2000
+         });
       },
       zong(){
          this.$jsonp('http://m.secoo.com/appservice/search_cateGoods.action?categoryId=_30_31_&orderType=1&currPage=1&st=10&_=1510385321636&callback:').then(data => {
-            this.result = data.rp_result.productlist
+            this.resultZ = data.rp_result.productlist
          })
          this.zonghe = false
          this.active1 = 'color'
@@ -200,10 +332,15 @@ export default {
          this.kk = false
          this.ss = false
          this.dibu = true
+         Toast({
+            message: '已刷新',
+            position: '中',
+            duration: 2000
+         });
       },
       jiang(){
          this.$jsonp('http://m.secoo.com/appservice/search_cateGoods.action?categoryId=_30_31_&orderType=4&currPage=1&st=10&_=1510659969197&callback:').then(data => {
-            this.result = data.rp_result.productlist
+            this.resultZ = data.rp_result.productlist
          })
          this.zonghe = false
          this.active1 = ''
@@ -215,10 +352,15 @@ export default {
          this.kk = false
          this.ss = false
          this.dibu = true
+         Toast({
+            message: '已刷新',
+            position: '中',
+            duration: 2000
+         });
       },
       zhe(){
          this.$jsonp('http://m.secoo.com/appservice/search_cateGoods.action?categoryId=_30_31_&orderType=9&currPage=1&st=10&_=1510660077923&callback:').then(data => {
-            this.result = data.rp_result.productlist
+            this.resultZ = data.rp_result.productlist
          })
          this.zonghe = false
          this.active1 = ''
@@ -230,6 +372,11 @@ export default {
          this.kk = true
          this.ss = false
          this.dibu = true
+         Toast({
+            message: '已刷新',
+            position: '中',
+            duration: 2000
+         });
       }
    }
 }
@@ -261,7 +408,7 @@ export default {
 }
 .list .bor{
    border-bottom: 1px solid #eee;
-   z-index: 100;
+   z-index:10000;
    background-color: #fff;
 }
 .input{
@@ -301,18 +448,22 @@ export default {
 .nav-wrapper{
    display: flex;
    justify-content: center;
-   z-index: 12;
+   /*z-index: 12;*/
 }
-/*.bao-wrap{
-   position: fixed;
+.bao-wrap{
+   position: absolute;
    top: 5.7rem;
-}*/
+   z-index: 10
+}
 .nav-container{
-   z-index:10;
-   margin-top: 3rem;
+   z-index:12;
+   /*margin-top: 3rem;*/
+   padding-top: 0.2rem;
+   position: fixed;
+   top: 2.7rem;
    width:96%;
    display: flex;
-   height:100%;
+   /*height:100%;*/
    background-color: #fff;
    border-bottom: 1px solid #cccccc;
 }
@@ -338,6 +489,7 @@ export default {
    top: 2.7rem;
    width:100%;
    padding: 0 2rem;
+   margin: 0 2rem;
 }
 .downArr p{
    margin: 0.7rem 0;
@@ -357,13 +509,13 @@ export default {
 
 /*综合页*/
 #zonghe-bai,#zonghe-hei{
-   height: 100%;
+   height:93%;
 }
 .zong-xiala{
    background-color:rgba(0,0,0,.6);
    z-index:1;
    position: absolute;
-   top:2.4rem;
+   top:2.6rem;
    width:100%;
    height:auto;
    display: flex;
@@ -388,4 +540,47 @@ export default {
 .zong-ul .color{
    color: #baa071;
 }
+/*品牌页*/
+.bao-wrap2{
+   padding: 0 1.5rem;
+   background: #fff;
+}
+#pin-ul{
+   width:100%;
+   display: flex;
+   flex-wrap: wrap;
+}
+#pin-ul li{
+   font-size: 0.6rem;
+   width:50%;
+   color: #737373;
+   margin-top: 2rem;
+}
+/*筛选页*/
+#hei,#bai,#zongheb,#zongheh{
+   height:auto;
+}
+.shai-ul li dl{
+   border-bottom: 1px solid #ebebeb;
+   padding:1rem;
+}
+.shai-ul li dl dt{
+   font-size: 0.8rem;
+   margin:0.5rem 0;
+}
+.shai-ul li dl dd{
+   font-size: 0.5rem;
+}
+.shai-ul li dl dd a{
+   display: inline-block;
+   color:#737373;
+   text-align: left;
+   width:32.333333%;
+   padding:0.4rem 0;
+   margin: 0.4rem 0;
+}
+/*#hei{
+   position: absolute;
+   top:2.6rem;
+}*/
 </style>

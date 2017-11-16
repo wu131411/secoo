@@ -7,14 +7,14 @@
       </div>
 			<span class="mine_siku">我的寺库</span>
       <router-link to="/mine_dl">
-        <span class="mine_close"></span>
+        <span class="mine_close" @click="clearCookie()"></span>
       </router-link>
 	  </div>
     <router-link to="/mine_zh">
       <div class="mine_user">
   			<span class="user_ico"></span>
   			<span class="user_text">账户</span>
-  			<span class="user_num"></span>
+  			<span class="user_num">{{ user_name }}</span>
   			<span class="user_r"></span>
   		</div>
     </router-link>
@@ -101,12 +101,40 @@
 </template>
 
 <script>
+import setCookie from "../../static/js/setCookie"
+import getCookie from "../../static/js/getCookie"
+import delCookie from "../../static/js/delCookie"
 export default {
-methods: {
-  back() {
-    history.back()
+  data() {
+    return {
+      user_name:''
+    }
+  },
+  methods: {
+    back() {
+      this.$router.push({
+        path:"/home"
+      })
+    },
+    clearCookie() {
+      delCookie('userVal')
+      delCookie('passVal')
+      delCookie('yzmVal')
+      this.user_name = ''
+    }
+  },
+  created() {
+    if (getCookie('userVal')) {
+      this.user_name = getCookie('userVal')
+    }else {
+      setTimeout(()=> {
+        this.$router.push({
+  				path:"/mine_dl"
+  			})
+      },1000)
+
+    }
   }
-}
 }
 </script>
 
@@ -184,6 +212,13 @@ html {
   line-height: 2.3rem;
 	position: absolute;
 	left: 2.5rem;
+}
+.user_num {
+  position: absolute;
+  top: .5rem;
+  right: 2rem;
+  font-size: 1rem;
+  /*font-weight: bold;*/
 }
 .user_r {
 	float: right;

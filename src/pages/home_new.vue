@@ -4,22 +4,26 @@
       <HomeHead></HomeHead>
       <!-- section -->
       <section class="activtyApp_c">
+          <!-- 头部图片 -->
           <div class="top_panel activityHandle mtArea">
               <img src="//pic12.secooimg.com/comment/17/11/2a88e974f40e4ac8afb4485a2cbe7e29.jpg" alt="">
           </div>
 
+          <!-- 首饰榜单 -->
           <div class="r_title">
               <span class="fontTopPro icon-top"></span>
               首饰榜单
           </div>
           <HomeList></HomeList>
 
+          <!-- 家居专场 -->
           <div class="r_title">
               <span class="fontTopPro icon-top"></span>
               家具专区
           </div>
           <HomeList></HomeList>
 
+          <!-- 新客必逛专区 -->
           <div class="r_title">
               <span class="fontTopPro icon-top"></span>
               新客必逛专区
@@ -51,6 +55,7 @@
               </div>
           </div>
 
+          <!-- 新人推荐top榜 -->
           <div class="r_title">
               <span class="fontTopPro icon-top"></span>
               新人推荐top榜
@@ -69,6 +74,8 @@
           </div>
           <!-- 商品小图排列 -->
           <HomeGoods id="new"></HomeGoods>
+
+          <HomeTop></HomeTop>
       </section>
   </div>
 </template>
@@ -77,6 +84,7 @@
 import HomeHead from "../components/home_head"
 import HomeList from "../components/home_list"
 import HomeGoods from "../components/home_goods"
+import HomeTop from "../components/home_top"
 export default {
     data () {
         return {
@@ -86,7 +94,8 @@ export default {
     components:{
         HomeHead,
         HomeList,
-        HomeGoods
+        HomeGoods,
+        HomeTop
     },
     methods : {
         handleScroll () {
@@ -114,6 +123,10 @@ export default {
     .mtArea {
       margin-bottom: 0.26rem;
     }
+    .activtyApp_c{
+        background-color: white;
+        margin-top: 0;
+    }
     .top_panel {
         width: 100%;
     }
@@ -128,12 +141,12 @@ export default {
         text-indent: 0.8rem;
     }
     .fontTopPro {
-        font-size: 0.5rem;
-        line-height: 1;
-        margin-right: 0.32rem;
+        font-size: 0.7rem;
+        line-height: 1rem;
     }
     .icon-top:before {
-        content: "\e606";
+        content: "\e901";
+        font-family: 'icomoon';
     }
 
     .twelfth_floor {
