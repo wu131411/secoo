@@ -135,7 +135,7 @@ import HomeHead from "../components/home_head"
 export default {
     components:{
         HomeHead
-    }
+    },
 }
 </script>
 

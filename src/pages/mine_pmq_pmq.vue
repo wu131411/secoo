@@ -16,7 +16,7 @@
 				<p>金额拍卖券付款时可抵扣货款，未使用或用券拍卖未成功，可按购买价退券。</p>
 			</div>
   	</div>
-		<div v-else>
+		<div v-else style="height:30rem">
 			<div class="buy_pmqs"><p class="quansimg">拍卖券</p><p class="quansmoney">金额</p></div>
 			<div class="pmqone" @click="selectOne($event)" :class="{'unselect':isA,'select':isB}">
 				<span class="pmq_imgl"></span>
@@ -156,7 +156,7 @@ export default {
 }
 .my_texts {
 	width: 19rem;
-	height: 45rem;
+	height: 30rem;
 	background: white;
 }
 .my_texts p {

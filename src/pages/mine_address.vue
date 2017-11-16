@@ -85,7 +85,7 @@ export default {
 }
 .dizhi_dz {
 	position: absolute;
-	top: .5rem;
+	top: .65rem;
 	left: 8rem;
 }
 .dizhi_r {
@@ -105,6 +105,10 @@ export default {
   background: #f6f6f6;
   text-align: center;
   line-height: 5rem;
+}
+.add_info {
+  color: #666;
+  font-size: .9rem;
 }
 .kong {
   width: 20rem;

@@ -1,21 +1,20 @@
 <!-- 分类 -->
 <template lang="html">
      <div class="list">
-        <div class="header">
-          <div @click='back()' class="imgArr">
-             <img src="../../static/images/list-goback.png" alt="">
+       <div class="header">
+         <div @click='back()' class="imgArr">
+            <img src="../../static/images/list-goback.png" alt="">
+         </div>
+          <div class="two">
+             <p class="p1" @click="bianse()" :class="color"><router-link to="/list/index">分类</router-link></p>
+             <p class="p2" @click="bianse2()" :class="colortwo"><router-link to="/list/index2">品牌</router-link></p>
           </div>
-           <div class="two">
-              <p class="p1"><router-link to="/list/index">分类</router-link></p>
-              <p class="p2"><router-link to="/list/index2">品牌</router-link></p>
-           </div>
-           <div class="imgArr">
-              <img src="../../static/images/list-home.png" alt="" >
-           </div>
-       </div>
-       <router-view></router-view>
-     </div>
-
+          <div @click="home()" class="imgArr">
+             <img src="../../static/images/list-home.png" alt="" >
+          </div>
+      </div>
+      <router-view></router-view>
+    </div>
 </template>
 
 <script>
@@ -25,7 +24,8 @@
 export default {
    data(){
       return {
-         tag : true
+         color:'black',
+         colortwo:''
       }
    },
    methods:{
@@ -33,9 +33,17 @@ export default {
          history.back()
       },
       home(){
-         this.$route.push({
-            path:'home'
+         this.$router.push({
+            path:'/home'
          })
+      },
+      bianse(){
+         this.color = 'black';
+         this.colortwo = '';
+      },
+      bianse2(){
+         this.color = ' ';
+         this.colortwo = 'black';
       }
    }
 }
@@ -44,13 +52,34 @@ export default {
 </script>
 
 <style lang="css">
+/*.bounce-enter-active{
+   transition:all .5s ease;
+}
+.bounce-leave-active{
+   transition:all .8s cubic-bezier(1.0,0.5,0.8,1.0)
+}
+.bounce-fade-enter,.bounce-leave-to{
+   transform: translateX(10px);
+   opacity:0
+}*/
+.black{
+   background-color: #474747;
+
+}
+.black a{
+   color: #fff;
+}
 html{
    font-size:20rem;
 }
 .header{
+   position: fixed;
+   top: 0;
+   width:100%;
    display: flex;
    justify-content: space-around;
    height:2.7rem;
+   background-color: #fff;
    align-items: center;
    border-bottom: 1px solid #adadad;
 }
@@ -91,5 +120,10 @@ html{
 .imgArr img{
    width: 1.2rem;
    height:1.2rem;
+}
+section{
+   /*position: fixed;
+   top:2.7rem;*/
+   /*margin-top: 2.7rem;*/
 }
 </style>

@@ -97,7 +97,7 @@ html {
 }
 .yhq_nav {
 	width: 18rem;
-	margin: 0 auto;
+	margin: .5rem auto;
 	height: 1.5rem;
 	border: 1px solid #7148bf;
   margin-bottom: 3rem;

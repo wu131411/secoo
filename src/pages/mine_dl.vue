@@ -29,7 +29,7 @@
 						<span>{{ yzm }}</span>
 					</div>
 				</div>
-				<button type="button" name="button" class="dl_btn" @click="denglu()">登录</button>
+				<button type="button" name="button" class="minedl_btn" @click="denglu()">登录</button>
 				<div class="dl_foot">
 					<span class="dlqq_icon"></span><span class="dlqq_text">QQ登录</span>
 				</div>
@@ -265,7 +265,7 @@ html {
 	top: .8rem;
 
 }
-.dl_btn {
+.minedl_btn {
 	width: 18rem;
 	height: 2.5rem;
 	margin: 0 1rem;
@@ -273,12 +273,17 @@ html {
 	background: black;
 	border: none;
 	outline: none;
+	position: fixed;
+	top: 21rem;
+	font-size: .9rem;
 }
 .dl_foot {
 	width: 20rem;
 	height: 6rem;
 	text-align: center;
 	line-height: 6rem;
+	position: fixed;
+	top: 23rem;
 }
 .dlqq_icon {
 	display: inline-block;

@@ -11,21 +11,30 @@ import HomeNew from "../pages/home_new"
 import HomeShehua from "../pages/home_shehua"
 import HomeInter from "../pages/home_inter"
 
+
 //hot尖货
 import Hot from "../pages/hot"
 import HotShow from '../components/hot_show'
 import HotShowDetail from '../components/hot_show_detail'
+
 // 商品详情页
 import ProductDetail from '../components/product_detail'
+
 
 //list分类
 import List from "../pages/list"
 import Index from "../pages/index"
 import Index2 from "../pages/index2"
 import Three from "../pages/three"
+import Threetwo from "../pages/threetwo"
+import Threethree from "../pages/threethree"
 
 //bag购物袋
 import Bag from "../pages/bag"
+import BagOne from "../components/bag_one"
+import BagTwo from "../components/bag_two"
+
+
 
 //mine我的
 import Mine from "../pages/mine"
@@ -41,6 +50,7 @@ import Minepmq from "../pages/mine_pmq"//我的拍卖券
 import Minepmqpmq from "../pages/mine_pmq_pmq"//我的拍卖券二级页面
 import Mineseaout from "../pages/mine_seaout"//海外站购买说明
 import Mineabout from "../pages/mine_about" //关于寺库
+
 import Mineaboutqy from "../pages/mine_aboutqy"//关于寺库二级页面——寺库起源
 import Mineaboutqx from "../pages/mine_aboutqx"//关于寺库二级页面——旗下品牌
 import Mineaboutqxhuisuo from "../pages/mine_aboutqx_huisuo"//旗下品牌三级页面库会所
@@ -49,43 +59,62 @@ import Mineaboutqxyanghu from "../pages/mine_aboutqx_yanghu"//旗下品牌三级
 import Mineaboutqxxueyuan from "../pages/mine_aboutqx_xueyuan"//旗下品牌三级页面寺库商学院
 
 import Mineaboutry from "../pages/mine_aboutry"//关于寺库二级页面——集团荣誉
+
 //VUE中使用router
 Vue.use(VueRouter)
 
 //创建路由规则
 let routes = [
-    {path : "/", component : Home, meta : {navShow : true}},
+    {path : "/", redirect : '/home', meta : {navShow : true}},
 
     // home
-    {path : "/home", component : Home, meta : {navShow : true},children:[
-    ]},
-    {path:"/home_overseas",component:Home_overseas},
+    {path : "/home", component : Home, meta : {navShow : true}},
+    {path:"/home_overseas", component:Home_overseas},
     {path:"/home_zhuanguiziti/",component:Home_zhuanguiziti},
-    {path:"/home_wabao",component:Home_wabao},
     {path:"/home_new",component:HomeNew},
     {path:"/home_inter",component:HomeInter},
     {path:"/home_shehua",component:HomeShehua},
+
 
     // hot
     {path : "/hot", component : Hot, meta : {navShow : false},children:[
         {path : '/hot/hot_show/:id', component : HotShow},
         {path : '/hot',component : HotShow},
-        {path : '/hot/hot_show/:id', component : HotShow},
+        // {path :'/hot/hot_show_detail/:id',component : HotShowDetail},
     ]},
     {path :'/hot_show_detail/:id',component : HotShowDetail},
+    // 商品详情页
+    {path : '/product_detail/:productId',component : ProductDetail},
+
 
     //list列表
     {path : "/list", component : List, meta : {navShow : false}, children :[
       { path : '/list',component : Index},
       { path : '/list/index',component: Index},
+      { path : '/list',component : Index2},
       { path : '/list/index2',component: Index2}
-    ]},
-    {path:'/three/:id',component: Three},
+  ]},
+    {name: 'three',path: '/list/three',component:Three,children:[
+      {path: '/three/threetwo',component:Threetwo},
+      {path: '/three/threethree',component:Threethree}
+   ]},
+   //  {name: 'xiala',path: '/list/three/',component:Three},
+   {path:'/three/:id',component: Three},
 
+
+    //bag购物袋
+    // {path : "/bag", component : Bag, meta : {navShow : false}},
     // bag
-    {path : "/bag", component : Bag, meta : {navShow : false}},
+    {path : "/bag", component : Bag, meta : {navShow : false}, children : [
+        {path : "/bag", component : BagOne},
+        {path : "/bag/bag_one", component : BagOne},
+        {path : "/bag/bag_two", component : BagTwo}
+    ]},
 
-    // mine
+
+   // mine我的页面路由
+
+    { path : '/list/index2',component: Index2},
     {path : "/mine", component : Mine, meta : {navShow : false}},
     {path : "/mine_zh", component : Minezh},
     {path : "/mine_dl", component : Minedl},
@@ -112,6 +141,7 @@ let routes = [
     {path : "/mine_aboutry", component : Mineaboutry},
     // 商品详情页
     {path : '/product_detail/:productId',component : ProductDetail},
+    {path : "/mine_aboutry", component : Mineaboutry},
 
 ]
 //创建路由对象
