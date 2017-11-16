@@ -1,5 +1,8 @@
 <template lang="html">
    <div class="top">
+<<<<<<< HEAD
+      <Brands></Brands>
+=======
       <Brands v-for="listArr in result" :obj="listArr" :key="listArr.key"></Brands>
       <div class="black-list">
          <a href="#">A</a>
@@ -33,6 +36,7 @@
       <div class="">
          <Brands></Brands>
       </div>
+>>>>>>> 71f03a8c7b3eb0048eb0541d125ad80beb1a0f9e
    </div>
 </template>
 
