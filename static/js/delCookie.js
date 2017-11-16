@@ -1,3 +1,4 @@
+import getCookie from "../../static/js/getCookie"
 //删除cookie
 export default function delCookie (name) {
  var exp = new Date();

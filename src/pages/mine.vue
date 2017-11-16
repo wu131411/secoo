@@ -7,7 +7,7 @@
       </div>
 			<span class="mine_siku">我的寺库</span>
       <router-link to="/mine_dl">
-        <span class="mine_close"></span>
+        <span class="mine_close" @click="clearCookie()"></span>
       </router-link>
 	  </div>
     <router-link to="/mine_zh">
@@ -115,6 +115,12 @@ export default {
       this.$router.push({
         path:"/home"
       })
+    },
+    clearCookie() {
+      delCookie('userVal')
+      delCookie('passVal')
+      delCookie('yzmVal')
+      this.user_name = ''
     }
   },
   created() {
