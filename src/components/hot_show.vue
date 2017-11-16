@@ -123,7 +123,6 @@ export default {
             this.$router.push({
                 path : '/product_detail/' + this.list[index].productId
             })
-            console.log(this.list[index]);
         },
         gouMai(productId){
             this.$router.push({

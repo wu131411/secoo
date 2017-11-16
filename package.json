@@ -17,7 +17,7 @@
     "vue-awesome-swiper": "^2.6.7",
     "vue-jsonp": "^0.1.7",
     "vue-occupy": "0.0.9",
-    "vue-router": "^3.0.1",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="product_detail">
         <!-- 顶部导航 -->
-        <div class="nav_wrap">
+        <div class="nav_wrap d_jump">
             <div class="goback" @click="goback()">
                 <img src="../../static/images/hot_back.png" alt="">
             </div>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <!-- 商品图片轮播图部分 -->
-        <div class="product_banner d_jump">
+        <div class="product_banner">
             <!-- 轮播图部分 -->
             <div class="imgs">
                 <img src="http://pic12.secooimg.com/product/500/500/54/53/655eb447900f4e77b2fee34a4fe39485.jpg" alt="">
@@ -43,28 +43,28 @@
         <ul>
             <li class="product_list fenQi">
                 <div class="titl">
-                    {{ data.kuChequeInfo.title }}
+                    {{ kuChequeInfo.title }}
                 </div>
                 <div class="info">
-                    <span>{{ data.kuChequeInfo.subTitle }}</span>
+                    <span>{{ kuChequeInfo.subTitle }}</span>
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
             <li class="product_list ziTi" v-show="ziTiTag">
                 <div class="titl">
-                    {{ data.pickupInfo.title }}
+                    {{ pickupInfo.title }}
                 </div>
                 <div class="info">
-                    <span>{{ data.pickupInfo.subTitle }}</span>
+                    <span>{{ pickupInfo.subTitle }}</span>
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
             <li class="product_list weiXin">
                 <div class="titl">
-                    {{ data.wecharManage.title }}
+                    {{ wecharManage.title }}
                 </div>
                 <div class="info">
-                    <span>{{ data.wecharManage.subTitle }}</span>
+                    <span>{{ wecharManage.subTitle }}</span>
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
@@ -185,11 +185,28 @@ export default {
             scroll : 0,//监听页面滚动
             total : 0,
             zanNum : 0,
+            kuChequeInfo : '',
+            pickupInfo : '',
+            wecharManage : '',
         }
     },
     methods : {
         goback(){
             history.back()
+        },
+        buyBag(type){
+            if (type == 0) {
+                // 加入购物袋
+                let goods = {
+                    url : this.productInfo.imgList[0],
+                    msg : this.productInfo.title,
+                    i : 1,
+                    price : this.price.nowPrice,
+                    isTrue : 0,
+                }
+            } else if (type == 1) {
+                // 立即购买
+            }
         },
         goBag(){
             this.$router.push({
@@ -216,7 +233,6 @@ export default {
         },
         menu() {
             this.scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-            // console.log(this.scroll)
             let jump = document.querySelectorAll('.d_jump');
             // 获取需要滚动的距离
             this.total1 = jump[0].offsetTop
@@ -249,13 +265,13 @@ export default {
         jump(ev,index){
             let jump = document.querySelectorAll('.d_jump')
             // 获取需要滚动的距离
-            let total = jump[index].offsetTop
+            this.total = jump[index].offsetTop
             // Chrome
-            document.body.scrollTop = total
+            document.body.scrollTop = this.total
             // Firefox
-            document.documentElement.scrollTop = total
+            document.documentElement.scrollTop = this.total
             // Safari
-            window.pageYOffset = total
+            window.pageYOffset = this.total
         }
     },
     created(){
@@ -267,6 +283,9 @@ export default {
             this.productInfo = data.productInfo;
             this.serviceList = data.serviceList;
             this.buttonList = data.button.buttonList;
+            this.kuChequeInfo = data.kuChequeInfo;
+            this.pickupInfo = data.pickupInfo;
+            this.wecharManage = data.wecharManage;
             // 判断到店自提是否存在，如果存在就展示
             if (data.pickupInfo.title) {
                 this.ziTiTag = true;
@@ -300,10 +319,8 @@ export default {
         }),
         // 请求精品推荐数据
         this.$jsonp('https://lr.secooimg.com/recommend?upk=affe88828a1641749c7e730b6483dcd9%7C464572656233%7Ccc4a951855c94198896b905a9d51c3a2%7CBF13678943951D86DD851ABD04D322F1&productId=' + this.productId + '&size=2&c_platform_type=0&type=similar&count=12&platformType=2&categoryId=1449&brandId=6836&_=' + Math.random() + '&callback').then(data => {
-            // console.log(data);
             if (data.recode == 0) {
                 this.tuiJianList = data.productList;
-                // console.log(this.tuiJianList);
             }
         })
     },

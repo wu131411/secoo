@@ -178,6 +178,7 @@ export default {
                         nickName : '用户123456789',
                         createDate : '刚刚',
                     }
+                    console.log(this.comment);
                     this.comment.push(value);
                     input.value = '';
                 }
@@ -200,12 +201,12 @@ export default {
 
         // 详细评论数据请求
         this.$jsonp('http://las.secoo.com/api/show/comment_show_comments?commentShowDetailId=' + this.id + '&currpage=1&pagesize=20&c_upk=&c_app_ver=1.0&c_channel=&c_device_id=98f0f00e-8938-48f9-b70c-e714487a8241&c_platform=&c_platform_type=&c_platform_ver=&c_screen_width=414&c_screen_height=736&_=' + Math.random() + '&callback').then(data => {
-            // console.log(data);
-            this.comment = data.data;
             if (data.recode == 2002) {
                 this.comment_length = 0;
+                this.comment = [];
             } else {
                 this.comment_length = data.data.length;
+                this.comment = data.data;
             }
         })
     }
