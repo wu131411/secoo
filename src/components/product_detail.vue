@@ -112,7 +112,7 @@
                     </div>
                     <div class="comment_info">
                         <time>{{ time[index] }}</time>
-                        <div class="zan svg">
+                        <div class="zan svg" @click="sayYes($event)">
                             <span></span>
                             <span>{{ item.praiseCount }}</span>
                         </div>
@@ -144,7 +144,7 @@
         </div>
         <!-- 底部按钮部分 -->
         <div class="button">
-            <div class="button_bag" @click="goBag()">
+            <div class="button_bag" @click="goBag($event)">
                 <img src="../../static/images/bag.png" alt="">
             </div>
             <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="buyBag(item.type)">
@@ -155,7 +155,7 @@
 </template>
 
 <script>
-import Bus from '../bus'
+let zanTag = false;
 export default {
     data(){
         return{
@@ -184,27 +184,12 @@ export default {
             tag4 : false,
             scroll : 0,//监听页面滚动
             total : 0,
+            zanNum : 0,
         }
     },
     methods : {
         goback(){
             history.back()
-        },
-        buyBag(type){
-            if (type == 0) {
-                // 加入购物袋
-                let goods = {
-                    url : this.productInfo.imgList[0],
-                    msg : this.productInfo.title,
-                    i : 1,
-                    price : this.price.nowPrice,
-                    isTrue : 0,
-                }
-                Bus.$emit('data',goods);
-                console.log('123');
-            } else if (type == 1) {
-                // 立即购买
-            }
         },
         goBag(){
             this.$router.push({
@@ -215,6 +200,19 @@ export default {
             this.$router.push({
                 path : '/home'
             })
+        },
+        sayYes(ev){
+            if(zanTag){
+                ev.currentTarget.children[0].classList.remove("color");
+                this.zanNum -= 1;
+                ev.currentTarget.children[1].innerText = this.zanNum;
+                zanTag = false;
+            } else {
+                ev.currentTarget.children[0].classList.add("color");
+                this.zanNum += 1;
+                ev.currentTarget.children[1].innerText = this.zanNum;
+                zanTag = true;
+            }
         },
         menu() {
             this.scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
@@ -252,7 +250,6 @@ export default {
             let jump = document.querySelectorAll('.d_jump')
             // 获取需要滚动的距离
             let total = jump[index].offsetTop
-            // console.log(ev.currentTarget);
             // Chrome
             document.body.scrollTop = total
             // Firefox
@@ -265,7 +262,6 @@ export default {
         // 请求商品详情
         this.$jsonp('http://las.secoo.com/api/product/detail_new?upk=&productId=' + this.productId + '&size=2&c_platform_type=0&_=' + Math.random() + '&callback').then(data => {
             this.data = data;
-            // console.log(data);
             this.topImgUrl  = data.productInfo.imgList;
             this.price = data.productInfo.priceInfo;
             this.productInfo = data.productInfo;
@@ -280,7 +276,6 @@ export default {
         }),
         // 请求商品的用户评价
         this.$jsonp('http://las.secoo.com/api/comment/show_product_comment?upk=affe88828a1641749c7e730b6483dcd9%7C464572656233%7Ccc4a951855c94198896b905a9d51c3a2%7CBF13678943951D86DD851ABD04D322F1&productId=' + this.productId + '&size=2&c_platform_type=0&type=0&filter=0&page=1&pageSize=8&productBrandId=5987&productCategoryId=1828&_=' + Math.random() + '&callback').then( data => {
-            // console.log(data);
             if (data.retCode == 0) {
                 this.commentList = data.commentList; //评论列表
                 this.commentCount = data.totalCurrCommentNum; //该品牌评论数量
@@ -294,6 +289,7 @@ export default {
                     var day = date.getDate();
                     var date = year + '.' + month + '.' + day;
                     this.time.push(date)
+                    this.zanNum = i.praiseCount;
                 }
             } else {
                 this.commentList = data.commentList; //评论列表

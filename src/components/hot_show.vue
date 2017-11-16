@@ -85,7 +85,6 @@
 
 <script>
 
-import Bus from '../bus'
 let tag = false;
 export default {
     data(){
@@ -162,7 +161,6 @@ export default {
     created(){
         this.$jsonp(this.url).then(data => {
             this.list = data.list;
-            console.log(data);
             this.num = [];
             this.content = [];
             for (var item of data.list) {

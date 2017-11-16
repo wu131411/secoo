@@ -32,6 +32,8 @@
 import HotShow from '../components/hot_show'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import swiperCss from "../../static/css/swiper.css"
+
+// import LunBo from '../components/lunbo'
 let hot_tabbar_color = false;
 
 export default {

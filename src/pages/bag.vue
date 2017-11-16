@@ -26,7 +26,6 @@
 </template>
 <script>
 
-import Bus from '../bus'
 
 import BagOne from "../components/bag_one"
 import BagTwo from "../components/bag_two"
@@ -84,14 +83,6 @@ export default {
         if(this.dataAll.length == 0){
             this.bagShow = false
         }
-    },
-    created(){
-        console.log('12345');
-        console.log(Bus);
-        Bus.$on('data',(data)=>{
-            console.log('niin');
-            console.log(data);
-        })
     }
 }
 </script>

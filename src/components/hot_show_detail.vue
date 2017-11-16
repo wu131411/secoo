@@ -114,7 +114,6 @@
 </template>
 
 <script>
-import Bus from '../bus'
 let zanTag = false;
 let likeTag = false;
 export default {
@@ -184,7 +183,7 @@ export default {
                 }
             }else {
                 this.$router.push({
-                    // path : ''
+                    path : '/mine_dl'
                 })
             }
         }
