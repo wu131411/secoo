@@ -43,13 +43,15 @@
 export default {
 	methods: {
 	  back() {
-	    history.back()
+      this.$router.push({
+				path:"/mine"
+			})
 	  }
 	}
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 @import "../../static/css/reset.css";
 html {
 	background: #F9F9F9;

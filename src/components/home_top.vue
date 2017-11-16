@@ -38,6 +38,6 @@ export default {
     .home_top{
         position: fixed;
         right:0;
-        top:16rem;
+        bottom:5rem;
     }
 </style>

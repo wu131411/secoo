@@ -64,7 +64,9 @@
 export default {
   methods: {
     back() {
-      history.back()
+      this.$router.push({
+				path:"/mine"
+			})
     }
   }
 }
@@ -100,7 +102,7 @@ html {
 }
 .minegy_backtext {
 	position: absolute;
-	top: .5rem;
+	top: .6rem;
 	left: 1.7rem;
 }
 .minegy_gy {

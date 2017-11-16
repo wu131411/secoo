@@ -394,9 +394,9 @@ export default {
         color: #fff;
     }
     .time-item.now {
-    background-color: #35508c;
-}
-.time-item.now .time-text-inner::before {
-    border-bottom-color: #35508c;
-}
+        background-color: #35508c;
+    }
+    .time-item.now .time-text-inner::before {
+        border-bottom-color: #35508c;
+    }
 </style>
