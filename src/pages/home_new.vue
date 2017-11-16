@@ -125,10 +125,10 @@ export default {
     }
     .activtyApp_c{
         background-color: white;
+        margin-top: 0;
     }
     .top_panel {
         width: 100%;
-        z-index: -10;
     }
     .r_title {
         width: 100%;
