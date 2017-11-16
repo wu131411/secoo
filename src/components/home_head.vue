@@ -3,17 +3,10 @@
       <header id="headerAll">
           <!-- 返回 -->
           <router-link to="/">
-<<<<<<< HEAD
-              <div class="leftPic orderListWrapper_l">
-                  <span class="goBack"></span>
-                  <em >返回</em>
-              </div>
-=======
           <div class="leftPic orderListWrapper_l ">
               <span class="goBack"></span>
-              <em @click="back()">返回</em>
+              <em>返回</em>
           </div>
->>>>>>> daa595f8ad04aae9674f498a02a8d88a0515e6c5
           </router-link>
           <!-- SECOO -->
           <hgroup class="pagesTitles">
@@ -46,9 +39,6 @@ export default {
         }
     },
     methods:{
-        goBack(){
-            history.back()
-        },
         show(){
             if(this.isShow == false){
                 this.isShow = true;
