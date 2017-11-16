@@ -74,6 +74,7 @@ let routes = [
     {path:"/home_new",component:HomeNew},
     {path:"/home_inter",component:HomeInter},
     {path:"/home_shehua",component:HomeShehua},
+    {path:"/home_wabao",component:Home_wabao},
 
 
     // hot

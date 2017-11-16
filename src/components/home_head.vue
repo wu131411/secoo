@@ -5,7 +5,7 @@
           <router-link to="/">
           <div class="leftPic orderListWrapper_l ">
               <span class="goBack"></span>
-              <em @click="back()">返回</em>
+              <em>返回</em>
           </div>
           </router-link>
           <!-- SECOO -->
@@ -39,9 +39,6 @@ export default {
         }
     },
     methods:{
-        goBack(){
-            history.back()
-        },
         show(){
             if(this.isShow == false){
                 this.isShow = true;
