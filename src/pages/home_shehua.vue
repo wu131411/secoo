@@ -85,6 +85,8 @@
           <img src="//pic12.secooimg.com/comment/17/11/c6603dd6d6b14852b05e1758613bd163.jpg" alt="">
       </div>
       <HomeList></HomeList>
+
+      <HomeTop></HomeTop>
   </div>
 </template>
 
@@ -92,11 +94,13 @@
 import HomeHead from "../components/home_head"
 import HomeGoods from "../components/home_goods"
 import HomeList from "../components/home_list"
+import HomeTop from "../components/home_top"
 export default {
     components:{
         HomeHead,
         HomeGoods,
-        HomeList
+        HomeList,
+        HomeTop
     },
     data () {
         return {
@@ -113,7 +117,8 @@ export default {
             if(scrollTop <= 897) {
                 document.querySelector('.searchBar').classList.remove("isFixed")
             }
-        }
+        },
+
     },
     mounted () {
         window.addEventListener('scroll',this.handleScroll);
@@ -204,7 +209,7 @@ export default {
     }
     .eleventh_floor .text_tips_3 {
         margin-top: 1.413rem;
-        font-size: 10.4rem;
+        font-size: 0.4rem;
         width: 5.28rem;
         height: 1.146rem;
         display: -webkit-box;

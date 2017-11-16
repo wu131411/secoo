@@ -2,7 +2,7 @@
 <template lang="html">
     <div id="home">
         <!-- 轮播图 -->
-       <div @click="go()" class="home-banner" >
+       <div @click="bannerGo()" class="home-banner" >
             <swiper :options="swiperOption" ref="mySwiper">
                 <swiper-slide v-for="item in home_swiper">
                     <img :src="item.img">
@@ -39,14 +39,20 @@
                   {{ items.content.title }}
            </div>
        </div>
+
+       <HomeTop></HomeTop>
    </div>
 </template>
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import HomeTop from "../components/home_top"
 export default {
     name: 'home',
-    components: { swiper, swiperSlide },
+    components: {
+        swiper,swiperSlide,
+        HomeTop
+     },
     data (){
         return {
             home_swiper : {},
@@ -71,7 +77,8 @@ export default {
         })
     },
     methods:{
-        go(){
+        bannerGo(){
+            // console.log(this.$router);
             this.$router.push({
                 path:'/home_overseas/'
             })
@@ -169,7 +176,7 @@ export default {
         overflow: hidden;
     }
     .home-banner .swiper-wrapper{
-        width: 700%;
+        width: 800%;
     }
     .home-banner .swiper-wrapper div{
         float: left;
@@ -193,4 +200,5 @@ export default {
         background: #fff;
         border-radius: 50%;
     }
+
     </style>

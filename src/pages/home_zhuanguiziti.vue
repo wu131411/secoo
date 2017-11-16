@@ -1,7 +1,7 @@
 <template lang="html">
   <div id="zhuangui">
       <HomeHead></HomeHead>
-      <!-- 寺库现在体验中心 -->
+      <!-- 寺库线下体验中心 -->
       <div class="top_panel mtArea">
           <img src="//pic12.secooimg.com/comment/17/11/707b2484459f462ca8b40417a67669fa.jpg" alt="">
       </div>
@@ -29,17 +29,22 @@
       <div class="top_panel activityHandle mtArea">
           <img src="//pic12.secooimg.com/comment/17/10/f6708e4b84234db6a32a97f2430ec753.gif" alt="">
       </div>
+
+      <HomeTop></HomeTop>
   </div>
 </template>
 
 <script>
 import HomeHead from "../components/home_head"
 import HomeList from "../components/home_list"
+import HomeTop from "../components/home_top"
 export default {
     components:{
         HomeHead,
-        HomeList
+        HomeList,
+        HomeTop
     }
+
 }
 
 </script>
