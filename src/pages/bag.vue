@@ -23,11 +23,11 @@
             <p>您的购物袋空空如也~</p>
          </div>
      </div>
+
 </template>
 <script>
 import BagOne from "../components/bag_one"
 import BagTwo from "../components/bag_two"
-
 export default {
     data () {
         return {
@@ -56,25 +56,12 @@ export default {
         }
     },
     created () {
-        this.dataAll = [
-            {
-                url : "http://pic.secoo.com/product/120/120/07/94/11010794.jpg",
-                msg : "蒂芙尼/Tiffany & Co.  女式925纯银蓝色时尚双心珐琅项链 16英寸 TBDZ0079",
-                i : 1,
-                price : "1356",
-                isTrue : 0
-            },
-            {
-                url : "http://pic.secoo.com/product/120/120/56/56/883b896ab06146f8b13be0647424bd28.jpg",
-                msg : "奥蓝/ALLE 赫拉HERA系列富贵花镂空白金色项链",
-                i : 1,
-                price : "1290",
-                isTrue : 0
-            }
-        ]
+        this.dataAll = this.$store.state.dataBag
+        console.log(this.dataAll);
+        
         if(this.dataAll.length == 0){
             this.bagShow = false
-        }
+        }else{}
     },
     updated(){
         if(this.dataAll.length == 0){

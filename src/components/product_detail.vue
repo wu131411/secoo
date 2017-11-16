@@ -19,7 +19,13 @@
         <div class="product_banner d_jump">
             <!-- 轮播图部分 -->
             <div class="imgs">
-                <img src="http://pic12.secooimg.com/product/500/500/54/53/655eb447900f4e77b2fee34a4fe39485.jpg" alt="">
+                <swiper :options="swiperOption" ref="mySwiper">
+                    <swiper-slide v-for="item in topImgUrl" :key="item.key">
+                        <img :src="item">
+                    </swiper-slide>
+                    <div class="swiper-pagination"  slot="pagination"></div>
+                </swiper>
+                <!-- <img src="http://pic12.secooimg.com/product/500/500/54/53/655eb447900f4e77b2fee34a4fe39485.jpg" alt=""> -->
             </div>
             <p>您有一张满<span>4999</span>减<span>550</span>的券可用，购买立省<span class="liSheng">550</span>元</p>
         </div>
@@ -43,28 +49,28 @@
         <ul>
             <li class="product_list fenQi">
                 <div class="titl">
-                    {{ data.kuChequeInfo.title }}
+                    <!-- {{ data.kuChequeInfo.title}} -->
                 </div>
                 <div class="info">
-                    <span>{{ data.kuChequeInfo.subTitle }}</span>
+                    <!-- <span>{{ data.kuChequeInfo.subTitle }}</span> -->
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
             <li class="product_list ziTi" v-show="ziTiTag">
                 <div class="titl">
-                    {{ data.pickupInfo.title }}
+                    <!-- {{ data.pickupInfo.title }} -->
                 </div>
                 <div class="info">
-                    <span>{{ data.pickupInfo.subTitle }}</span>
+                    <!-- <span>{{ data.pickupInfo.subTitle }}</span> -->
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
             <li class="product_list weiXin">
                 <div class="titl">
-                    {{ data.wecharManage.title }}
+                    <!-- {{ data.wecharManage.title }} -->
                 </div>
                 <div class="info">
-                    <span>{{ data.wecharManage.subTitle }}</span>
+                    <!-- <span>{{ data.wecharManage.subTitle }}</span> -->
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
@@ -144,10 +150,10 @@
         </div>
         <!-- 底部按钮部分 -->
         <div class="button">
-            <div class="button_bag">
+            <div class="button_bag" @click="buyBag()">
                 <img src="../../static/images/bag.png" alt="">
             </div>
-            <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}">
+            <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="addBag(item.type)">
                 {{ item.title }}
             </div>
         </div>
@@ -155,6 +161,8 @@
 </template>
 
 <script>
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import swiperCss from "../../static/css/swiper.css"
 export default {
     data(){
         return{
@@ -183,9 +191,46 @@ export default {
             tag4 : false,
             scroll : 0,//监听页面滚动
             total : 0,
+            swiperOption : {
+                loop : true,
+                // autoplay: 3000,
+                direction : 'horizontal',
+                pagination : '.swiper-pagination',
+                autoplayDisableOnInteraction : false,
+            },
+            dataArr : {}
         }
     },
+    components : {
+        swiper,
+        swiperSlide
+    },
+    beforeDestroy () {
+        bus.$emit("bagData",this.dataArr)
+    },
     methods : {
+        addBag(type){
+            if (type == 0) {
+                // 加入购物袋
+                this.dataArr = {
+                    url : this.productInfo.imgList[0],
+                    msg : this.productInfo.title,
+                    i : 1,
+                    price : this.price.nowPrice.split("￥")[1].replace(/,/g,""),
+                    isTrue : 0,
+                }
+            }
+            this.$store.commit({
+                type : "ADD_BAGDATA",
+                dataBag : this.dataArr
+            })
+            alert("已加入购物袋")
+        },
+        buyBag(){
+            this.$router.push({
+                path: '/bag/' // 路径
+            })
+        },
         goback(){
             history.back()
         },
@@ -299,7 +344,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
     .product_detail{
         font: 0.693333rem/1.12rem 'STHeiti', 'Helvetica Neue';
         color: #1A191E;
@@ -351,16 +396,29 @@ export default {
         height: 20rem;
         position: relative;
     }
-    .product_banner img{
-        width: 100%;
-        height: 100%;
+    /*分页器样式*/
+    .swiper-container .swiper-pagination{
+        top: 17rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.24rem;
+        font-size: 0;
+        width: 3rem;
+        height: 0.8rem;
+        background-color: rgba(100, 100, 100, 0.7);
+        position: absolute;
+        left: 50%;
+        -webkit-border-radius: 0.4rem;
+        border-radius: 0.4rem;
+        -webkit-transform: translate3d(-50%, 0, 0);
+        transform: translate3d(-50%, 0, 0)
     }
     .product_banner p{
         position: absolute;
         bottom: 0;
         left: 0;
         z-index: 10;
-
         width: 94%;
         height: 1.9rem;
         padding: 0 0 0 6%;

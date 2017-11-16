@@ -1,36 +1,17 @@
 <template lang="html">
   <div id="jianHuo">
-<<<<<<< HEAD
       <div class="banner">
           <swiper :options="swiperOption" ref="mySwiper">
-              <!-- slides -->
               <swiper-slide v-for="item in hot_swiper" :key="item.key">
                   <img :src="item.img">
               </swiper-slide>
-              <!-- Optional controls -->
               <div class="swiper-pagination"  slot="pagination"></div>
           </swiper>
-=======
-      <div class="banner" @click="goWabao()">
-          <a href="#"><img src="../assets/jianhuo_img/banner.jpg" alt=""></a>
-
-
-          <!-- <div @click="go()" class="hot_banner" >
-            <swiper :options="swiperOption" ref="mySwiper">
-                <swiper-slide v-for="item in banner">
-                    <img :src="item.img">
-                </swiper-slide>
-                <div class="swiper-pagination"  slot="pagination"></div>
-            </swiper>
-          </div> -->
-
-
->>>>>>> b040db4f72862fb9e303d4f43fe490131f84e184
       </div>
       <div class="hot_tabbar">
           <div class="">
               <ul>
-                  <li v-for="item in tabbar" class="tab" @click="push(item.id)">
+                  <li v-for="item in tabbar" class="tab" @click="push(item.id,$event)">
                           <img :src="item.img" alt="" >
                           <p class="title">{{ item.title }}</p>
                   </li>
@@ -66,20 +47,15 @@ export default {
         }
     },
     methods : {
-        push(id){
+        push(id,event){
             this.$router.push({
                 path : '/hot/hot_show/' + id,
             })
-        },
-        changeBorder(ev){
-            // TODO:圆圈路由点击效果
-            if (hot_tabbar_color) {
-                ev.currentTarget.classList.remove("hot_tabbar_color");
-                hot_tabbar_color = true;
-            } else {
-                ev.currentTarget.classList.add('hot_tabbar_color');
-                hot_tabbar_color = false;
+            for(var item of event.target.parentNode.parentNode.children){
+                console.log(item);
+                item.classList.remove("changOn")
             }
+            event.target.parentNode.classList.add("changOn")
         },
         goWabao(){
             this.$router.push({
@@ -93,14 +69,10 @@ export default {
         swiperSlide
     },
     created(){
-
         this.$jsonp('http://las.secoo.com/api/show/hot_show_head').then(data => {
             this.tabbar = data.tags;
-<<<<<<< HEAD
             this.hot_swiper = data.banners
-=======
             this.banner = data.banners;
->>>>>>> b040db4f72862fb9e303d4f43fe490131f84e184
         })
     }
 
@@ -108,6 +80,7 @@ export default {
 </script>
 
 <style lang="css">
+
     /*轮播图样式*/
     #jianHuo{
         width: 100%;
@@ -120,38 +93,6 @@ export default {
         height: 100%;
     }
 
-    /*轮播图*/
-    .hot_banner .swiper-container{
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-    .hot_banner .swiper-wrapper{
-        width: 500%;
-        height: 100%;
-    }
-    .hot_banner .swiper-wrapper div{
-        float: left;
-    }
-    .hot_banner .swiper-wrapper img{
-        width: 100%;
-    }
-    /*分页器*/
-    .swiper-container .swiper-pagination{
-        font-size: 0;
-        text-align: center;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 13.8rem;
-    }
-    .swiper-container .swiper-pagination .swiper-pagination-bullet{
-        display: inline-block;
-        width: 0.426667rem;
-        height: 0.426667rem;
-        background: #fff;
-        border-radius: 50%;
-    }
 
     /*二级路由样式*/
     /*点击时的边框样式*/
@@ -181,13 +122,6 @@ export default {
     .hot_tabbar ul li:last-child{
         margin-right: .8rem;
     }
-    /*.hot_tabbar .tab::after{
-        content: '';
-        border: 2px solid red;
-        position: absolute;
-        left: -3px;
-        top: -3px;
-    }*/
     .hot_tabbar .tab{
         width: 2.67rem;
         height: 2.67rem;
@@ -199,6 +133,9 @@ export default {
         text-align: center;
         line-height: 2.67rem;
         margin-right: 1rem;
+    }
+    .changOn img{
+        box-shadow: 0 0 10px black;
     }
     .hot_tabbar  img{
         border-radius: 50%;

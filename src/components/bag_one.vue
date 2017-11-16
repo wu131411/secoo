@@ -4,15 +4,15 @@
             <div class="" v-for="(item, index, key) in data1">
                 <header class="bag_list">
                     <div class="bagLeft">
-                        <p class="bagLef" :class="data1[index].isTrue==0?'':'selected'" @click="bagChan(index,$event)"></p>
+                        <p class="bagLef" :class="data1[index].dataBag.isTrue==0?'':'selected'" @click="bagChan(index,$event)"></p>
                     </div>
                     <div class="bagCenter">
-                        <img :src="item.url" alt="">
-                        <p>{{item.msg}}</p>
-                        <p><span>x</span>{{item.i}}</p>
+                        <img :src="item.dataBag.url" alt="">
+                        <p>{{item.dataBag.msg}}</p>
+                        <p><span>x</span>{{item.dataBag.i}}</p>
                     </div>
                     <div class="bagRight">
-                        ￥<em>{{item.price}}</em>
+                        ￥<em>{{item.dataBag.price}}</em>
                     </div>
                 </header>
             </div>
@@ -51,11 +51,14 @@ export default {
         }
     }
     ,created () {
+            for(var item of this.data1){
+                console.log(item);
+            }
         //创建实例根据是否选中状态，选中件数，选中商品单价来得到总价，总数量
         for (var i = 0; i < this.data1.length; i++) {
-            this.allPrice += parseInt(this.data1[i].price * this.data1[i].i * this.data1[i].isTrue)
-            this.all += this.data1[i].i * this.data1[i].isTrue
-            if(this.data1[i].isTrue == 0){
+            this.allPrice += parseInt(this.data1[i].dataBag.price * this.data1[i].dataBag.i * this.data1[i].dataBag.isTrue)
+            this.all += this.data1[i].dataBag.i * this.data1[i].dataBag.isTrue
+            if(this.data1[i].dataBag.isTrue == 0){
                 this.isi = 0
                 break
             }else{
@@ -66,20 +69,20 @@ export default {
     ,methods : {
         //判断商品是否选中，从而改变商品总价，商品总数量
         bagChan(index,event){
-            if(this.data1[index].isTrue == 0){
+            if(this.data1[index].dataBag.isTrue == 0){
                 event.target.classList.add("selected")
-                this.data1[index].isTrue = 1
-                this.allPrice += parseInt(this.data1[index].price * this.data1[index].i * this.data1[index].isTrue)
-                this.all += (this.data1[index].i * this.data1[index].isTrue)
+                this.data1[index].dataBag.isTrue = 1
+                this.allPrice += parseInt(this.data1[index].dataBag.price * this.data1[index].dataBag.i * this.data1[index].dataBag.isTrue)
+                this.all += (this.data1[index].dataBag.i * this.data1[index].dataBag.isTrue)
             }else{
                 event.target.classList.remove("selected")
-                this.data1[index].isTrue = 0
-                this.allPrice -= parseInt(this.data1[index].price * this.data1[index].i)
-                this.all -= this.data1[index].i
+                this.data1[index].dataBag.isTrue = 0
+                this.allPrice -= parseInt(this.data1[index].dataBag.price * this.data1[index].dataBag.i)
+                this.all -= this.data1[index].dataBag.i
             }
             //是否为全选状态
             for (var i = 0; i < this.data1.length; i++) {
-                if(this.data1[i].isTrue == 0){
+                if(this.data1[i].dataBag.isTrue == 0){
                     this.isi = 0
                     break
                 }else{
@@ -91,16 +94,18 @@ export default {
             //通过全选按钮，选择所有商品或取消所有已选商品，计算总价，总数量
             if(this.isi == 0){
                 for(var i = 0; i < this.data1.length; i++){
-                    this.data1[i].isTrue = 1
-                    this.allPrice += parseInt(this.data1[i].price * this.data1[i].i * this.data1[i].isTrue)
-                    this.all += (this.data1[i].i * this.data1[i].isTrue)
+                    if(this.data1[i].dataBag.isTrue == 0){
+                        this.data1[i].dataBag.isTrue = 1
+                        this.allPrice += parseInt(this.data1[i].dataBag.price * this.data1[i].dataBag.i * this.data1[i].dataBag.isTrue)
+                        this.all += (this.data1[i].dataBag.i * this.data1[i].dataBag.isTrue)
+                    }                
                 }
                 this.isi = 1
             }else{
                 for(var i = 0; i < this.data1.length; i++){
-                    this.data1[i].isTrue = 0
-                    this.allPrice -= parseInt(this.data1[i].price * this.data1[i].i)
-                    this.all -= this.data1[i].i
+                    this.data1[i].dataBag.isTrue = 0
+                    this.allPrice -= parseInt(this.data1[i].dataBag.price * this.data1[i].dataBag.i)
+                    this.all -= this.data1[i].dataBag.i
                 }
                 this.isi = 0
             }

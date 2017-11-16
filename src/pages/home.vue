@@ -4,12 +4,7 @@
         <!-- 轮播图 -->
        <div @click="go()" class="home-banner" >
             <swiper :options="swiperOption" ref="mySwiper">
-<<<<<<< HEAD
-                <!-- slides -->
                 <swiper-slide v-for="item in home_swiper" :key="item.key">
-=======
-                <swiper-slide v-for="item in home_swiper">
->>>>>>> b040db4f72862fb9e303d4f43fe490131f84e184
                     <img :src="item.img">
                 </swiper-slide>
                 <div class="swiper-pagination"  slot="pagination"></div>
@@ -172,38 +167,4 @@ export default {
         text-align: center;
         font-size: 0.746667rem;
     }
-<<<<<<< HEAD
-
-=======
-    /*轮播图*/
-    .home-banner .swiper-container{
-        width: 100%;
-        overflow: hidden;
-    }
-    .home-banner .swiper-wrapper{
-        width: 700%;
-    }
-    .home-banner .swiper-wrapper div{
-        float: left;
-    }
-    .home-banner .swiper-wrapper img{
-        width: 100%;
-    }
-    /*分页器*/
-    .swiper-container .swiper-pagination{
-        font-size: 0;
-        text-align: center;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 13.8rem;
-    }
-    .swiper-container .swiper-pagination .swiper-pagination-bullet{
-        display: inline-block;
-        width: 0.426667rem;
-        height: 0.426667rem;
-        background: #fff;
-        border-radius: 50%;
-    }
->>>>>>> b040db4f72862fb9e303d4f43fe490131f84e184
     </style>

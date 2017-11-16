@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 
+
+
 import axios from "axios"
 Vue.prototype.axios = axios
 
@@ -18,22 +20,47 @@ Vue.use(VueAwesomeSwiper)
 //引入vue-jsonp模块
 import VueJsonp from "vue-jsonp"
 Vue.use(VueJsonp)
-<<<<<<< HEAD
-// 引入占位模块
-import VueOccupy from 'vue-occupy'
-Vue.use(VueOccupy)
 
-// Vue.prototype.axios = Axios
-=======
+window.bus = new Vue()
+
+//引入并安装vuex
+import Vuex from "vuex"
+Vue.use(Vuex)
+//创建store
+const store = new Vuex.Store({
+    state : {
+        dataBag : []
+    },
+    mutations : {//同步执行
+        ADD_BAGDATA(state, shopData){
+            console.log(state.dataBag.length);
+            if(state.dataBag.length == 0){
+                state.dataBag.push(shopData)
+            }else{
+                for(var i = 0; i < state.dataBag.length; i++){
+                    if(state.dataBag[i].dataBag.url == shopData.dataBag.url){
+                        state.dataBag[i].dataBag.i++
+                        break
+                    }else{
+                        state.dataBag.push(shopData)
+                        break
+                    }
+                }
+            }
+        },
+        REDUCE_BAGDATA(state, shopList){
+            state.dataBag -= shopList
+        }
+    }
+})
 
 
->>>>>>> 22563648a027f4fda145a0a99954275594294dd5
-Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   template: '<App/>',
   components: { App },
   //挂载路由对象
-  router
+  router,
+  store
 })
