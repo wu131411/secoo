@@ -54,7 +54,9 @@
 export default {
 	methods: {
 		back() {
-			history.back()
+			this.$router.push({
+				path:"/mine_about"
+			})
 		}
 	}
 }
@@ -86,7 +88,7 @@ html {
 }
 .qiyuan_backtext {
 	position: absolute;
-	top: .5rem;
+	top: .6rem;
 	left: 1.7rem;
 }
 .qiyuan_gy {

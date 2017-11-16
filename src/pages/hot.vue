@@ -1,6 +1,10 @@
 <template lang="html">
   <div id="jianHuo">
+<<<<<<< HEAD
       <div class="banner">
+=======
+      <div class="banner" @click="goWabao()">
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
           <swiper :options="swiperOption" ref="mySwiper">
               <swiper-slide v-for="item in hot_swiper" :key="item.key">
                   <img :src="item.img">
@@ -11,9 +15,13 @@
       <div class="hot_tabbar">
           <div class="">
               <ul>
+<<<<<<< HEAD
                   <li v-for="item in tabbar" class="tab" @click="push(item.id,$event)">
+=======
+                  <li v-for="item in tabbar" class="tab">
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
                           <img :src="item.img" alt="" >
-                          <p class="title">{{ item.title }}</p>
+                          <p class="title" @click="push(item.id)">{{ item.title }}</p>
                   </li>
               </ul>
           </div>
@@ -30,6 +38,8 @@
 import HotShow from '../components/hot_show'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import swiperCss from "../../static/css/swiper.css"
+
+// import LunBo from '../components/lunbo'
 let hot_tabbar_color = false;
 
 export default {

@@ -17,7 +17,9 @@
 export default {
 	methods: {
 	  back() {
-	    history.back()
+      this.$router.push({
+				path:"/mine"
+			})
 	  }
 	}
 }

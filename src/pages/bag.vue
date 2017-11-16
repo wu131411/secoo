@@ -26,8 +26,15 @@
 
 </template>
 <script>
+
+
 import BagOne from "../components/bag_one"
 import BagTwo from "../components/bag_two"
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
 export default {
     data () {
         return {

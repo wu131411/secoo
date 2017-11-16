@@ -1,7 +1,7 @@
 <template lang="html">
         <div class="pro_dList mtArea">
             <ul>
-                <li v-for="item in result">
+                <li @click="san()" v-for="item in result">
                     <div class="pro_imgclearfix">
                         <img :src="item.img" alt="">
                     </div>
@@ -20,6 +20,13 @@
 
 <script>
 export default {
+    methods:{
+        san(){
+            this.$router.push({
+                path:'/product_detail/22986660'
+            })
+        }
+    },
     data(){
         return{
             result:{}
@@ -38,9 +45,9 @@ export default {
                 "subTitle":"¥ 353"
             },
             {
-                "img":"https://pic12.secooimg.com/product/300/300/10/10/fdaac6276ba74d70a857d9975a660158.jpg",
-                "title":"【免税】YSL/YSL 方管口红73#  3.8g89",
-                "subTitle":"¥ 325"
+                "img":"https://pic12.secooimg.com/product/300/300/98/54/b6761d3ad85b43578f8dbd7c70e60743.jpg",
+                "title":"JAYJUN/JAYJUN  防雾霾镇定+美白面膜 20片8",
+                "subTitle":"新款惊爆价¥ 290"
             },
             {
                 "img":"https://pic12.secooimg.com/product/300/300/10/98/dbe8aa9ca39642fb98e9562ac5bd4efc.jpg",
@@ -60,12 +67,12 @@ export default {
             {
                 "img":"https://pic12.secooimg.com/product/300/300/95/86/13329586.jpg",
                 "title":"Salvatore Ferragamo/菲拉格慕蓝色经典男士淡香水 100ml40",
-                "subTitle":"¥ 384"
+                "subTitle":"秒杀价¥ 384"
             },
             {
                 "img":"https://pic12.secooimg.com/product/300/300/12/11/11141211.jpg",
                 "title":"Salvatore Ferragamo/菲拉格慕梦中情人淡香水30ml18",
-                "subTitle":"¥ 287"
+                "subTitle":"秒杀价¥ 287"
             },
             {
                 "img":"https://pic12.secooimg.com/product/300/300/97/54/a6bcf280926043aab86a4c8d96f0a1ba.jpg",
@@ -173,60 +180,67 @@ export default {
 </script>
 
 <style lang="css">
-.pro_dList {
-    width: 100%;
-    overflow: hidden;
-}
-.pro_dList ul {
-    width: 100%;
-}
-.clearfix {
-    zoom: 1;
-}
-.pro_dList li:nth-child(1),.pro_dList li:nth-child(2) {
-    border-top: none;
-}
-.pro_dList li:nth-child(odd) {
-    border-right:none;
-}
+    .pro_dList {
+        width: 100%;
+        overflow: hidden;
+        background-color: white;
+    }
+    .pro_dList ul {
+        width: 100%;
+    }
+    .clearfix {
+        zoom: 1;
+    }
+    .pro_dList li:nth-child(1),.pro_dList li:nth-child(2) {
+        border-top: none;
+    }
+    .pro_dList li:nth-child(odd) {
+        border-right:none;
+    }
 
-.pro_dList li {
-    float: left;
-    width: 50%;
-    -webkit-box-sizing: border-box;
-    border: 1px solid #eeeeee;
-    height: 15.093rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-}
-.pro_dList .pro_img {
-    width: 100%;
-    height: 10rem;
-    position: relative;
-}
-.pro_dList .pro_info {
-    padding: 0 0.96rem;
-    -webkit-box-sizing: border-box;
-    width: 100%;
-    overflow: hidden;
-    height: 5.093rem;
-}
-.pro_dList .pro_title {
-    height: 1.706rem;
-    color: #333;
-    line-height: .8rem;
-    font-size: 12px;
-}
-.pro_dList .pro_title span {
-    margin-top: 0.7rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    word-wrap: break-word;
-    word-break: break-all;
-}
-.pro_second_price, .pro_second_price span {
-    font-size: 14px;
-}
+    .pro_dList li {
+        float: left;
+        width: 50%;
+        -webkit-box-sizing: border-box;
+        border: 1px solid #eeeeee;
+        height: 15.093rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+    .pro_dList .pro_img {
+        width: 100%;
+        height: 10rem;
+        position: relative;
+    }
+    .pro_dList .pro_info {
+        padding: 0 0.96rem;
+        -webkit-box-sizing: border-box;
+        width: 100%;
+        overflow: hidden;
+        height: 5.093rem;
+    }
+    .pro_dList .pro_title {
+        height: 1.706rem;
+        color: #333;
+        line-height: .8rem;
+        font-size: 13px;
+    }
+    .pro_dList .pro_title span {
+        margin-top: 0.7rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    .pro_second_price, .pro_second_price span {
+        font-size: 14px;
+    }
+    .pro_imgclearfix{
+        width: 100%;
+    }
+    .pro_imgclearfix img{
+        width: 100%;
+    }
 </style>

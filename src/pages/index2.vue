@@ -1,6 +1,13 @@
 <template lang="html">
    <div class="top">
+<<<<<<< HEAD
       <Brands></Brands>
+=======
+<<<<<<< HEAD
+      <Brands></Brands>
+=======
+      <Brands v-for="listArr in result" :obj="listArr" :key="listArr.key"></Brands>
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
       <div class="black-list">
          <a href="#">A</a>
          <a href="#">B</a>
@@ -29,10 +36,18 @@
          <a href="#">Y</a>
          <a href="#">Z</a>
          <a href="#">#</a>
+<<<<<<< HEAD
     </div>
       <!-- <div class="">
          <Brands></Brands>
       </div> -->
+=======
+     </div>
+      <div class="">
+         <Brands></Brands>
+      </div>
+>>>>>>> 71f03a8c7b3eb0048eb0541d125ad80beb1a0f9e
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
    </div>
 </template>
 

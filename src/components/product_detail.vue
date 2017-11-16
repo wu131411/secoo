@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="product_detail">
         <!-- 顶部导航 -->
-        <div class="nav_wrap">
+        <div class="nav_wrap d_jump">
             <div class="goback" @click="goback()">
                 <img src="../../static/images/hot_back.png" alt="">
             </div>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <!-- 商品图片轮播图部分 -->
-        <div class="product_banner d_jump">
+        <div class="product_banner">
             <!-- 轮播图部分 -->
             <div class="imgs">
                 <swiper :options="swiperOption" ref="mySwiper">
@@ -49,28 +49,49 @@
         <ul>
             <li class="product_list fenQi">
                 <div class="titl">
+<<<<<<< HEAD
                     <!-- {{ data.kuChequeInfo.title}} -->
                 </div>
                 <div class="info">
                     <!-- <span>{{ data.kuChequeInfo.subTitle }}</span> -->
+=======
+                    {{ kuChequeInfo.title }}
+                </div>
+                <div class="info">
+                    <span>{{ kuChequeInfo.subTitle }}</span>
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
             <li class="product_list ziTi" v-show="ziTiTag">
                 <div class="titl">
+<<<<<<< HEAD
                     <!-- {{ data.pickupInfo.title }} -->
                 </div>
                 <div class="info">
                     <!-- <span>{{ data.pickupInfo.subTitle }}</span> -->
+=======
+                    {{ pickupInfo.title }}
+                </div>
+                <div class="info">
+                    <span>{{ pickupInfo.subTitle }}</span>
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
             <li class="product_list weiXin">
                 <div class="titl">
+<<<<<<< HEAD
                     <!-- {{ data.wecharManage.title }} -->
                 </div>
                 <div class="info">
                     <!-- <span>{{ data.wecharManage.subTitle }}</span> -->
+=======
+                    {{ wecharManage.title }}
+                </div>
+                <div class="info">
+                    <span>{{ wecharManage.subTitle }}</span>
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
@@ -118,7 +139,7 @@
                     </div>
                     <div class="comment_info">
                         <time>{{ time[index] }}</time>
-                        <div class="zan svg">
+                        <div class="zan svg" @click="sayYes($event)">
                             <span></span>
                             <span>{{ item.praiseCount }}</span>
                         </div>
@@ -150,10 +171,17 @@
         </div>
         <!-- 底部按钮部分 -->
         <div class="button">
+<<<<<<< HEAD
             <div class="button_bag" @click="buyBag()">
                 <img src="../../static/images/bag.png" alt="">
             </div>
             <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="addBag(item.type)">
+=======
+            <div class="button_bag" @click="goBag($event)">
+                <img src="../../static/images/bag.png" alt="">
+            </div>
+            <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="buyBag(item.type)">
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
                 {{ item.title }}
             </div>
         </div>
@@ -161,8 +189,12 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import swiperCss from "../../static/css/swiper.css"
+=======
+let zanTag = false;
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
 export default {
     data(){
         return{
@@ -191,6 +223,7 @@ export default {
             tag4 : false,
             scroll : 0,//监听页面滚动
             total : 0,
+<<<<<<< HEAD
             swiperOption : {
                 loop : true,
                 // autoplay: 3000,
@@ -199,6 +232,12 @@ export default {
                 autoplayDisableOnInteraction : false,
             },
             dataArr : {}
+=======
+            zanNum : 0,
+            kuChequeInfo : '',
+            pickupInfo : '',
+            wecharManage : '',
+>>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
         }
     },
     components : {
@@ -234,14 +273,45 @@ export default {
         goback(){
             history.back()
         },
+        buyBag(type){
+            if (type == 0) {
+                // 加入购物袋
+                let goods = {
+                    url : this.productInfo.imgList[0],
+                    msg : this.productInfo.title,
+                    i : 1,
+                    price : this.price.nowPrice,
+                    isTrue : 0,
+                }
+            } else if (type == 1) {
+                // 立即购买
+            }
+        },
+        goBag(){
+            this.$router.push({
+                path : '/bag'
+            })
+        },
         gohome(){
             this.$router.push({
                 path : '/home'
             })
         },
+        sayYes(ev){
+            if(zanTag){
+                ev.currentTarget.children[0].classList.remove("color");
+                this.zanNum -= 1;
+                ev.currentTarget.children[1].innerText = this.zanNum;
+                zanTag = false;
+            } else {
+                ev.currentTarget.children[0].classList.add("color");
+                this.zanNum += 1;
+                ev.currentTarget.children[1].innerText = this.zanNum;
+                zanTag = true;
+            }
+        },
         menu() {
             this.scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-            // console.log(this.scroll)
             let jump = document.querySelectorAll('.d_jump');
             // 获取需要滚动的距离
             this.total1 = jump[0].offsetTop
@@ -274,27 +344,27 @@ export default {
         jump(ev,index){
             let jump = document.querySelectorAll('.d_jump')
             // 获取需要滚动的距离
-            let total = jump[index].offsetTop
-            // console.log(ev.currentTarget);
+            this.total = jump[index].offsetTop
             // Chrome
-            document.body.scrollTop = total
+            document.body.scrollTop = this.total
             // Firefox
-            document.documentElement.scrollTop = total
+            document.documentElement.scrollTop = this.total
             // Safari
-            window.pageYOffset = total
+            window.pageYOffset = this.total
         }
     },
     created(){
         // 请求商品详情
         this.$jsonp('http://las.secoo.com/api/product/detail_new?upk=&productId=' + this.productId + '&size=2&c_platform_type=0&_=' + Math.random() + '&callback').then(data => {
             this.data = data;
-            // console.log(data);
             this.topImgUrl  = data.productInfo.imgList;
             this.price = data.productInfo.priceInfo;
             this.productInfo = data.productInfo;
             this.serviceList = data.serviceList;
             this.buttonList = data.button.buttonList;
-            // console.log(this.buttonList);
+            this.kuChequeInfo = data.kuChequeInfo;
+            this.pickupInfo = data.pickupInfo;
+            this.wecharManage = data.wecharManage;
             // 判断到店自提是否存在，如果存在就展示
             if (data.pickupInfo.title) {
                 this.ziTiTag = true;
@@ -304,7 +374,6 @@ export default {
         }),
         // 请求商品的用户评价
         this.$jsonp('http://las.secoo.com/api/comment/show_product_comment?upk=affe88828a1641749c7e730b6483dcd9%7C464572656233%7Ccc4a951855c94198896b905a9d51c3a2%7CBF13678943951D86DD851ABD04D322F1&productId=' + this.productId + '&size=2&c_platform_type=0&type=0&filter=0&page=1&pageSize=8&productBrandId=5987&productCategoryId=1828&_=' + Math.random() + '&callback').then( data => {
-            // console.log(data);
             if (data.retCode == 0) {
                 this.commentList = data.commentList; //评论列表
                 this.commentCount = data.totalCurrCommentNum; //该品牌评论数量
@@ -318,6 +387,7 @@ export default {
                     var day = date.getDate();
                     var date = year + '.' + month + '.' + day;
                     this.time.push(date)
+                    this.zanNum = i.praiseCount;
                 }
             } else {
                 this.commentList = data.commentList; //评论列表
@@ -328,10 +398,8 @@ export default {
         }),
         // 请求精品推荐数据
         this.$jsonp('https://lr.secooimg.com/recommend?upk=affe88828a1641749c7e730b6483dcd9%7C464572656233%7Ccc4a951855c94198896b905a9d51c3a2%7CBF13678943951D86DD851ABD04D322F1&productId=' + this.productId + '&size=2&c_platform_type=0&type=similar&count=12&platformType=2&categoryId=1449&brandId=6836&_=' + Math.random() + '&callback').then(data => {
-            // console.log(data);
             if (data.recode == 0) {
                 this.tuiJianList = data.productList;
-                // console.log(this.tuiJianList);
             }
         })
     },

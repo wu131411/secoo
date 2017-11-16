@@ -47,14 +47,13 @@ a:hover {
     clear: both;
 }
 
-
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?7q1kl7');
-  src:  url('../fonts/icomoon.eot?7q1kl7#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?7q1kl7') format('truetype'),
-    url('../fonts/icomoon.woff?7q1kl7') format('woff'),
-    url('../fonts/icomoon.svg?7q1kl7#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?unnta3');
+  src:  url('../fonts/icomoon.eot?unnta3#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?unnta3') format('truetype'),
+    url('../fonts/icomoon.woff?unnta3') format('woff'),
+    url('../fonts/icomoon.svg?unnta3#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -74,23 +73,18 @@ a:hover {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-点赞(1):before {
-  content: "\e900";
-  color: #f00;
-}
-.icon-点赞(2):before {
-  content: "\e901";
+.icon-喜欢(1):before {
+  content: "\e904";
   color: #666;
 }
-.icon-向右(1):before {
-  content: "\e902";
+.icon-点赞:before {
+  content: "\e900";
+  color: #666;
 }
-.icon-wink:before {
-  content: "\e9e7";
+.icon-火:before {
+  content: "\e901";
 }
-.icon-wink2:before {
-  content: "\e9e8";
-}
-.icon-grin2:before {
-  content: "\e9ea";
+.icon-向右:before {
+  content: "\e903";
+  color: #666;
 }

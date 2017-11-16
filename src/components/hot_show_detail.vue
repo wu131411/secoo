@@ -48,8 +48,8 @@
                         <span>{{ show.praiseCount }}</span>
                     </div>
                     <div class="like_wrap" @click="sayLike($event)">
-                        <div class="like">
-                            <img src="../../static/images/hot_like.svg" alt="">
+                        <div class="like svg">
+                            
                         </div>
                         <span>{{ show.favoriteCount }}</span>
                     </div>
@@ -82,10 +82,17 @@
                         </li>
                     </ul>
                 </div>
+                <!-- 发表评论部分 -->
+                <div class="addComment">
+                    <div class="">
+                        <input type="text" name="" value="" placeholder="发表评论">
+                        <span v-show="show" @click="pingLun($event)">发送</span>
+                    </div>
+                </div>
             </div>
         </main>
         <!-- 商品购买部分 -->
-        <footer>
+        <footer @click="goBuy()">
             <div class="pro_img">
                 <img :src="productInfo.productImg" alt="">
             </div>
@@ -98,7 +105,7 @@
                         {{ '￥' + productInfo.secooPrice }}
                     </div>
                 </div>
-                <div class="pro_buy" @click="goBuy()">
+                <div class="pro_buy">
                     去购买
                 </div>
             </div>
@@ -114,7 +121,8 @@ export default {
         return {
             id: this.$route.params.id, //接收参数
             show : {},
-            comment : {},
+            comment : {},//评论列表
+            addComment : {}, // 添加评论的数据
             comment_length : 0,
             productInfo : {},
             zanNum : '',
@@ -157,6 +165,28 @@ export default {
             this.$router.push({
                 path : '/product_detail/' + this.productId,
             })
+        },
+        pingLun(ev){
+            // TODO:首先判断是否登录状态，如果未登录，跳转登录界面
+            if (true) {
+                let input = document.querySelector('.addComment input');
+                // 判断是否为空
+                if (input.value) {
+                    let value = {
+                        content : input.value,
+                        headImg : '../../static/images/icon.ico',
+                        nickName : '用户123456789',
+                        createDate : '刚刚',
+                    }
+                    console.log(this.comment);
+                    this.comment.push(value);
+                    input.value = '';
+                }
+            }else {
+                this.$router.push({
+                    path : '/mine_dl'
+                })
+            }
         }
     },
     created(){
@@ -171,12 +201,12 @@ export default {
 
         // 详细评论数据请求
         this.$jsonp('http://las.secoo.com/api/show/comment_show_comments?commentShowDetailId=' + this.id + '&currpage=1&pagesize=20&c_upk=&c_app_ver=1.0&c_channel=&c_device_id=98f0f00e-8938-48f9-b70c-e714487a8241&c_platform=&c_platform_type=&c_platform_ver=&c_screen_width=414&c_screen_height=736&_=' + Math.random() + '&callback').then(data => {
-            // console.log(data);
-            this.comment = data.data;
             if (data.recode == 2002) {
-                comment_length = 0;
+                this.comment_length = 0;
+                this.comment = [];
             } else {
                 this.comment_length = data.data.length;
+                this.comment = data.data;
             }
         })
     }
@@ -237,6 +267,7 @@ export default {
         overflow-y: auto;
         margin-top: 2.32rem;
         border-top: .005rem solid #ededed;
+        margin-bottom: 2.7rem;
     }
     .hot_show_detail main .pro_user{
         display: -webkit-box;
@@ -307,9 +338,6 @@ export default {
     .hot_show_detail .zan_wrap .zan,.hot_show_detail .like_wrap .like{
         display: inline-block;
     }
-    .hot_show_detail .like_wrap .like{
-        vertical-align: middle;
-    }
 
     /*详细评论部分*/
     .hot_show_detail .comment_cont{
@@ -331,7 +359,6 @@ export default {
         list-style: none;
         margin: 0;
         padding: 0;
-        margin-bottom: 2.38rem;
     }
     .hot_show_detail .comment_list li{
         width: 100%;
@@ -339,7 +366,9 @@ export default {
         padding: 0.75rem 0;
         font-size: .64rem;
         text-align: -webkit-match-parent;
-
+    }
+    .hot_show_detail .comment_list li:last-child{
+        padding-bottom: 0;
     }
     .comment_list li .user_icon{
         width: 1.87rem;
@@ -439,5 +468,34 @@ export default {
         background: #e93b39;
         color: #fff;
         font-size: 0.8rem;
+    }
+    .hot_show_detail .addComment{
+        width: 100%;
+        height: 3rem;
+        padding: 0 .5rem;
+    }
+    .hot_show_detail .addComment>div{
+        height: 3rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .hot_show_detail .addComment input{
+        flex: 0 1 80%;
+        height: 2rem;
+        border: none;
+        outline: none;
+        background-color: #f5f5f5;
+        font-size: .8rem;
+    }
+    .hot_show_detail .addComment span{
+        flex: 0 1 10%;
+        padding: 0 .5rem;
+        margin: 0 1rem;
+        height: 2rem;
+        text-align: center;
+        line-height: 2rem;
+        font-size: .8rem;
+        background-color: #f5f5f5;
     }
 </style>
