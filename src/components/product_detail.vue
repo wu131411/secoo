@@ -144,10 +144,10 @@
         </div>
         <!-- 底部按钮部分 -->
         <div class="button">
-            <div class="button_bag">
+            <div class="button_bag" @click="goBag()">
                 <img src="../../static/images/bag.png" alt="">
             </div>
-            <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}">
+            <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="buyBag(item.type)">
                 {{ item.title }}
             </div>
         </div>
@@ -155,6 +155,7 @@
 </template>
 
 <script>
+import Bus from '../bus'
 export default {
     data(){
         return{
@@ -188,6 +189,27 @@ export default {
     methods : {
         goback(){
             history.back()
+        },
+        buyBag(type){
+            if (type == 0) {
+                // 加入购物袋
+                let goods = {
+                    url : this.productInfo.imgList[0],
+                    msg : this.productInfo.title,
+                    i : 1,
+                    price : this.price.nowPrice,
+                    isTrue : 0,
+                }
+                Bus.$emit('data',goods);
+                console.log('123');
+            } else if (type == 1) {
+                // 立即购买
+            }
+        },
+        goBag(){
+            this.$router.push({
+                path : '/bag'
+            })
         },
         gohome(){
             this.$router.push({
@@ -249,7 +271,6 @@ export default {
             this.productInfo = data.productInfo;
             this.serviceList = data.serviceList;
             this.buttonList = data.button.buttonList;
-            // console.log(this.buttonList);
             // 判断到店自提是否存在，如果存在就展示
             if (data.pickupInfo.title) {
                 this.ziTiTag = true;

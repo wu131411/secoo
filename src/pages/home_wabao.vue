@@ -4,14 +4,20 @@
       <div class="top_panel" v-for="item in result">
            <img :src="item.one" alt="">
       </div>
+
+      <HomeTop></HomeTop>
   </div>
+
+
 </template>
 
 <script>
 import HomeHead from "../components/home_head"
+import HomeTop from "../components/home_top"
 export default {
     components:{
-        HomeHead
+        HomeHead,
+        HomeTop
     },
     data(){
         return{
@@ -33,7 +39,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped="">
+<style lang="css" scoped>
     .top_panel {
         width: 100%;
         margin-bottom: 0.53333333333333rem;
