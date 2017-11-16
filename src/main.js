@@ -18,7 +18,6 @@ Vue.use(VueAwesomeSwiper)
 import VueJsonp from "vue-jsonp"
 Vue.use(VueJsonp)
 
-
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

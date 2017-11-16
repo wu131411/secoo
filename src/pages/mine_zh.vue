@@ -10,7 +10,7 @@
 		<div class="minezh_user">
 			<div class="minezh_user2">
 				<span class="user2_text">账户名</span>
-				<span class="user2_num"></span>
+				<span class="user2_num">{{ user_name }}</span>
 			</div>
 		</div>
 		<div class="minezh_money">
@@ -62,19 +62,34 @@
 </template>
 
 <script>
+import setCookie from "../../static/js/setCookie"
+import getCookie from "../../static/js/getCookie"
+import delCookie from "../../static/js/delCookie"
 export default {
+	data() {
+		return {
+			user_name: getCookie('userVal')
+		}
+	},
 	methods: {
-	  back() {
-	    history.back()
-	  }
+		back() {
+      this.$router.push({
+				path:"/mine"
+			})
+    }
+	},
+	created() {
+		// getCookie('userVal')
+    //   this.user_name = getCookie('userVal')
+    // }
 	}
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 @import "../../static/css/reset.css";
-html {
-	background: #F9F9F9;
+html{
+	background-color: #F9F9F9;
 }
 .minezh_top {
 	width: 20rem;
@@ -125,7 +140,7 @@ html {
 .user2_num {
 	float: right;
 	line-height: 2.3rem;
-	margin-right: .4rem;
+	margin-right: 1rem;
 }
 .minezh_money {
 	width: 20rem;

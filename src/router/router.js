@@ -105,6 +105,11 @@ let routes = [
     {path : "/mine_about", component : Mineabout},
     {path : "/mine_aboutqy", component : Mineaboutqy},
     {path : "/mine_aboutqx", component : Mineaboutqx},
+    {path : "/mine_aboutqx_huisuo", component : Mineaboutqxhuisuo},
+    {path : "/mine_aboutqx_jianding", component : Mineaboutqxjianding},
+    {path : "/mine_aboutqx_yanghu", component : Mineaboutqxyanghu},
+    {path : "/mine_aboutqx_xueyuan", component : Mineaboutqxxueyuan},
+    {path : "/mine_aboutry", component : Mineaboutry},
     // 商品详情页
     {path : '/product_detail/:productId',component : ProductDetail},
 
