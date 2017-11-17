@@ -226,8 +226,9 @@ export default {
     methods : {
         go(item){
             this.$router.push({
-                path : '/product_detail/' + item.productId
+                path : '/product_detail/' + item.id
             })
+            history.go(0)
         },
         addBag(type){
             if (type == 0) {
