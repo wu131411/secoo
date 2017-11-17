@@ -44,7 +44,7 @@
       <mt-popup class="downArr" v-model="pop" position="bottom">
          <p>热门搜索</p>
          <ul>
-            <li>爆款</li>
+            <li @click="baokuan()">爆款</li>
             <li>超值包袋</li>
             <li>jimmy cho...</li>
             <li>古驰围巾</li>
@@ -66,7 +66,7 @@
          <div id="zongheh" class="zong-bai">
             <div class="bao-wrap2">
                <ul id="pin-ul">
-                  <li v-for="index in resultPin">{{index.name}}</li>
+                  <li @click="aaa(item)" v-for="(item,index) in resultPin" :key="index">{{item.name}}</li>
                </ul>
             </div>
          </div>
@@ -78,7 +78,7 @@
                   <dl>
                      <dt><b>{{name.name}}</b></dt>
                      <dd>
-                        <a href="#" v-for = "index in (name.value)">{{index.name}}</a>
+                        <a @click="se()" :class="yellow" href="#" v-for = "index in (name.value)">{{index.name}}</a>
                      </dd>
                   </dl>
                </li>
@@ -161,6 +161,10 @@
                   </dl>
                </li>
             </ul>
+            <div class="bottom">
+               <p @click="qing()">清除</p>
+               <p @click="que()">确定</p>
+            </div>
          </div>
       </div>
      <router-view></router-view>
@@ -207,7 +211,8 @@ export default {
          name8:'',
          name9:'',
          name10:'',
-         name11:''
+         name11:'',
+         yellow:''
       }
    },
    created(){
@@ -220,6 +225,43 @@ export default {
       Bao
    },
    methods:{
+      aaa(item){
+         // console.log(this.item.id);
+         console.log(item.id);
+         this.$jsonp('http://m.secoo.com/appservice/search_cateGoods.action?categoryId=_30_31_&brandId=' +item.id+'&orderType=1&currPage=1&st=10&_=1510887613144&callback:').then(data => {
+            this.resultZ = data.rp_result.productlist
+            this.fag = false
+         })
+         this.dibu = true
+         this.pinpai = false
+      },
+      baokuan(){
+         this.pop = false
+         this.$jsonp('http://m.secoo.com/appservice/search_goods.action?categoryId=_30_31_&orderType=1&currPage=1&st=10&actScr=1_2_3_4_5&keyword=%2525E7%252588%252586%2525E6%2525AC%2525BE&_=1510885983017&callback:').then(data => {
+            this.resultZ = data.rp_result.productlist
+            this.fag = false
+         })
+         this.dibu = true
+         this.closs = false
+         this.sou = true
+         this.zonghe = false
+         this.pinpai = false
+         this.shaixuan = false
+      },
+      que(){
+         this.shaixuan = false
+         this.dibu = true
+         this.$jsonp('http://m.secoo.com/appservice/search_cateGoods.action?categoryId=_30_31_&orderType=1&currPage=1&st=10&actScr=1_2_3_4_5&_=1510885325928&callback:').then(data => {
+            this.resultZ = data.rp_result.productlist
+            this.fag = false
+         })
+      },
+      qing(){
+         this.yellow = ''
+      },
+      se(){
+         this.yellow = 'zong'
+      },
       back1(){
          history.back()
       },
@@ -239,15 +281,6 @@ export default {
          this.sou = true
       },
       zongxiala(){
-         // if (this.zonghe == true || this.dibu == false || this.pinpai == true) {
-         //    this.zonghe = false
-         //    this.dibu = true
-         //    this.pinpai = false
-         // }else {
-         //    this.zonghe = true
-         //    this.dibu = false
-         //    this.pinpai = false
-         // }
          if (this.zonghe == true && this.dibu == false) {
             this.zonghe = false
             this.dibu = true
@@ -259,7 +292,6 @@ export default {
          this.shaixuan = false
       },
       pinxiala(){
-         // this.pinpai = true
          if (this.pinpai == true && this.dibu == false) {
             this.pinpai = false
             this.dibu = true
@@ -499,7 +531,8 @@ export default {
 .downArr ul li{
    color: #4c4c4c;
    float: left;
-   width:20%;
+   width:21%;
+   height:1rem;
    padding: 0.8rem 0.2rem;
    margin: 0.4rem 0.4rem;
    text-align: center;
@@ -579,8 +612,24 @@ export default {
    padding:0.4rem 0;
    margin: 0.4rem 0;
 }
-/*#hei{
-   position: absolute;
-   top:2.6rem;
-}*/
+.shai-ul li dl dd .zong{
+   color: #baa071;
+}
+.bottom{
+   background: #fff;
+   width:96%;
+   position: fixed;
+   bottom: 0;
+   display: flex;
+   justify-content: space-around;
+}
+.bottom p{
+   width:8rem;
+   height:2.5rem;
+   line-height: 2.5rem;
+   text-align: center;
+   color: #fff;
+   background: #000;
+   margin-bottom:0.5rem;
+}
 </style>

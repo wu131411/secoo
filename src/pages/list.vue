@@ -25,7 +25,7 @@ export default {
    data(){
       return {
          color:'black',
-         colortwo:''
+         colortwo:'',
       }
    },
    methods:{

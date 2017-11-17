@@ -4,8 +4,8 @@
          <img src="../../static/images/loading_holder.gif" alt="">
       </div>
       <dl class="pin-list" v-for="listArr in result">
-        <a :name="listArr.cap">
-           <dt >
+        <a class="djump">
+           <dt>
              {{ listArr.cap }}
           </dt>
         </a>
@@ -22,32 +22,32 @@
         <router-view></router-view>
       </dl>
       <div class="black-list">
-         <a href="#">A</a>
-         <a href="#">B</a>
-         <a href="#">C</a>
-         <a href="#">D</a>
-         <a href="#">E</a>
-         <a href="#">F</a>
-         <a href="#">G</a>
-         <a href="#">H</a>
-         <a href="#">I</a>
-         <a href="#">J</a>
-         <a href="#">K</a>
-         <a href="#">L</a>
-         <a href="#">M</a>
-         <a href="#">N</a>
-         <a href="#">O</a>
-         <a href="#">P</a>
-         <a href="#">Q</a>
-         <a href="#">R</a>
-         <a href="#">S</a>
-         <a href="#">T</a>
-         <a href="#">U</a>
-         <a href="#">V</a>
-         <a href="#">W</a>
-         <a href="#">S</a>
-         <a href="#">Y</a>
-         <a href="#">Z</a>
+         <a  @click="jump(0)">A</a>
+         <a  @click="jump(1)">B</a>
+         <a  @click="jump(2)">C</a>
+         <a  @click="jump(3)">D</a>
+         <a  @click="jump(4)">E</a>
+         <a  @click="jump(5)">F</a>
+         <a  @click="jump(6)">G</a>
+         <a  @click="jump(7)">H</a>
+         <a  @click="jump(8)">I</a>
+         <a  @click="jump(9)">J</a>
+         <a  @click="jump(10)">K</a>
+         <a  @click="jump(11)">L</a>
+         <a  @click="jump(12)">M</a>
+         <a  @click="jump(13)">N</a>
+         <a  @click="jump(14)">O</a>
+         <a  @click="jump(15)">P</a>
+         <a  @click="jump(16)">Q</a>
+         <a  @click="jump(17)">R</a>
+         <a  @click="jump(18)">S</a>
+         <a  @click="jump(19)">T</a>
+         <a  @click="jump(20)">U</a>
+         <a  @click="jump(21)">V</a>
+         <a  @click="jump(22)">W</a>
+         <a  @click="jump(23)">S</a>
+         <a  @click="jump(24)">Y</a>
+         <a  @click="jump(25)">Z</a>
          <a href="#">#</a>
       </div>
    </div>
@@ -58,7 +58,8 @@ export default {
    data(){
         return{
          result:{},
-         bol:true
+         bol:true,
+         total:0,
         }
     },
     created(){
@@ -67,6 +68,26 @@ export default {
          // console.log(this.result);
          this.bol = false
       })
+   },
+   methods:{
+      jump(index){
+         console.log('123');
+          let jump = document.querySelectorAll('.djump')
+          // 获取需要滚动的距离
+         //  console.log(jump);
+         //  console.log(index);
+         // console.log(jump[index].offsetTop);
+          this.total = (jump[index].offsetTop - 50)
+         //  console.log(total);
+          // console.log(ev.currentTarget);
+          // Chrome
+          document.body.scrollTop = this.total
+
+         //Firefox
+          document.documentElement.scrollTop = this.total
+          // Safari
+          window.pageYOffset = this.total
+      }
    }
 }
 </script>
@@ -133,5 +154,11 @@ export default {
    font-size: 0.5rem;
    display: block;
    color: #fff;
+}
+.poson{
+   position: fixed;
+   top: 2.7rem;
+   left: 0;
+   right: 0;
 }
 </style>
