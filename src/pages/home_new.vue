@@ -102,7 +102,7 @@ export default {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
             var offsetTop = document.querySelector('.searchBar').offsetTop;
             if (scrollTop > offsetTop) {
-                document.querySelector('.searchBar').classList.add("isFixed")
+                 document.querySelector('.searchBar').classList.add("isFixed")
             }
             if(scrollTop <= 2083) {
                 document.querySelector('.searchBar').classList.remove("isFixed")

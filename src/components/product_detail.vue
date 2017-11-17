@@ -698,6 +698,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        z-index:10;
     }
     .product_detail .button .button_bag{
         flex: 0 1 15%;
