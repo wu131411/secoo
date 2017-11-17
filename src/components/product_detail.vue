@@ -48,8 +48,6 @@
         <ul>
             <li class="product_list fenQi">
                 <div class="titl">
-                </div>
-                <div class="info">
                     {{ kuChequeInfo.title }}
                 </div>
                 <div class="info">
@@ -59,8 +57,6 @@
             </li>
             <li class="product_list ziTi" v-show="ziTiTag">
                 <div class="titl">
-                </div>
-                <div class="info">
                     {{ pickupInfo.title }}
                 </div>
                 <div class="info">
@@ -69,9 +65,7 @@
                 </div>
             </li>
             <li class="product_list weiXin">
-                <div class="titl">>
-                </div>
-                <div class="info">
+                <div class="titl">
                     {{ wecharManage.title }}
                 </div>
                 <div class="info">
@@ -671,6 +665,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        z-index:10;
     }
     .product_detail .button .button_bag{
         flex: 0 1 15%;
