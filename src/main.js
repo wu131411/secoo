@@ -35,7 +35,6 @@ const store = new Vuex.Store({
     },
     mutations : {//同步执行
         ADD_BAGDATA(state, shopData){
-            console.log(state.dataBag.length);
             if(state.dataBag.length == 0){
                 state.dataBag.push(shopData)
             }else{

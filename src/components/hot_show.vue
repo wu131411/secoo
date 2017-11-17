@@ -1,85 +1,91 @@
 <template lang="html">
   <div class="hot_show">
-      <ul>
-          <li v-for="(item,index) of this.list">
-              <div class="hot_list" v-if="item.id | hasword">
-                  <div class="hot_main" @click="more(item.id)">
-                      <div class="user">
-                          <div class="userInfo">
-                              <img class="userImg" :src="item.showUserImg" alt="">
-                              <div class="userName">
-                                  <p>{{ item.showUserName }}</p>
-                                  <time>{{ item.showTime }}</time>
+      <div class="loading" v-if="show">
+          <img src="../../static/images/list-loading.gif" alt="">
+      </div>
+      <div class="" v-else>
+          <ul>
+              <li v-for="(item,index) of this.list">
+                  <div class="hot_list" v-if="item.id | hasword">
+                      <div class="hot_main" @click="more(item.id)">
+                          <div class="user">
+                              <div class="userInfo">
+                                  <img class="userImg" :src="item.showUserImg" alt="">
+                                  <div class="userName">
+                                      <p>{{ item.showUserName }}</p>
+                                      <time>{{ item.showTime }}</time>
+                                  </div>
+                              </div>
+                              <div class="userContent">
+                                  <div>
+                                      {{ content[index] }}
+                                  </div>
+                                  <span class="seeMore">查看详情</span>
                               </div>
                           </div>
-                          <div class="userContent">
-                              <div>
-                                  {{ content[index] }}
-                              </div>
-                              <span class="seeMore">查看详情</span>
+                          <div class="showMain">
+                              <ul>
+                                  <li v-for="src in item.showImgs">
+                                      <img :src="src" alt="">
+                                  </li>
+                              </ul>
                           </div>
                       </div>
-                      <div class="showMain">
-                          <ul>
-                              <li v-for="src in item.showImgs">
-                                  <img :src="src" alt="">
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-                  <div class="showBottom">
-                      <div class="showBtn">
-                          <div class="">
-                              <div class="finger" @click="sayYes($event,index)" >
-                                  <span class="right svg"></span>
-                              </div>
-                              <span class="sayYes">{{ num[index] }}</span>
-                          </div>
-                      </div>
-                      <div class="showBuy" @click="goBuy(index)">
-                          <span class="toBuy">去购买</span>
-                          <span class="svg"></span>
-                      </div>
-                  </div>
-              </div>
-              <div class="hot_ad" v-else>
-                  <div class="">
-                      <div class="hot_ad_img" @click="goWabao()">
-                          <img :src="item.titleImg" alt="">
-                          <div class="img_view"></div>
-                          <div class="hot_ad_title">
-                              <p class="title">{{ item.title }}</p>
-                              <p class="subTitle">{{ item.subTitle }}</p>
-                              <p class="btn">进入专题</p>
-                          </div>
-                          <div class="hot_ad_showNum">
+                      <div class="showBottom">
+                          <div class="showBtn">
                               <div class="">
-                                  <img src="../../static/images/hot_see.svg" alt="">
+                                  <div class="finger" @click="sayYes($event,index)" >
+                                      <span class="right svg"></span>
+                                  </div>
+                                  <span class="sayYes">{{ num[index] }}</span>
                               </div>
-                              <span>{{ item.showNumber }}</span>
                           </div>
-                          <div class="hot_ad_bar"></div>
-                      </div>
-                      <div class="hot_ad_imgs">
-                          <ul>
-                              <li v-for="i in item.products" @click="gouMai(i.productId)">
-                                  <div class="hot_ad_smallImg">
-                                      <img :src="i.img" alt="">
-                                  </div>
-                                  <div class="hot_ad_name">
-                                      {{ i.name }}
-                                  </div>
-                                  <div class="hot_ad_price">
-                                      {{ i.price }}
-                                  </div>
-                              </li>
-                          </ul>
+                          <div class="showBuy" @click="goBuy(index)">
+                              <span class="toBuy">去购买</span>
+                              <span class="svg"></span>
+                          </div>
                       </div>
                   </div>
-                 <div class="line"></div>
-              </div>
-          </li>
-      </ul>
+                  <div class="hot_ad" v-else>
+                      <div class="">
+                          <div class="hot_ad_img" @click="goWabao()">
+                              <img :src="item.titleImg" alt="">
+                              <div class="img_view"></div>
+                              <div class="hot_ad_title">
+                                  <p class="title">{{ item.title }}</p>
+                                  <p class="subTitle">{{ item.subTitle }}</p>
+                                  <p class="btn">进入专题</p>
+                              </div>
+                              <div class="hot_ad_showNum">
+                                  <div class="">
+                                      <img src="../../static/images/hot_see.svg" alt="">
+                                  </div>
+                                  <span>{{ item.showNumber }}</span>
+                              </div>
+                              <div class="hot_ad_bar"></div>
+                          </div>
+                          <div class="hot_ad_imgs">
+                              <ul>
+                                  <li v-for="i in item.products" @click="gouMai(i.productId)">
+                                      <div class="hot_ad_smallImg">
+                                          <img :src="i.img" alt="">
+                                      </div>
+                                      <div class="hot_ad_name">
+                                          {{ i.name }}
+                                      </div>
+                                      <div class="hot_ad_price">
+                                          {{ i.price }}
+                                      </div>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                     <div class="line"></div>
+                  </div>
+              </li>
+          </ul>
+      </div>
+
   </div>
 </template>
 
@@ -96,6 +102,7 @@ export default {
             hasword : '',
             productId : '',
             lineNumber : 1, // 数据懒加载的请求参数
+            show : true,
         }
     },
     methods : {
@@ -167,6 +174,7 @@ export default {
                 this.content.push(item.content);
             }
             this.lineNumber = parseInt(data.list[18].id);
+            this.show = false
         })
     },
     watch : {
@@ -191,6 +199,14 @@ export default {
 </script>
 
 <style lang="css">
+    .hot_show .loading {
+        width : 100%;
+        /*height: 100%;*/
+    }
+    .hot_show .loading img{
+        width: 100%;
+        /*height: 100%;*/
+    }
     .hot_show{
         width: 100%;
         font-family: STHeiti,Helvetica Neue;

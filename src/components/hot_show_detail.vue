@@ -1,115 +1,121 @@
 <template lang="html">
     <div class="hot_show_detail">
-        <!-- 头部 -->
-        <header>
-            <div class="header_inner">
-                <div class="go_left" @click="back()">
-                    <img src="../../static/images/hot_back.png" alt="">
-                </div>
-                <div class="page_title">
-                    晒货详情
-                </div>
-                <div class="go_right">
+        <div class="loading" v-if="zhanShi">
+            <img src="../../static/images/list-loading.gif" alt="">
+        </div>
+        <div class="" v-else>
+            <!-- 头部 -->
+            <header>
+                <div class="header_inner">
+                    <div class="go_left" @click="back()">
+                        <img src="../../static/images/hot_back.png" alt="">
+                    </div>
+                    <div class="page_title">
+                        晒货详情
+                    </div>
+                    <div class="go_right">
 
-                </div>
-            </div>
-        </header>
-        <!-- 商品主体介绍部分 -->
-        <main>
-            <!-- 图片部分 -->
-            <div class="pro_info">
-                <!-- 用户信息部分 -->
-                <div class="pro_user">
-                    <div class="user_img">
-                        <img :src="show.headImg" alt="">
-                    </div>
-                    <div class="user_info">
-                        <div class="user_name">
-                            {{ show.nickName }}
-                        </div>
-                        <div class="user_time">
-                            {{ show.createDate }}
-                        </div>
                     </div>
                 </div>
-                <ul>
-                    <li class="pro_img" v-for="item in show.imgs">
-                        <img :src="item" alt="">
-                    </li>
-                </ul>
-                <div class="pro_des" v-html="show.content">
-                    <!-- {{ show.content }} -->
-                </div>
-                <div class="mixin_show">
-                    <div class="zan_wrap" @click="sayZan($event)">
-                        <div class="zan svg">
-                            
+            </header>
+            <!-- 商品主体介绍部分 -->
+            <main>
+                <!-- 图片部分 -->
+                <div class="pro_info">
+                    <!-- 用户信息部分 -->
+                    <div class="pro_user">
+                        <div class="user_img">
+                            <img :src="show.headImg" alt="">
                         </div>
-                        <span>{{ show.praiseCount }}</span>
-                    </div>
-                    <div class="like_wrap" @click="sayLike($event)">
-                        <div class="like svg">
-                            
+                        <div class="user_info">
+                            <div class="user_name">
+                                {{ show.nickName }}
+                            </div>
+                            <div class="user_time">
+                                {{ show.createDate }}
+                            </div>
                         </div>
-                        <span>{{ show.favoriteCount }}</span>
                     </div>
-                </div>
-            </div>
-            <!-- 评论部分 -->
-            <div class="comment_cont">
-                <div class="comment_title">
-                    {{ '全部评论( ' + comment_length + ' )' }}
-                </div>
-                <div class="comment_list">
                     <ul>
-                        <li v-for="(item,index) in comment">
-                            <div class="user_icon">
-                                <img :src="item.headImg" alt="">
-                            </div>
-                            <div class="user_wrap">
-                                <div class="user_group">
-                                    <div class="user_name">
-                                        {{ item.nickName }}
-                                    </div>
-                                    <div class="user_time">
-                                        {{ item.createDate }}
-                                    </div>
-                                </div>
-                                <div class="comment_content">
-                                    {{ item.content }}
-                                </div>
-                            </div>
+                        <li class="pro_img" v-for="item in show.imgs">
+                            <img :src="item" alt="">
                         </li>
                     </ul>
-                </div>
-                <!-- 发表评论部分 -->
-                <div class="addComment">
-                    <div class="">
-                        <input type="text" name="" value="" placeholder="发表评论">
-                        <span v-show="show" @click="pingLun($event,productId)">发送</span>
+                    <div class="pro_des" v-html="show.content">
+                        <!-- {{ show.content }} -->
+                    </div>
+                    <div class="mixin_show">
+                        <div class="zan_wrap" @click="sayZan($event)">
+                            <div class="zan svg">
+                                
+                            </div>
+                            <span>{{ show.praiseCount }}</span>
+                        </div>
+                        <div class="like_wrap" @click="sayLike($event)">
+                            <div class="like svg">
+                                
+                            </div>
+                            <span>{{ show.favoriteCount }}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
-        <!-- 商品购买部分 -->
-        <footer @click="goBuy()">
-            <div class="pro_img">
-                <img :src="productInfo.productImg" alt="">
-            </div>
-            <div class="fix_proInfo_inner">
-                <div class="pro_box">
-                    <div class="pro_title">
-                        {{ productInfo.productName }}
+                <!-- 评论部分 -->
+                <div class="comment_cont">
+                    <div class="comment_title">
+                        {{ '全部评论( ' + comment_length + ' )' }}
                     </div>
-                    <div class="pro_price">
-                        {{ '￥' + productInfo.secooPrice }}
+                    <div class="comment_list">
+                        <ul>
+                            <li v-for="(item,index) in comment">
+                                <div class="user_icon">
+                                    <img :src="item.headImg" alt="">
+                                </div>
+                                <div class="user_wrap">
+                                    <div class="user_group">
+                                        <div class="user_name">
+                                            {{ item.nickName }}
+                                        </div>
+                                        <div class="user_time">
+                                            {{ item.createDate }}
+                                        </div>
+                                    </div>
+                                    <div class="comment_content">
+                                        {{ item.content }}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 发表评论部分 -->
+                    <div class="addComment">
+                        <div class="">
+                            <input type="text" name="" value="" placeholder="发表评论">
+                            <span v-show="show" @click="pingLun($event,productId)">发送</span>
+                        </div>
                     </div>
                 </div>
-                <div class="pro_buy">
-                    去购买
+            </main>
+            <!-- 商品购买部分 -->
+            <footer @click="goBuy()">
+                <div class="pro_img">
+                    <img :src="productInfo.productImg" alt="">
                 </div>
-            </div>
-        </footer>
+                <div class="fix_proInfo_inner">
+                    <div class="pro_box">
+                        <div class="pro_title">
+                            {{ productInfo.productName }}
+                        </div>
+                        <div class="pro_price">
+                            {{ '￥' + productInfo.secooPrice }}
+                        </div>
+                    </div>
+                    <div class="pro_buy">
+                        去购买
+                    </div>
+                </div>
+            </footer>
+        </div>
+
     </div>
 </template>
 
@@ -131,6 +137,7 @@ export default {
             zanNum : '',
             likeNum : '',
             productId : '', // 点击购买用
+            zhanShi : true,
         }
     },
     methods : {
@@ -203,6 +210,7 @@ export default {
             this.likeNum = data.show.favoriteCount;
             this.productInfo = data.show.productInfo[0];
             this.productId = data.show.productId;
+            this.zhanShi = false;
         })
 
         // 详细评论数据请求
@@ -220,6 +228,14 @@ export default {
 </script>
 
 <style lang="css">
+    .hot_show_detail .loading {
+        width : 100%;
+        height: 100%;
+    }
+    .hot_show_detail .loading img{
+        width: 100%;
+        height: 100%;
+    }
     .hot_show_detail{
         width: 100%;
         color: #1a191e;

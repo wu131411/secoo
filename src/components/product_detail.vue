@@ -1,161 +1,170 @@
 <template lang="html">
     <div class="product_detail">
-        <!-- 顶部导航 -->
-        <div class="nav_wrap d_jump">
-            <div class="goback" @click="goback()">
-                <img src="../../static/images/hot_back.png" alt="">
+        <div class="loading" v-if="show">
+            <img src="../../static/images/list-loading.gif" alt="">
+        </div>
+        <div class="" v-else>
+            <!-- 顶部导航 -->
+            <div class="nav_wrap d_jump">
+                <div class="goback" @click="goback()">
+                    <img src="../../static/images/hot_back.png" alt="">
+                </div>
+                <ul>
+                    <li @click="jump($event,0)" :class="{'on' : tag1}">商品</li>
+                    <li @click="jump($event,1)" :class="{'on' : tag2}">评论</li>
+                    <li @click="jump($event,2)" :class="{'on' : tag3}">详情</li>
+                    <li @click="jump($event,3)" :class="{'on' : tag4}">推荐</li>
+                </ul>
+                <div class="gohome" @click="gohome()">
+                    <img src="../../static/images/home.png" alt="">
+                </div>
             </div>
+            <!-- 商品图片轮播图部分 -->
+            <div class="product_banner">
+                <!-- 轮播图部分 -->
+                <div class="imgs">
+                    <swiper :options="swiperOption" ref="mySwiper">
+                        <swiper-slide v-for="item in topImgUrl" :key="item.key">
+                            <img :src="item">
+                        </swiper-slide>
+                        <div class="swiper-pagination"  slot="pagination"></div>
+                    </swiper>
+                </div>
+                <p>您有一张满<span>4999</span>减<span>550</span>的券可用，购买立省<span class="liSheng">550</span>元</p>
+            </div>
+            <!-- 价钱部分 -->
+            <div class="product_price">
+                <div class="price" :style="{color : '#' + price.nowPriceColor}">
+                    {{ price.nowPrice }}
+                </div>
+                <div class="title">
+                    <h3>
+                        <span class="on">{{ data.brandName }}</span>
+                        {{ productInfo.title }}
+                    </h3>
+                </div>
+                <div class="carriage">
+                    <span>{{ productInfo.areaName }}</span>
+                    <span>{{ productInfo.deliverInfo }}</span>
+                </div>
+            </div>
+            <!-- 分期付款列表部分 -->
             <ul>
-                <li @click="jump($event,0)" :class="{'on' : tag1}">商品</li>
-                <li @click="jump($event,1)" :class="{'on' : tag2}">评论</li>
-                <li @click="jump($event,2)" :class="{'on' : tag3}">详情</li>
-                <li @click="jump($event,3)" :class="{'on' : tag4}">推荐</li>
+                <li class="product_list fenQi">
+                    <div class="titl">
+                        {{ kuChequeInfo.title }}
+                    </div>
+                    <div class="info">
+                        <span>{{ kuChequeInfo.subTitle }}</span>
+                        <span><img src="../../static/images/forward.png" alt=""></span>
+                    </div>
+                </li>
+                <li class="product_list ziTi" v-show="ziTiTag">
+                    <div class="titl">
+                        {{ pickupInfo.title }}
+                    </div>
+                    <div class="info">
+                        <span>{{ pickupInfo.subTitle }}</span>
+                        <span><img src="../../static/images/forward.png" alt=""></span>
+                    </div>
+                </li>
+                <li class="product_list weiXin">
+                    <div class="titl">
+                        {{ wecharManage.title }}
+                    </div>
+                    <div class="info">
+                        <span>{{ wecharManage.subTitle }}</span>
+                        <span><img src="../../static/images/forward.png" alt=""></span>
+                    </div>
+                </li>
             </ul>
-            <div class="gohome" @click="gohome()">
-                <img src="../../static/images/home.png" alt="">
-            </div>
-        </div>
-        <!-- 商品图片轮播图部分 -->
-        <div class="product_banner">
-            <!-- 轮播图部分 -->
-            <div class="imgs">
-                <swiper :options="swiperOption" ref="mySwiper">
-                    <swiper-slide v-for="item in topImgUrl" :key="item.key">
-                        <img :src="item">
-                    </swiper-slide>
-                    <div class="swiper-pagination"  slot="pagination"></div>
-                </swiper>
-            </div>
-            <p>您有一张满<span>4999</span>减<span>550</span>的券可用，购买立省<span class="liSheng">550</span>元</p>
-        </div>
-        <!-- 价钱部分 -->
-        <div class="product_price">
-            <div class="price" :style="{color : '#' + price.nowPriceColor}">
-                {{ price.nowPrice }}
-            </div>
-            <div class="title">
-                <h3>
-                    <span class="on">{{ data.brandName }}</span>
-                    {{ productInfo.title }}
-                </h3>
-            </div>
-            <div class="carriage">
-                <span>{{ productInfo.areaName }}</span>
-                <span>{{ productInfo.deliverInfo }}</span>
-            </div>
-        </div>
-        <!-- 分期付款列表部分 -->
-        <ul>
-            <li class="product_list fenQi">
-                <div class="titl">
-                    {{ kuChequeInfo.title }}
-                </div>
-                <div class="info">
-                    <span>{{ kuChequeInfo.subTitle }}</span>
-                    <span><img src="../../static/images/forward.png" alt=""></span>
-                </div>
-            </li>
-            <li class="product_list ziTi" v-show="ziTiTag">
-                <div class="titl">
-                    {{ pickupInfo.title }}
-                </div>
-                <div class="info">
-                    <span>{{ pickupInfo.subTitle }}</span>
-                    <span><img src="../../static/images/forward.png" alt=""></span>
-                </div>
-            </li>
-            <li class="product_list weiXin">
-                <div class="titl">
-                    {{ wecharManage.title }}
-                </div>
-                <div class="info">
-                    <span>{{ wecharManage.subTitle }}</span>
-                    <span><img src="../../static/images/forward.png" alt=""></span>
-                </div>
-            </li>
-        </ul>
-        <!-- 会员权益：假一赔十部分 -->
-        <ul class="serve">
-            <li v-for="item in serviceList">
-                <img :src="item.icon" alt="">
-                <p class="text">{{ item.name }}</p>
-            </li>
-            <li class="more">
-                <img src="../../static/images/forward.png" alt="">
-            </li>
-        </ul>
-        <!-- 商品信息部分 -->
-        <div class="product_info">
-            <h2>商品信息</h2>
-            <table>
-                <tr v-for="item in productInfo.attrList">
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.value }}</td>
-                </tr>
-            </table>
-        </div>
-        <!-- 用户评价部分 -->
-        <div class="userComment d_jump">
-            <div class="comment_title">
-                <h2>{{ '用户评价(' + this.commentCount +')' }}</h2>
-                <div class="">
-                    <span>{{ '综合评分' + this.productGrade }}</span>
+            <!-- 会员权益：假一赔十部分 -->
+            <ul class="serve">
+                <li v-for="item in serviceList">
+                    <img :src="item.icon" alt="">
+                    <p class="text">{{ item.name }}</p>
+                </li>
+                <li class="more">
                     <img src="../../static/images/forward.png" alt="">
+                </li>
+            </ul>
+            <!-- 商品信息部分 -->
+            <div class="product_info">
+                <h2>商品信息</h2>
+                <table>
+                    <tr v-for="item in productInfo.attrList">
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.value }}</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 用户评价部分 -->
+            <div class="userComment d_jump">
+                <div class="comment_title">
+                    <h2>{{ '用户评价(' + this.commentCount +')' }}</h2>
+                    <div class="">
+                        <span>{{ '综合评分' + this.productGrade }}</span>
+                        <img src="../../static/images/forward.png" alt="">
+                    </div>
+                </div>
+                <ul class="comment_list">
+                    <!-- 将列表控制在两个以内 -->
+                    <li v-for="(item,index) in commentList" v-if="index<2">
+                        <div class="comment_user">
+                            <span class="user_name">{{ item.userName }}</span>
+                            <div class=" star">
+                                <img v-for="i in item.grade" src="../../static/images/star.png" alt="">
+                            </div>
+                        </div>
+                        <div class="comment_content">
+                            {{ item.content }}
+                        </div>
+                        <div class="comment_info">
+                            <time>{{ time[index] }}</time>
+                            <div class="zan svg" @click="sayYes($event)">
+                                <span></span>
+                                <span>{{ item.praiseCount }}</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- 商品详情部分 -->
+            <div class="product_imgs d_jump">
+                <h2>商品详情</h2>
+                <ul>
+                    <li v-for="item in productInfo.detail">
+                        <img :src="item.info" alt="">
+                    </li>
+                </ul>
+            </div>
+            <!-- 精品推荐部分 -->
+            <div class="recommend d_jump">
+                <p class="recommend_title">-精品推荐-</p>
+                <ul class="recommend_content">
+                    <li v-for="item in tuiJianList" @click="go(item)">
+                        <div class="recommend_img">
+                            <img :src="'http://pic.secoo.com/product/300/300/' + item.picUrl" alt="">
+                        </div>
+                        <p class="recommend_name">{{ item.name }}</p>
+                        <p class="recommend_price">{{ '￥' + item.secooPrice }}</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- 底部按钮部分 -->
+            <div class="button">
+                <div class="button_bag" @click="buyBag()">
+                    <img src="../../static/images/bag.png" alt="" :class="{'bagDong' : ani}">
+                </div>
+                <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="addBag(item.type)" v-if="buttonList.length==2">
+                    {{ item.title }}
+                </div>
+                <div class="btn1" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="addBag(item.type)" v-else>
+                    {{ item.title }}
                 </div>
             </div>
-            <ul class="comment_list">
-                <!-- 将列表控制在两个以内 -->
-                <li v-for="(item,index) in commentList" v-if="index<2">
-                    <div class="comment_user">
-                        <span class="user_name">{{ item.userName }}</span>
-                        <div class=" star">
-                            <img v-for="i in item.grade" src="../../static/images/star.png" alt="">
-                        </div>
-                    </div>
-                    <div class="comment_content">
-                        {{ item.content }}
-                    </div>
-                    <div class="comment_info">
-                        <time>{{ time[index] }}</time>
-                        <div class="zan svg" @click="sayYes($event)">
-                            <span></span>
-                            <span>{{ item.praiseCount }}</span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
         </div>
-        <!-- 商品详情部分 -->
-        <div class="product_imgs d_jump">
-            <h2>商品详情</h2>
-            <ul>
-                <li v-for="item in productInfo.detail">
-                    <img :src="item.info" alt="">
-                </li>
-            </ul>
-        </div>
-        <!-- 精品推荐部分 -->
-        <div class="recommend d_jump">
-            <p class="recommend_title">-精品推荐-</p>
-            <ul class="recommend_content">
-                <li v-for="item in tuiJianList" @click="go(item)">
-                    <div class="recommend_img">
-                        <img :src="'http://pic.secoo.com/product/300/300/' + item.picUrl" alt="">
-                    </div>
-                    <p class="recommend_name">{{ item.name }}</p>
-                    <p class="recommend_price">{{ '￥' + item.secooPrice }}</p>
-                </li>
-            </ul>
-        </div>
-        <!-- 底部按钮部分 -->
-        <div class="button">
-            <div class="button_bag" @click="buyBag()">
-                <img src="../../static/images/bag.png" alt="">
-            </div>
-            <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="addBag(item.type)">
-                {{ item.title }}
-            </div>
-        </div>
+
     </div>
 </template>
 
@@ -205,7 +214,9 @@ export default {
             zanNum : 0,
             kuChequeInfo : '',
             pickupInfo : '',
-            wecharManage : ''
+            wecharManage : '',
+            show : true,
+            ani : false
         }
     },
     components : {
@@ -232,7 +243,10 @@ export default {
                     type : "ADD_BAGDATA",
                     dataBag : this.dataArr
                 })
-                alert("已加入购物袋")
+                this.ani = true;
+                setTimeout(()=>{
+                    this.ani = false
+                },800)
             }
         },
         buyBag(){
@@ -322,6 +336,8 @@ export default {
             } else {
                 this.ziTiTag = false;
             }
+
+            this.show = false
         }),
         // 请求商品的用户评价
         this.$jsonp('http://las.secoo.com/api/comment/show_product_comment?upk=affe88828a1641749c7e730b6483dcd9%7C464572656233%7Ccc4a951855c94198896b905a9d51c3a2%7CBF13678943951D86DD851ABD04D322F1&productId=' + this.productId + '&size=2&c_platform_type=0&type=0&filter=0&page=1&pageSize=8&productBrandId=5987&productCategoryId=1828&_=' + Math.random() + '&callback').then( data => {
@@ -364,6 +380,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
+    .product_detail .loading {
+        width : 100%;
+        height: 100%;
+    }
+    .product_detail .loading img{
+        width: 100%;
+        height: 100%;
+    }
     .product_detail{
         font: 0.693333rem/1.12rem 'STHeiti', 'Helvetica Neue';
         color: #1A191E;
@@ -685,6 +709,21 @@ export default {
         width: 40%;
         height: 50%;
     }
+    /*点击加入购物袋时的动画效果*/
+    .bagDong{
+        animation: scale .5s ;
+    }
+    @keyframes scale {
+        0%{
+            transform: scale(1,1);
+        }
+        50% {
+            transform: scale(1.5,1.5);
+        }
+        100%{
+            transform: scale(1,1);
+        }
+    }
     .product_detail .button .btn{
         text-align: center;
         line-height: 2.5rem;
@@ -692,6 +731,14 @@ export default {
         width: 100%;
         height: 100%;
         flex: 0 1 42.5%;
+    }
+    .product_detail .button .btn1{
+        text-align: center;
+        line-height: 2.5rem;
+        font-size: .8rem;
+        width: 100%;
+        height: 100%;
+        flex: 0 1 85%;
     }
     /*.product_detail .button div:nth-of-type(2){
         border-radius: .3rem 0 0 .3rem;
