@@ -54,7 +54,6 @@ export default {
     components: {
         swiper,swiperSlide,
         HomeTop
-
      },
     data (){
         return {
@@ -173,41 +172,4 @@ export default {
         text-align: center;
         font-size: 0.746667rem;
     }
-<<<<<<< HEAD
-=======
-
-
-
-    /*轮播图*/
-    .home-banner .swiper-container{
-        width: 100%;
-        overflow: hidden;
-    }
-    .home-banner .swiper-wrapper{
-        width: 800%;
-    }
-    .home-banner .swiper-wrapper div{
-        float: left;
-    }
-    .home-banner .swiper-wrapper img{
-        width: 100%;
-    }
-    /*分页器*/
-    .swiper-container .swiper-pagination{
-        font-size: 0;
-        text-align: center;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 13.8rem;
-    }
-    .swiper-container .swiper-pagination .swiper-pagination-bullet{
-        display: inline-block;
-        width: 0.426667rem;
-        height: 0.426667rem;
-        background: #fff;
-        border-radius: 50%;
-    }
-
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
     </style>

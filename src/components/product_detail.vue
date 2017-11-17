@@ -25,7 +25,6 @@
                     </swiper-slide>
                     <div class="swiper-pagination"  slot="pagination"></div>
                 </swiper>
-                <!-- <img src="http://pic12.secooimg.com/product/500/500/54/53/655eb447900f4e77b2fee34a4fe39485.jpg" alt=""> -->
             </div>
             <p>您有一张满<span>4999</span>减<span>550</span>的券可用，购买立省<span class="liSheng">550</span>元</p>
         </div>
@@ -49,49 +48,34 @@
         <ul>
             <li class="product_list fenQi">
                 <div class="titl">
-<<<<<<< HEAD
-                    <!-- {{ data.kuChequeInfo.title}} -->
                 </div>
                 <div class="info">
-                    <!-- <span>{{ data.kuChequeInfo.subTitle }}</span> -->
-=======
                     {{ kuChequeInfo.title }}
                 </div>
                 <div class="info">
                     <span>{{ kuChequeInfo.subTitle }}</span>
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
             <li class="product_list ziTi" v-show="ziTiTag">
                 <div class="titl">
-<<<<<<< HEAD
-                    <!-- {{ data.pickupInfo.title }} -->
                 </div>
                 <div class="info">
-                    <!-- <span>{{ data.pickupInfo.subTitle }}</span> -->
-=======
                     {{ pickupInfo.title }}
                 </div>
                 <div class="info">
                     <span>{{ pickupInfo.subTitle }}</span>
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
             <li class="product_list weiXin">
-                <div class="titl">
-<<<<<<< HEAD
-                    <!-- {{ data.wecharManage.title }} -->
+                <div class="titl">>
                 </div>
                 <div class="info">
-                    <!-- <span>{{ data.wecharManage.subTitle }}</span> -->
-=======
                     {{ wecharManage.title }}
                 </div>
                 <div class="info">
                     <span>{{ wecharManage.subTitle }}</span>
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
                     <span><img src="../../static/images/forward.png" alt=""></span>
                 </div>
             </li>
@@ -171,17 +155,10 @@
         </div>
         <!-- 底部按钮部分 -->
         <div class="button">
-<<<<<<< HEAD
             <div class="button_bag" @click="buyBag()">
                 <img src="../../static/images/bag.png" alt="">
             </div>
             <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="addBag(item.type)">
-=======
-            <div class="button_bag" @click="goBag($event)">
-                <img src="../../static/images/bag.png" alt="">
-            </div>
-            <div class="btn" v-for="item in buttonList" :style="{color:'white',backgroundColor:'#' + item.color}" @click="buyBag(item.type)">
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
                 {{ item.title }}
             </div>
         </div>
@@ -189,12 +166,12 @@
 </template>
 
 <script>
-<<<<<<< HEAD
+
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import swiperCss from "../../static/css/swiper.css"
-=======
+
 let zanTag = false;
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
+
 export default {
     data(){
         return{
@@ -223,7 +200,6 @@ export default {
             tag4 : false,
             scroll : 0,//监听页面滚动
             total : 0,
-<<<<<<< HEAD
             swiperOption : {
                 loop : true,
                 // autoplay: 3000,
@@ -231,21 +207,16 @@ export default {
                 pagination : '.swiper-pagination',
                 autoplayDisableOnInteraction : false,
             },
-            dataArr : {}
-=======
+            dataArr : {},
             zanNum : 0,
             kuChequeInfo : '',
             pickupInfo : '',
-            wecharManage : '',
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
+            wecharManage : ''
         }
     },
     components : {
         swiper,
         swiperSlide
-    },
-    beforeDestroy () {
-        bus.$emit("bagData",this.dataArr)
     },
     methods : {
         addBag(type){
@@ -258,12 +229,12 @@ export default {
                     price : this.price.nowPrice.split("￥")[1].replace(/,/g,""),
                     isTrue : 0,
                 }
+                this.$store.commit({
+                    type : "ADD_BAGDATA",
+                    dataBag : this.dataArr
+                })
+                alert("已加入购物袋")
             }
-            this.$store.commit({
-                type : "ADD_BAGDATA",
-                dataBag : this.dataArr
-            })
-            alert("已加入购物袋")
         },
         buyBag(){
             this.$router.push({
@@ -272,25 +243,6 @@ export default {
         },
         goback(){
             history.back()
-        },
-        buyBag(type){
-            if (type == 0) {
-                // 加入购物袋
-                let goods = {
-                    url : this.productInfo.imgList[0],
-                    msg : this.productInfo.title,
-                    i : 1,
-                    price : this.price.nowPrice,
-                    isTrue : 0,
-                }
-            } else if (type == 1) {
-                // 立即购买
-            }
-        },
-        goBag(){
-            this.$router.push({
-                path : '/bag'
-            })
         },
         gohome(){
             this.$router.push({
@@ -362,6 +314,7 @@ export default {
             this.productInfo = data.productInfo;
             this.serviceList = data.serviceList;
             this.buttonList = data.button.buttonList;
+            console.log(this.buttonList);
             this.kuChequeInfo = data.kuChequeInfo;
             this.pickupInfo = data.pickupInfo;
             this.wecharManage = data.wecharManage;
@@ -744,4 +697,4 @@ export default {
     .product_detail .button div:nth-of-type(3){
         border-radius:0 .3rem .3rem 0;
     }*/
-</style>
+</style> -->

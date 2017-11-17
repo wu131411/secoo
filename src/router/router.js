@@ -17,13 +17,6 @@ import HomeInter from "../pages/home_inter"
 import Hot from "../pages/hot"
 import HotShow from '../components/hot_show'
 import HotShowDetail from '../components/hot_show_detail'
-import Mineaboutqy from "../pages/mine_aboutqy"//关于寺库二级页面——寺库起源
-import Mineaboutqx from "../pages/mine_aboutqx"//关于寺库二级页面——旗下品牌
-import Mineaboutqxhuisuo from "../pages/mine_aboutqx_huisuo"//旗下品牌三级页面库会所
-import Mineaboutqxjianding from "../pages/mine_aboutqx_jianding"//旗下品牌三级页面鉴定中心
-import Mineaboutqxyanghu from "../pages/mine_aboutqx_yanghu"//旗下品牌三级页面养护中心
-import Mineaboutqxxueyuan from "../pages/mine_aboutqx_xueyuan"//旗下品牌三级页面寺库商学院
-import Mineaboutry from "../pages/mine_aboutry"//关于寺库二级页面——集团荣誉
 
 
 
@@ -36,8 +29,6 @@ import List from "../pages/list"
 import Index from "../pages/index"
 import Index2 from "../pages/index2"
 import Three from "../pages/three"
-import Threetwo from "../pages/threetwo"
-import Threethree from "../pages/threethree"
 
 
 //bag购物袋
@@ -61,22 +52,15 @@ import Minepmq from "../pages/mine_pmq"//我的拍卖券
 import Minepmqpmq from "../pages/mine_pmq_pmq"//我的拍卖券二级页面
 import Mineseaout from "../pages/mine_seaout"//海外站购买说明
 import Mineabout from "../pages/mine_about" //关于寺库
-<<<<<<< HEAD
-
-
-
-
-=======
 import Mineaboutqy from "../pages/mine_aboutqy"//关于寺库二级页面——寺库起源
 import Mineaboutqx from "../pages/mine_aboutqx"//关于寺库二级页面——旗下品牌
 import Mineaboutqxhuisuo from "../pages/mine_aboutqx_huisuo"//旗下品牌三级页面库会所
 import Mineaboutqxjianding from "../pages/mine_aboutqx_jianding"//旗下品牌三级页面鉴定中心
 import Mineaboutqxyanghu from "../pages/mine_aboutqx_yanghu"//旗下品牌三级页面养护中心
 import Mineaboutqxxueyuan from "../pages/mine_aboutqx_xueyuan"//旗下品牌三级页面寺库商学院
-
 import Mineaboutry from "../pages/mine_aboutry"//关于寺库二级页面——集团荣誉
 
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
+
 
 //VUE中使用router
 Vue.use(VueRouter)
@@ -108,39 +92,23 @@ let routes = [
 
     //list列表
     {path : "/list", component : List, meta : {navShow : false}, children :[
-<<<<<<< HEAD
-    //   { path : '/list',component : Index},
-    //   { path : '/list/index',component: Index},
-=======
       { path : '/list',component : Index},
       { path : '/list/index',component: Index},
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
       { path : '/list',component : Index2},
       { path : '/list/index2',component: Index2}
 
    ]},
     {name: 'three',path: '/list/three',component:Three},
 
-<<<<<<< HEAD
-    // bag
-=======
 
     //bag购物袋
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
     {path : "/bag", component : Bag, meta : {navShow : false}, children : [
         {path : "/bag", component : BagOne},
         {path : "/bag/bag_one", component : BagOne},
         {path : "/bag/bag_two", component : BagTwo}
     ]},
 
-<<<<<<< HEAD
-    // mine
-=======
-
    // mine我的页面路由
-
-   //  { path : '/list/index2',component: Index2},
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
     {path : "/mine", component : Mine, meta : {navShow : false}},
     {path : "/mine_zh", component : Minezh},
     {path : "/mine_dl", component : Minedl},
@@ -160,20 +128,15 @@ let routes = [
     {path : "/mine_about", component : Mineabout},
     {path : "/mine_aboutqy", component : Mineaboutqy},
     {path : "/mine_aboutqx", component : Mineaboutqx},
-<<<<<<< HEAD
     {path : "/mine_aboutry", component : Mineaboutry},
-
-=======
     {path : "/mine_aboutqx_huisuo", component : Mineaboutqxhuisuo},
     {path : "/mine_aboutqx_jianding", component : Mineaboutqxjianding},
     {path : "/mine_aboutqx_yanghu", component : Mineaboutqxyanghu},
     {path : "/mine_aboutqx_xueyuan", component : Mineaboutqxxueyuan},
     {path : "/mine_aboutry", component : Mineaboutry},
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
     // 商品详情页
     {path : '/product_detail/:productId',component : ProductDetail},
     {path : "/mine_aboutry", component : Mineaboutry},
-
 ]
 //创建路由对象
 let router = new VueRouter({

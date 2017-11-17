@@ -3,26 +3,27 @@
 import Vue from 'vue'
 import App from './App'
 
-
-
-import axios from "axios"
-Vue.prototype.axios = axios
-
 //引入路由模块
 import router from "./router/router"
-Vue.use(VueJsonp)
+
 
 //引入轮播图插件
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
 
+// 引入UI组件库
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
+
+
+Vue.config.productionTip = false
+
 
 //引入vue-jsonp模块
 import VueJsonp from "vue-jsonp"
 Vue.use(VueJsonp)
-<<<<<<< HEAD
 
-window.bus = new Vue()
 
 //引入并安装vuex
 import Vuex from "vuex"
@@ -56,16 +57,6 @@ const store = new Vuex.Store({
 })
 
 
-=======
-// 引入UI组件库
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
-Vue.use(MintUI)
-
-
-Vue.config.productionTip = false
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   template: '<App/>',

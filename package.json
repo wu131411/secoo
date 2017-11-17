@@ -10,12 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.17.0",
-<<<<<<< HEAD
-=======
-    "jsonp": "^0.2.1",
     "mint-ui": "^2.2.10",
->>>>>>> a8fe3cbbfa6af33130958ad3f98c84b3af1c42c6
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^2.6.7",
     "vue-jsonp": "^0.1.7",
