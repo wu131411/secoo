@@ -563,6 +563,9 @@ export default {
     }
     .userComment .comment_title span,.userComment .comment_title img{
         font-size: .75rem;
+        width: .75rem;
+        height: .75rem;
+        vertical-align: middle;
     }
     .userComment .comment_list li{
         padding: 1rem 0 1rem 1.5rem;
