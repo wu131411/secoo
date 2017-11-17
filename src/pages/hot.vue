@@ -55,7 +55,6 @@ export default {
                 item.classList.remove("changOn")
             }
             event.target.parentNode.classList.add("changOn")
-            console.log(event.target);
         },
         goWabao(){
             this.$router.push({
@@ -94,9 +93,6 @@ export default {
     }
     /*二级路由样式*/
     /*点击时的边框样式*/
-    .hot_tabbar_color{
-        border-color: #ceb88e !important;
-    }
     .hot_tabbar{
         overflow: hidden;
         width: 100%;

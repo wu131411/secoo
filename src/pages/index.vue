@@ -9,6 +9,7 @@
 import Future from '../components/future'
 
 export default {
+
    data(){
       return{
          result:{}
