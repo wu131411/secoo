@@ -138,7 +138,7 @@
         <div class="recommend d_jump">
             <p class="recommend_title">-精品推荐-</p>
             <ul class="recommend_content">
-                <li v-for="item in tuiJianList">
+                <li v-for="item in tuiJianList" @click="go(item)">
                     <div class="recommend_img">
                         <img :src="'http://pic.secoo.com/product/300/300/' + item.picUrl" alt="">
                     </div>
@@ -213,6 +213,11 @@ export default {
         swiperSlide
     },
     methods : {
+        go(item){
+            this.$router.push({
+                path : '/product_detail/' + item.productId
+            })
+        },
         addBag(type){
             if (type == 0) {
                 // 加入购物袋
@@ -308,7 +313,6 @@ export default {
             this.productInfo = data.productInfo;
             this.serviceList = data.serviceList;
             this.buttonList = data.button.buttonList;
-            console.log(this.buttonList);
             this.kuChequeInfo = data.kuChequeInfo;
             this.pickupInfo = data.pickupInfo;
             this.wecharManage = data.wecharManage;
@@ -661,6 +665,7 @@ export default {
         left: 0;
         right: 0;
         height: 2.5rem;
+        z-index: 10;
 
         display: flex;
         justify-content: space-between;

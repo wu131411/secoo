@@ -86,7 +86,7 @@
                 <div class="addComment">
                     <div class="">
                         <input type="text" name="" value="" placeholder="发表评论">
-                        <span v-show="show" @click="pingLun($event)">发送</span>
+                        <span v-show="show" @click="pingLun($event,productId)">发送</span>
                     </div>
                 </div>
             </div>
@@ -114,6 +114,9 @@
 </template>
 
 <script>
+import setCookie from "../../static/js/setCookie"
+import getCookie from "../../static/js/getCookie"
+
 let zanTag = false;
 let likeTag = false;
 export default {
@@ -166,26 +169,29 @@ export default {
                 path : '/product_detail/' + this.productId,
             })
         },
-        pingLun(ev){
+        pingLun(ev,productId){
             // TODO:首先判断是否登录状态，如果未登录，跳转登录界面
-            if (true) {
+            if (getCookie('userVal')) {
                 let input = document.querySelector('.addComment input');
                 // 判断是否为空
                 if (input.value) {
                     let value = {
                         content : input.value,
                         headImg : '../../static/images/icon.ico',
-                        nickName : '用户123456789',
+                        nickName : getCookie('userVal'),
                         createDate : '刚刚',
                     }
-                    console.log(this.comment);
                     this.comment.push(value);
                     input.value = '';
+                    this.comment_length++;
                 }
             }else {
-                this.$router.push({
-                    path : '/mine_dl'
-                })
+                setTimeout(()=>{
+                    this.$router.push({
+                        path : '/mine_dl'
+                    })
+                },1000)
+
             }
         }
     },
