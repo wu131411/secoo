@@ -107,7 +107,7 @@ export default {
         margin-right: 10px;
     }
     .bag .bag_back .bag_com{
-        padding-right: 4%;
+        padding-right: 3%;
     }
     /*主体*/
     .bag .bag_main{

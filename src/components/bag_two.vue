@@ -23,11 +23,33 @@
                     <span class="bagFoot" :class="{'selected' : isi}" @click="changeAll"></span>
                     <p>
                         <span>全选</span>
-                        <button @click="deleteList()">删除</button>
+                        <button  data-toggle="modal" data-target="#myModal" @click="changeShop">删除</button>
                     </p>
                 </div>
             </footer>
         </div>
+            <!-- 模态弹框 -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document" v-if="isChange">
+                  <div class="modal-content deleteNull">
+                      <div class="modal-body">
+                          <h4>抱歉，请选择要删除的商品</h4>
+                      </div>
+                  </div>
+                </div>
+                <div class="modal-dialog" role="document" v-else>
+                    <div class="modal-content deleteNull">
+                        <div class="modal-body">
+                            <h4>确定删除选中商品吗？</h4>
+                        </div>
+                      <div class="modal-footer">
+                          <h4 class="btn-default uninstall" data-dismiss="modal">取消</h4>
+                          <h4 class="btn-default" data-dismiss="modal" @click="deleteList()">确定</h4>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <!-- @click="deleteList() -->
     </div>
 </template>
 
@@ -36,7 +58,8 @@ export default {
     props:["data2"],
     data () {
         return {
-            isi : 0
+            isi : 0,
+            isChange : true
         }
     },
     methods : {
@@ -70,6 +93,14 @@ export default {
                 }
             }
         },
+        //删除时是否已经选中商品
+        changeShop(){
+            for (var i = this.data2.length-1 ; i >= 0; i--) {
+                if(this.data2[i].dataBag.isTrue == 1){
+                    this.isChange = false
+                }
+            }
+        },
         //删除选中商品
         deleteList(){
             for (var i = this.data2.length-1 ; i >= 0; i--) {
@@ -77,6 +108,7 @@ export default {
                     this.data2.splice(i,1)
                 }
             }
+            this.isChange = true
         },
         changeAll () {
             //通过全选按钮，选择所有商品或取消所有已选商品，计算总价，总数量
@@ -105,7 +137,19 @@ export default {
     }
 }
 </script>
-<style lang="css">
+<style lang="css" scoped>
+    /*bootStrap*/
+    .deleteNull{
+        width: 12rem;
+        margin-top: 50%;
+        margin-left: 20%;
+        text-align: center;
+    }
+    .uninstall{
+        float: left;
+    }
+
+
     .bagCenter .bagTwoP span{
         box-sizing: border-box;
         float: left;

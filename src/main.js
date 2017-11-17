@@ -3,6 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 
+//引入bootstrap
+import $ from 'jquery'
+import "../static/css/bootstrap.min.css"
+import "../static/js/bootstrap.min"
+
+
 //引入路由模块
 import router from "./router/router"
 
@@ -43,7 +49,8 @@ const store = new Vuex.Store({
                     if(state.dataBag[i].dataBag.url == shopData.dataBag.url){
                         state.dataBag[i].dataBag.i++
                         break
-                    }else{
+                    }
+                    if(i == (this.state.dataBag.length-1)) {
                         state.dataBag.push(shopData)
                         break
                     }
