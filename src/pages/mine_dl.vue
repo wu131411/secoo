@@ -224,11 +224,11 @@ html {
 	font-size: 1rem;
 	color: #bbb;
 	position: absolute;
-	top: .9rem;
+	top: .6rem;
 	/*left: 1rem;*/
 }
 .dl_biaodans {
-	margin-top: .5rem;
+	margin-top: .4rem;
 	width: 15.5rem;
 	height: 2rem;
 	border: none;
@@ -275,6 +275,7 @@ html {
 	outline: none;
 	position: fixed;
 	top: 21rem;
+	left: .2rem;
 	font-size: .9rem;
 }
 .dl_foot {

@@ -110,8 +110,9 @@ html{
 	left: .5rem;
 }
 .minezh_backtext {
+	font-size: .9rem;
 	position: absolute;
-	top: .5rem;
+	top: .7rem;
 	left: 1.7rem;
 }
 .minezh_zh {
@@ -162,7 +163,7 @@ html{
 .money2_num {
 	float: right;
 	line-height: 2.3rem;
-	margin-right: 1rem;
+	margin-right: -4.5rem;
 	font-size: .8rem;
 }
 .minezh_man {

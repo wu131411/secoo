@@ -103,7 +103,7 @@ html {
   margin-bottom: 3rem;
 }
 .yhq,.hb {
-	width: 9rem;
+	width: 8.93rem;
 	text-align: center;
 	height: 1.5rem;
 	line-height: 1.5rem;
@@ -112,8 +112,8 @@ html {
 .heigh {
 	float: left;
 	display: inline-block;
-	width: 9rem;
-	height: 1.5rem;
+	width: 8.93rem;
+	height: 1.4rem;
 }
 .hover {
   background: red;

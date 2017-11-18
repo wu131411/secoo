@@ -19,28 +19,28 @@
 			</div>
 			<div class="haoma">
 				<input type="text" name="" value="" placeholder="请输入优惠券号码" class="haoma_input">
-				<button type="button" name="button" class="haoma_btn">添加</button>
+				<button type="button" name="button" id="haoma_btn">添加</button>
 			</div>
 			<div class="mine_footer">
-	      <router-link to="./home">
+	      <router-link to="/home">
 	        <div class="footer_home foot">
 	  				<span class="home_ico"></span>
 	  				<p>首页</p>
 	  			</div>
 	      </router-link>
-				<router-link to="./list">
+				<router-link to="/list">
 	        <div class="footer_pai foot">
 	  				<span class="pai_ico"></span>
 	  				<p>品牌</p>
 	  			</div>
 				</router-link>
-				<router-link to="./bag">
+				<router-link to="/bag">
 	        <div class="footer_bag foot">
 	  				<span class="bag_ico"></span>
 	  				<p>购物袋</p>
 	  			</div>
 				</router-link>
-				<router-link to="./mine">
+				<router-link to="/mine">
 	        <div class="footer_mine foot">
 	  				<span class="mine_ico"></span>
 	  				<p>我的寺库</p>
@@ -51,31 +51,31 @@
 		<div v-else>
 			<div class="hbhaoma">
 				<input type="text" name="" value="" placeholder="请输入红包号码" class="hbhaoma_input">
-				<button type="button" name="button" class="hbhaoma_btn">添加</button>
+				<button type="button" name="button" id="hbhaoma_btn">添加</button>
 			</div>
 			<div class="youhb">
 				你还没有红包
 			</div>
 			<div class="mine_footer">
-	      <router-link to="./home">
+	      <router-link to="/home">
 	        <div class="footer_home foot">
 	  				<span class="home_ico"></span>
 	  				<p>首页</p>
 	  			</div>
 	      </router-link>
-				<router-link to="./list">
+				<router-link to="/list">
 	        <div class="footer_pai foot">
 	  				<span class="pai_ico"></span>
 	  				<p>品牌</p>
 	  			</div>
 				</router-link>
-				<router-link to="./bag">
+				<router-link to="/bag">
 	        <div class="footer_bag foot">
 	  				<span class="bag_ico"></span>
 	  				<p>购物袋</p>
 	  			</div>
 				</router-link>
-				<router-link to="./mine">
+				<router-link to="/mine">
 	        <div class="footer_mine foot">
 	  				<span class="mine_ico"></span>
 	  				<p>我的寺库</p>
@@ -157,23 +157,24 @@ export default {
 
 }
 .haoma_input {
-	width: 15rem;
+	width: 14rem;
 	height: 1.8rem;
 	border: none;
 	outline: none;
 	font-size: .8rem;
 	line-height: 2rem;
 }
-.haoma_btn {
+#haoma_btn {
 	width: 3rem;
 	height: 1.6rem;
 	background: white;
 	border-radius: .3rem;
-	/*outline: none;*/
 	border: none;
 	border: 1px solid #99aa96;
 	font-size: .8rem;
 	color: gray;
+	margin-top: .2rem;
+	line-height: 1.6rem;
 }
 .mine_footer {
 	display: flex;
@@ -250,26 +251,30 @@ export default {
 	margin-left: -1rem;
 	padding-left: 1rem;
 	line-height: 2rem;
-
+	position: relative;
 }
 .hbhaoma_input {
-	width: 15rem;
+	width: 14rem;
 	height: 1.8rem;
 	border: none;
 	outline: none;
 	font-size: .8rem;
 	line-height: 2rem;
+	position: absolute;
 }
-.hbhaoma_btn {
+#hbhaoma_btn {
 	width: 3rem;
 	height: 1.6rem;
 	background: white;
 	border-radius: .3rem;
-	/*outline: none;*/
 	border: none;
 	border: 1px solid #99aa96;
 	font-size: .8rem;
 	color: gray;
+	position: absolute;
+	top: .1rem;
+	right: 1rem;
+	line-height: 1.6rem;
 }
 .youhb {
 	width: 18rem;

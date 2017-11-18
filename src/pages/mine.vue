@@ -147,6 +147,9 @@ html {
   font-size: .8rem;
   font-family: STHeiti,Helvetica Neue;
 }
+.mine a {
+  color: black;
+}
 .mine_top {
 	width: 20rem;
 	height: 3.5rem;

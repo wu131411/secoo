@@ -76,8 +76,9 @@ html {
 }
 .minedd_backtext {
 	position: absolute;
-	top: .5rem;
+	top: .7rem;
 	left: 1.7rem;
+  font-size: .9rem;
 }
 .minedd_dd {
 	position: absolute;
